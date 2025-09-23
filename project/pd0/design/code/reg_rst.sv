@@ -26,4 +26,10 @@ module reg_rst #(
      * student below...
      */
 
+    always_ff @(posedge clk)
+        if (rst)
+            out_o <= {DWIDTH{1'b0}};
+        else
+            out_o <= in_i;
+
 endmodule: reg_rst

@@ -35,4 +35,22 @@ module alu #(
      * student below...
      */
 
+    // 4-to-1 mux for operation, no carry, overflow, nor underflow flags
+    assign res_o = (sel_i == 2'b00) ? (op1_i + op2_i) :
+                   (sel_i == 2'b01) ? (op1_i - op2_i) :
+                   (sel_i == 2'b10) ? (op1_i & op2_i) : (op1_i | op2_i);
+
+    // HERE IS A COMMENT CHECK FOR GIT STUFF
+    
+
+    // Negate the reduction OR operation on signal res_o 
+    assign zero_o = !(|res_o);
+    
+    /*
+     * Ternary operation to determine negative result
+     * For barebones ALU signed integer input is assumed
+     */
+    assign neg_o  = (res_o[31] == 1'b1) ? 1'b1 : 1'b0;                                
+
+
 endmodule: alu
