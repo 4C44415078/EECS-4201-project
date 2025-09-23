@@ -56,5 +56,55 @@ module memory #(
    * student below....
    *
    */
+  
+  /*
+   * Combinational block for MEMORY READS. 
+   * Occurs asynchronously on rising edge of any input change.
+   * If input address exceeds memory size, output will enter undefined state.
+   * If input address exceeds base memory address, output will enter undefined state.
+   * Little endian assumed. 4-byte width assumed for data bus.
+   */
+    always @(*) begin
+        if (read) begin
+            if (addr_i > `MEM_DEPTH) begin
+                data_o = DWIDTH'hxxxxxxxx;
+            end
+            else if (addr_i < BASE_ADDR) begin
+                data_o = DWIDTH'hxxxxxxxx;
+            end
+            else begin
+                data_o = {
+                    main_memory[address + 3],
+                    main_memory[address + 2],
+                    main_memory[address + 1],
+                    main_memory[address + 0]
+                };
+            end
+        end
+    end
+    
+  /*
+   * Sequential block for MEMORY WRITES.
+   * Occurs synchronously on rising edge of the clock.
+   * Little endian assumed. 4-byte width assumed for data bus.
+   * Checks for high write_en_i. 
+   * If reset is high, data at address is zeroed, otherwise it writes.
+   */    
+    always @(posedge clk) begin
+        if (write_en_i) begin
+            if (rst) begin
+                integer i;
+                for (int i = 0; i < `MEM_DEPTH; i = i + 1) begin
+                    main_memory[i] <= 8'h00;
+                end
+            end
+            else begin
+                main_memory[address]     <= data_i[7:0];
+                main_memory[address + 1] <= data_i[15:8];
+                main_memory[address + 2] <= data_i[23:16];
+                main_memory[address + 3] <= data_i[31:24];
+            end
+        end
+    end  
 
 endmodule : memory
