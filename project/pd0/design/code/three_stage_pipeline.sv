@@ -43,4 +43,69 @@ parameter int DWIDTH = 8)(
      *
      */
 
+    wire [1:0] opcode;
+    wire [1:0] zero;
+    wire [1:0] neg;
+    wire [DWIDTH-1:0] res_alu_add;
+    wire [DWIDTH-1:0] res_alu_sub;
+
+    alu #(.DWIDTH(DWIDTH)) aluAdd (
+        .sel_i(2'b00),
+        .op1_i(stage1_reg1),
+        .op2_i(stage1_reg2),
+        .res_o(res_alu_add),
+        .zero_o(zero[0]),
+        .neg_o(neg[0])
+    );
+
+    alu #(.DWIDTH(DWIDTH)) aluSub (
+        .sel_i(2'b01),
+        .op1_i(res_alu_add),
+        .op2_i(stage1_reg1),
+        .res_o(res_alu_sub),
+        .zero_o(zero[1]),
+        .neg_o(neg[1])
+    );    
+
+    wire [DWIDTH-1:0] stage1_reg1;
+    wire [DWIDTH-1:0] stage1_reg2;
+    reg_rst #(.DWIDTH(DWIDTH)) stage1Reg1 (
+        .clk(clk),
+        .rst(rst),
+        .in_i(op1_i),
+        .out_o(stage1_reg1)
+    );
+
+    reg_rst #(.DWIDTH(DWIDTH)) stage1Reg2 (
+        .clk(clk),
+        .rst(rst),
+        .in_i(op2_i),
+        .out_o(stage1_reg2)
+    );
+    
+    
+    wire [DWIDTH-1:0] stage2_reg1;
+    wire [DWIDTH-1:0] stage2_reg2;
+    reg_rst #(.DWIDTH(DWIDTH)) stage2Reg1 (
+        .clk(clk),
+        .rst(rst),
+        .in_i(res_alu_add),
+        .out_o(stage2_reg1)
+    );
+
+    reg_rst #(.DWIDTH(DWIDTH)) stage2Reg2 (
+        .clk(clk),
+        .rst(rst),
+        .in_i(stage1_reg1),
+        .out_o(stage2_reg2)
+    );
+
+    reg_rst #(.DWIDTH(DWIDTH)) stage3Reg (
+        .clk(clk),
+        .rst(rst),
+        .in_i(res_alu_sub),
+        .out_o(res_o)
+    );
+            
+                    
 endmodule: three_stage_pipeline
