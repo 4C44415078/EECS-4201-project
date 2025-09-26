@@ -31,6 +31,7 @@ module memory #(
   input logic write_en_i,
   // outputs
   output logic [DWIDTH-1:0] data_o
+  output logic valid_o;
 );
 
   logic [DWIDTH-1:0] temp_memory [0:`MEM_DEPTH];
@@ -66,11 +67,13 @@ module memory #(
    */
     always @(*) begin
         if (read) begin
-            if (addr_i > `MEM_DEPTH) begin
-                data_o = DWIDTH'hxxxxxxxx;
+            if (addr_i > `MEM_DEPTH - 1) begin
+                data_o = DWIDTH'h00000000;
+                valid_o = 1'b0;
             end
             else if (addr_i < BASE_ADDR) begin
-                data_o = DWIDTH'hxxxxxxxx;
+                data_o = DWIDTH'h00000000;
+                valid_o = 1'b0;
             end
             else begin
                 data_o = {
@@ -88,21 +91,19 @@ module memory #(
    * Occurs synchronously on rising edge of the clock.
    * Little endian assumed. 4-byte width assumed for data bus.
    * Checks for high write_en_i. 
-   * If reset is high, data at address is zeroed, otherwise it writes.
+   * If reset is high, valid flag low and output is 0xffffffff.
    */    
     always @(posedge clk) begin
         if (write_en_i) begin
             if (rst) begin
-                integer i;
-                for (int i = 0; i < `MEM_DEPTH; i = i + 1) begin
-                    main_memory[i] <= 8'h00;
-                end
+                valid_o <= 1'b0;
             end
-            else begin
+            else if (addr_i > BASE_ADDR & addr_i < `MEM_DEPTH - 1) begin
                 main_memory[address]     <= data_i[7:0];
                 main_memory[address + 1] <= data_i[15:8];
                 main_memory[address + 2] <= data_i[23:16];
                 main_memory[address + 3] <= data_i[31:24];
+                valid_o <= 1'b1;
             end
         end
     end  

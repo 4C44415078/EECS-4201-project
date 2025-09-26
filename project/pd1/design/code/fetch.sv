@@ -29,11 +29,6 @@ module fetch #(
      * student below...
      */
 
-    logic [AWIDTH-1:0] pc;
-    logic [DWIDTH-1:0] insn;
-    assign pc_o = pc;
-    assign insn_o = insn;
-
     memory #(
         .AWIDTH(AWIDTH),
         .DWIDTH(DWIDTH),
@@ -41,19 +36,19 @@ module fetch #(
     ) insn_mem (
         .clk(clk),
         .rst(rst),
-        .addr_i(pc),
+        .addr_i(pc_o),
         .data_i(DWIDTH'd0),
         .read_en_i(1'b1),
         .write_en_i(1'b0),
-        .data_o(insn)
+        .data_o(insn_o)
     )
 
     always_ff @(posedge_clk) begin
         if (rst) begin
-            pc <= AWIDTH'd0;
+            pc_o <= AWIDTH'd0;
         end
         else begin
-            pc <= pc + 4;
+            pc_o <= pc + 4;
         end
     end
 
