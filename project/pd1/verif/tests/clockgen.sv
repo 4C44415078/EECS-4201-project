@@ -13,10 +13,10 @@ module clockgen(
   output logic rst
 );
 
-  initial begin
-    clk = 0;
-    forever #1 clk = !clk;
-  end
+  // initial begin
+  //   clk = 0;
+  //   forever #1 clk = !clk;
+  // end
 
   // common logic for iverilog and verilator
   integer counter = 0;
