@@ -30,13 +30,13 @@ module memory #(
   input logic read_en_i,
   input logic write_en_i,
   // outputs
-  output logic [DWIDTH-1:0] data_o
-  output logic valid_o;
+  output logic [DWIDTH-1:0] data_o,
+  output logic valid_o
 );
 
-  logic [DWIDTH-1:0] temp_memory [0:`MEM_DEPTH];
+  logic [DWIDTH-1:0] temp_memory [0:`MEM_DEPTH - 1];
   // Byte-addressable memory
-  logic [7:0] main_memory [0:`MEM_DEPTH];  // Byte-addressable memory
+  logic [7:0] main_memory [0:`MEM_DEPTH - 1];  // Byte-addressable memory
   logic [AWIDTH-1:0] address;
   assign address = addr_i - BASE_ADDR;
 
@@ -61,27 +61,28 @@ module memory #(
   /*
    * Combinational block for MEMORY READS. 
    * Occurs asynchronously on rising edge of any input change.
-   * If input address exceeds memory size, output will enter undefined state.
-   * If input address exceeds base memory address, output will enter undefined state.
+   * If input address exceeds memory size, output will be zero.
+   * If input address exceeds base memory address, output will be zero.
    * Little endian assumed. 4-byte width assumed for data bus.
    */
-    always @(*) begin
-        if (read) begin
-            if (addr_i > `MEM_DEPTH - 1) begin
-                data_o = DWIDTH'h00000000;
-                valid_o = 1'b0;
-            end
-            else if (addr_i < BASE_ADDR) begin
-                data_o = DWIDTH'h00000000;
-                valid_o = 1'b0;
-            end
-            else begin
+    always_comb begin
+        valid_o = 1'b0;
+        data_o = {DWIDTH{1'b0}};
+        if (write_en_i) begin
+            valid_o = 1'b0;
+        end
+        else if (rst) begin
+            valid_o = 1'b0;
+        end
+        else if (read_en_i) begin
+            if (address <= (`MEM_DEPTH - 1)) begin
                 data_o = {
                     main_memory[address + 3],
                     main_memory[address + 2],
                     main_memory[address + 1],
                     main_memory[address + 0]
                 };
+                valid_o = 1'b1;
             end
         end
     end
@@ -91,19 +92,18 @@ module memory #(
    * Occurs synchronously on rising edge of the clock.
    * Little endian assumed. 4-byte width assumed for data bus.
    * Checks for high write_en_i. 
-   * If reset is high, valid flag low and output is 0xffffffff.
    */    
     always @(posedge clk) begin
-        if (write_en_i) begin
+        if (read_en_i) begin
+        end
+        else if (write_en_i) begin
             if (rst) begin
-                valid_o <= 1'b0;
             end
-            else if (addr_i > BASE_ADDR & addr_i < `MEM_DEPTH - 1) begin
+            else if ((address <= (`MEM_DEPTH - 1))) begin
                 main_memory[address]     <= data_i[7:0];
                 main_memory[address + 1] <= data_i[15:8];
                 main_memory[address + 2] <= data_i[23:16];
                 main_memory[address + 3] <= data_i[31:24];
-                valid_o <= 1'b1;
             end
         end
     end  
