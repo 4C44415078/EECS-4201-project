@@ -62,7 +62,7 @@ module memory #(
    * Combinational block for MEMORY READS. 
    * Occurs asynchronously on rising edge of any input change.
    * If input address exceeds memory size, output will be zero.
-   * If input address exceeds base memory address, output will be zero.
+   * Simultaneous read and write results in invalid read and no data written.
    * Little endian assumed. 4-byte width assumed for data bus.
    */
     always_comb begin

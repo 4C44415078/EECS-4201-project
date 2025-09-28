@@ -42,8 +42,6 @@ VL_ATTR_COLD void Vtop___024root___eval_initial__TOP(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Init
-    IData/*31:0*/ top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i;
-    top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i = 0;
     IData/*31:0*/ top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__unnamedblk1__DOT__i;
     top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__unnamedblk1__DOT__i = 0;
     VlWide<3>/*95:0*/ __Vtemp_1;
@@ -57,40 +55,7 @@ VL_ATTR_COLD void Vtop___024root___eval_initial__TOP(Vtop___024root* vlSelf) {
     ;
     vlSelfRef.top__DOT__clock = 0U;
     vlSelfRef.top__DOT__reset = 1U;
-    VL_READMEM_N(true, 32, 1048576, 0, VL_CVT_PACK_STR_NW(33, Vtop__ConstPool__CONST_hc3994f83_0)
-                 ,  &(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory)
-                 , 0, ~0ULL);
-    top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i = 0U;
-    while (VL_GTS_III(32, 0x7fU, top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)) {
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__main_memory[(0xfffffU 
-                                                                                & VL_MULS_III(32, (IData)(4U), top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i))] 
-            = (0xffU & vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory
-               [(0xfffffU & top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)]);
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__main_memory[(0xfffffU 
-                                                                                & ((IData)(1U) 
-                                                                                + 
-                                                                                VL_MULS_III(32, (IData)(4U), top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)))] 
-            = (0xffU & (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory
-                        [(0xfffffU & top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)] 
-                        >> 8U));
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__main_memory[(0xfffffU 
-                                                                                & ((IData)(2U) 
-                                                                                + 
-                                                                                VL_MULS_III(32, (IData)(4U), top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)))] 
-            = (0xffU & (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory
-                        [(0xfffffU & top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)] 
-                        >> 0x10U));
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__main_memory[(0xfffffU 
-                                                                                & ((IData)(3U) 
-                                                                                + 
-                                                                                VL_MULS_III(32, (IData)(4U), top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)))] 
-            = (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory
-               [(0xfffffU & top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i)] 
-               >> 0x18U);
-        top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i 
-            = ((IData)(1U) + top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i);
-    }
-    VL_WRITEF_NX("IMEMORY: Loaded 127 32-bit words from /Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd1/verif/data/test1.x\n",0);
+    vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o = 0U;
     VL_READMEM_N(true, 32, 1048576, 0, VL_CVT_PACK_STR_NW(33, Vtop__ConstPool__CONST_hc3994f83_0)
                  ,  &(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__temp_memory)
                  , 0, ~0ULL);
@@ -197,11 +162,11 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o = 0U;
+    vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o = 0U;
     if ((1U & (~ (IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_write_en_i)))) {
         if ((1U & (~ (IData)(vlSelfRef.top__DOT__reset)))) {
             if (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_read_en_i) {
-                vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o 
+                vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o 
                     = (((vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
                          [3U] << 0x18U) | (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
                                            [2U] << 0x10U)) 
@@ -284,16 +249,10 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     VL_SCOPED_RAND_RESET_W(128, vlSelf->top__DOT__genblk2__DOT__pattern_dump, __VscopeHash, 10955522923576967124ull);
     VL_SCOPED_RAND_RESET_W(128, vlSelf->top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage, __VscopeHash, 15181666039126907824ull);
     vlSelf->top__DOT__clkg__DOT__counter = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 7673510899991897937ull);
+    vlSelf->top__DOT__dut__DOT__core__DOT__insn_o = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 2862744194841267609ull);
     vlSelf->top__DOT__dut__DOT__core__DOT__memory_data_i = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 13967569771835543805ull);
     vlSelf->top__DOT__dut__DOT__core__DOT__memory_read_en_i = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11996785298533567879ull);
     vlSelf->top__DOT__dut__DOT__core__DOT__memory_write_en_i = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 10828913594423111069ull);
-    vlSelf->top__DOT__dut__DOT__core__DOT__memory_data_o = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 16996210162098455834ull);
-    for (int __Vi0 = 0; __Vi0 < 1048576; ++__Vi0) {
-        vlSelf->top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__temp_memory[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 13874155674599044166ull);
-    }
-    for (int __Vi0 = 0; __Vi0 < 1048576; ++__Vi0) {
-        vlSelf->top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__main_memory[__Vi0] = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 18158742335520197810ull);
-    }
     for (int __Vi0 = 0; __Vi0 < 1048576; ++__Vi0) {
         vlSelf->top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__temp_memory[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 12322818067280580616ull);
     }

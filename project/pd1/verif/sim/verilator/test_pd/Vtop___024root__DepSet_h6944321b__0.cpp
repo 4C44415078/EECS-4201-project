@@ -82,11 +82,11 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
         VL_FINISH_MT("/Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd1/verif/tests/clockgen.sv", 31, "");
     }
     vlSelfRef.top__DOT__clkg__DOT__counter = __Vdly__top__DOT__clkg__DOT__counter;
-    vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o = 0U;
+    vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o = 0U;
     if ((1U & (~ (IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_write_en_i)))) {
         if ((1U & (~ (IData)(vlSelfRef.top__DOT__reset)))) {
             if (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_read_en_i) {
-                vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o 
+                vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o 
                     = (((vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
                          [3U] << 0x18U) | (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
                                            [2U] << 0x10U)) 
@@ -109,10 +109,10 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         vlSelfRef.top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage[2U] = 0U;
         vlSelfRef.top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage[3U] = 0U;
         vlSelfRef.top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage[0U] 
-            = (IData)((0x1000000ULL | ((QData)((IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o)) 
+            = (IData)((0x1000000ULL | ((QData)((IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o)) 
                                        << 0x20U)));
         vlSelfRef.top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage[1U] 
-            = (IData)(((0x1000000ULL | ((QData)((IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o)) 
+            = (IData)(((0x1000000ULL | ((QData)((IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o)) 
                                         << 0x20U)) 
                        >> 0x20U));
         vlSelfRef.top__DOT__genblk2__DOT__pattern_dump[0U] 
