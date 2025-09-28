@@ -22,8 +22,9 @@ module pd1 #(
   */
 
     // Probes for fetch.
+    // insn_o is shared between fetch and memory.
     logic [AWIDTH - 1:0] fetch_pc_o;
-    logic [DWIDTH - 1:0] fetch_insn_o;
+    logic [DWIDTH - 1:0] insn_o;
 
     // Instantiate fetch module 
     fetch #(
@@ -34,7 +35,7 @@ module pd1 #(
         .clk(clk),
         .rst(reset),
         .pc_o(fetch_pc_o),
-        .insn_o(fetch_insn_o)
+        .insn_o(insn_o)
     );
 
     // Probes for memory.
@@ -42,7 +43,6 @@ module pd1 #(
     logic [DWIDTH - 1:0] memory_data_i;
     logic memory_read_en_i;
     logic memory_write_en_i;
-    logic [DWIDTH - 1:0] memory_data_o;
     logic memory_valid_o;
     
     // Instantiate memory module
@@ -57,8 +57,9 @@ module pd1 #(
         .data_i(memory_data_i),
         .read_en_i(memory_read_en_i),
         .write_en_i(memory_write_en_i),
-        .data_o(memory_data_o),
+        .data_o(insn_o),
         .valid_o(memory_valid_o)
     );
+
 
 endmodule : pd1

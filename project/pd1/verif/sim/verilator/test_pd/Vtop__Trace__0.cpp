@@ -24,25 +24,20 @@ void Vtop___024root__trace_chg_0_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buf
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode + 1);
     // Body
     if (VL_UNLIKELY((vlSelfRef.__Vm_traceActivity[0U]))) {
-        bufp->chgIData(oldp+0,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__unnamedblk1__DOT__i),32);
-        bufp->chgIData(oldp+1,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__address),32);
-        bufp->chgIData(oldp+2,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__unnamedblk1__DOT__i),32);
+        bufp->chgIData(oldp+0,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__unnamedblk1__DOT__i),32);
     }
     if (VL_UNLIKELY((vlSelfRef.__Vm_traceActivity[1U]))) {
-        bufp->chgBit(oldp+3,(vlSelfRef.top__DOT__reset));
-        bufp->chgIData(oldp+4,(vlSelfRef.top__DOT__clkg__DOT__counter),32);
-        bufp->chgIData(oldp+5,(vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch_pc_o),32);
+        bufp->chgBit(oldp+1,(vlSelfRef.top__DOT__reset));
+        bufp->chgIData(oldp+2,(vlSelfRef.top__DOT__clkg__DOT__counter),32);
+        bufp->chgIData(oldp+3,(vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch_pc_o),32);
+        bufp->chgIData(oldp+4,(vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o),32);
+        bufp->chgBit(oldp+5,(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_valid_o));
     }
     if (VL_UNLIKELY((vlSelfRef.__Vm_traceActivity[2U]))) {
         bufp->chgWData(oldp+6,(vlSelfRef.top__DOT__genblk2__DOT__pattern_dump),128);
         bufp->chgWData(oldp+10,(vlSelfRef.top__DOT__genblk2__DOT__pattern_dump_proc__DOT__stage),128);
     }
     bufp->chgBit(oldp+14,(vlSelfRef.top__DOT__clock));
-    bufp->chgIData(oldp+15,(vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch_insn_o),32);
-    bufp->chgIData(oldp+16,(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_o),32);
-    bufp->chgBit(oldp+17,(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_valid_o));
-    bufp->chgBit(oldp+18,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__valid_o));
-    bufp->chgIData(oldp+19,(vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_fetch__DOT__fetch_mem__DOT__address),32);
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
