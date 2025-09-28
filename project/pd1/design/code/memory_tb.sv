@@ -1,11 +1,15 @@
 `timescale 1ns/1ps
 
+`define MEM_DEPTH 1024
+
+
 module memory_tb;
 
    // Parameters
    localparam int AWIDTH = 32;
    localparam int DWIDTH = 32;
    localparam logic [31:0] BASE_ADDR = 32'h01000000;
+
 
    // Signals
    logic clk, reset;
