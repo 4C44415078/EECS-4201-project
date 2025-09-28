@@ -28,35 +28,23 @@ module fetch #(
      * Process definitions to be filled by
      * student below...
      */
-    logic valid_o;
-    memory #(
-        .AWIDTH(AWIDTH),
-        .DWIDTH(DWIDTH),
-        .BASE_ADDR(BASEADDR)
-    ) fetch_mem (
-        .clk(clk),
-        .rst(rst),
-        .addr_i(pc_o),
-        .data_i({DWIDTH{1'b0}}),
-        .read_en_i(1'b1),
-        .write_en_i(1'b0),
-        .data_o(insn_o),
-        .valid_o(valid_o)
-    );
 
     /*
      * Program Counter sequential logic
-     * If reset, program counter is reset to 0.
+     * If reset, program counter is reset to base address.
      * Otherwise, increment by 4.
      */
     always_ff @(posedge clk) begin
         if (rst) begin
-            pc_o <= {AWIDTH{1'b0}};
+            pc_o <= BASEADDR;
         end
         else begin
             pc_o <= pc_o + 4;
         end
     end
+
+    // Assignment to avoid compile error of unconnected output.
+    assign insn_o = {DWIDTH{1'b0}};
 
 endmodule : fetch
 				
