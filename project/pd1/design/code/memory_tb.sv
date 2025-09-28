@@ -40,6 +40,16 @@ module memory_tb;
    initial clk = 0;
    always #5 clk = ~clk;
 
+
+   //Reset test signals task.
+   task reset_signals();
+      begin
+          write_en_i = 1'b0;
+          read_en_i  = 1'b0;
+          data_i     = {DWIDTH{1'b0}};
+          addr_i     = {AWIDTH{1'b0}};
+      end
+   endtask
    /*
     * Memory write task.
     * Arguments: test_address, test_write_en_i, test_read_en_i, test_data_i
@@ -103,7 +113,7 @@ module memory_tb;
 
       // Test Case 1: Write and Read Back of lowest address.
       mem_write(BASE_ADDR, 1'b1, 1'b0, 32'hdeadbeef);
-      mem_read(BASE_ADDR, 1'b0, 1'b1, read_data, read_valid,);
+      mem_read(BASE_ADDR, 1'b0, 1'b1, read_data, read_valid);
       if (read_data !== 32'hdeadbeef || read_valid !== 1'b1) begin
          $display("Test Case 1 Failed: Write and Read Back of lowest address\n");
          $display("Expected: 0xdeadbeef, Got: 0x%h\n", read_data);
@@ -113,21 +123,28 @@ module memory_tb;
          $display("Test Case 1 Passed: Write and Read Back of lowest address\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 2: Write and Read Back of highest address.
-      mem_write(BASE_ADDR + 4*(`MEM_DEPTH - 1), 1'b1, 1'b0, 32'hdeadbeef);
-      mem_read(BASE_ADDR + 4*(`MEM_DEPTH - 1), 1'b0, 1'b1, read_data, read_valid);
-      if (read_data !== 32'h01100110 || read_valid !== 1'b1) begin
+      mem_write(BASE_ADDR + (`MEM_DEPTH - 4), 1'b1, 1'b0, 32'hdeadbeef);
+      mem_read(BASE_ADDR + (`MEM_DEPTH - 4), 1'b0, 1'b1, read_data, read_valid);
+      if (read_data !== 32'hdeadbeef || read_valid !== 1'b1) begin
          $display("Test Case 2 Failed: Write and Read Back of highest address\n");
-         $display("Expected: 0xheadbeef, Got: 0x%h\n", read_data);
+         $display("Expected: 0xhdeadbeef, Got: 0x%h\n", read_data);
          $finish;
       end
       else begin
          $display("Test Case 2 Passed: Write and Read Back of highest address\n");
       end
+      
+      reset_signals();
+      repeat(2) @(posedge clk);
 
       // Test Case 3: No write when write_en_i is low.
-      mem_write(32'h10000004, 1'b0, 1'b0, 32'hdeadbeef);
-      mem_read(32'h10000004, 1'b0, 1'b1, read_data, read_valid);
+      mem_write(BASE_ADDR + 4, 1'b0, 1'b0, 32'hdeadbeef);
+      @(posedge clk);
+      mem_read(BASE_ADDR + 4, 1'b0, 1'b1, read_data, read_valid);
       if (read_data !== 32'h00000000 || read_valid !== 1'b1) begin
          $display("Test Case 3 Failed: No write when write_en_i is low\n");
          $display("Expected: 0x00000000, Got: 0x%h\n", read_data);
@@ -137,9 +154,12 @@ module memory_tb;
          $display("Test Case 3 Passed: No write when write_en_i is low\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 4: No read when read_en_i is low.
-      mem_write(32'h10000008, 1'b1, 1'b0, 32'hdeadbeef);
-      mem_read(32'h10000008, 1'b0, 1'b0, read_data, read_valid);
+      mem_write(BASE_ADDR + 8, 1'b1, 1'b0, 32'hdeadbeef);
+      mem_read(BASE_ADDR + 8, 1'b0, 1'b0, read_data, read_valid);
       if (read_data !== 32'h00000000 || read_valid !== 1'b0) begin
          $display("Test Case 4 Failed: No read when read_en_i is low\n");
          $display("Expected: 0x00000000, Got: 0x%h\n", read_data);
@@ -149,8 +169,11 @@ module memory_tb;
          $display("Test Case 4 Passed: No read when read_en_i is low\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 5: Read from address outside of memory range.
-      mem_read(BASE_ADDR + 4*(`MEM_DEPTH), 1'b0, 1'b1, read_data, read_valid);
+      mem_read(BASE_ADDR + (`MEM_DEPTH + 4), 1'b0, 1'b1, read_data, read_valid);
       if (read_data !== 32'h00000000 || read_valid !== 1'b0) begin
          $display("Test Case 5 Failed: Read from address outside of memory range\n");
          $display("Expected: 0x00000000, Got: 0x%h\n", read_data);
@@ -160,25 +183,37 @@ module memory_tb;
          $display("Test Case 5 Passed: Read from address outside of memory range\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 6: Simultaneous read and write enable signals.
-      mem_write(32'h1000000C, 1'b1, 1'b1, 32'hdeadbeef);
-      mem_read(32'h1000000C, 1'b0, 1'b1, read_data, read_valid);
-      if (read_data !== 32'h00000000 || read_valid !== 1'b0) begin
+      addr_i = BASE_ADDR + 12;
+      data_i = 32'hdeadbeef;
+      read_en_i = 1;
+      write_en_i = 1;
+      @(posedge clk);
+      read_en_i = 0;
+      write_en_i = 0;
+      @(posedge clk);
+      if (data_o !== 32'h00000000 || valid_o !== 1'b0) begin
          $display("Test Case 6 Failed: Simultaneous read and write enable signals\n");
-         $display("Expected: 0x00000000, Got: 0x%h\n", read_data);
+         $display("Expected: 0x00000000, Got: 0x%h\n", data_o);
          $finish;
       end
       else begin
          $display("Test Case 6 Passed: Simultaneous read and write enable signals\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 7: Asynchronous read.
-      mem_write(32'h10000010, 1'b1, 1'b0, 32'hdeadbeef);
+      mem_write(BASE_ADDR + 16, 1'b1, 1'b0, 32'hdeadbeef);
+      @(posedge clk);
       @(negedge clk);
-      read_en_i = 1'b1;
-      addr_i = 32'h10000010;
+      mem_read(BASE_ADDR + 16, 1'b0, 1'b1, read_data, read_valid);
       #1;
-      if (data_o !== 32'hdeadbeef || valid_o !== 1'b1) begin
+      if (read_data !== 32'hdeadbeef || read_valid !== 1'b1) begin
          $display("Test Case 7 Failed: Asynchronous read\n");
          $display("Expected: 0xdeadbeef, Got: 0x%h\n", data_o);
          $finish;
@@ -187,9 +222,12 @@ module memory_tb;
          $display("Test Case 7 Passed: Asynchronous read\n");
       end
 
+      reset_signals();
+      repeat(2) @(posedge clk);
+
       // Test Case 8: Reset read behaviour.
       reset = 1'b1;
-      mem_read(32'h10000010, 1'b0, 1'b1, read_data, read_valid);
+      mem_read(BASE_ADDR + 20, 1'b0, 1'b1, read_data, read_valid);
       if (read_data !== 32'h00000000 || read_valid !== 1'b0) begin
          $display("Test Case 8 Failed: Reset behaviour\n");
          $display("Expected: 0x00000000, Got: 0x%h\n", read_data);
@@ -198,7 +236,9 @@ module memory_tb;
       else begin
          $display("Test Case 8 Passed: Reset behaviour\n");
       end
-      reset = 1'b0;
+      
+      reset_signals();
+      repeat(2) @(posedge clk);
 
       $display("\n ----  All Test Cases Passed! ---- \n");
       $finish;
