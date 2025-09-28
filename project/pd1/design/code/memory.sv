@@ -16,6 +16,9 @@
  * 1) DWIDTH data output data_o
  */
 
+ // FOR TESTING PURPOSES
+ // `define MEM_DEPTH 1024
+
 module memory #(
   // parameters
   parameter int AWIDTH = 32,
@@ -39,6 +42,16 @@ module memory #(
   logic [7:0] main_memory [0:`MEM_DEPTH - 1];  // Byte-addressable memory
   logic [AWIDTH-1:0] address;
   assign address = addr_i - BASE_ADDR;
+
+/*
+// For test bench purposes
+  initial begin
+     for (int i = 0; i < `MEM_DEPTH; i++) begin
+        main_memory[i] = 8'h00;
+     end
+  end
+*/
+
 
   initial begin
     $readmemh(`MEM_PATH, temp_memory);
@@ -75,7 +88,7 @@ module memory #(
             valid_o = 1'b0;
         end
         else if (read_en_i) begin
-            if (address <= (`MEM_DEPTH - 1)) begin
+            if (address <= (`MEM_DEPTH - 4)) begin
                 data_o = {
                     main_memory[address + 3],
                     main_memory[address + 2],
@@ -99,7 +112,7 @@ module memory #(
         else if (write_en_i) begin
             if (rst) begin
             end
-            else if ((address <= (`MEM_DEPTH - 1))) begin
+            else if ((address <= (`MEM_DEPTH - 4))) begin
                 main_memory[address]     <= data_i[7:0];
                 main_memory[address + 1] <= data_i[15:8];
                 main_memory[address + 2] <= data_i[23:16];
