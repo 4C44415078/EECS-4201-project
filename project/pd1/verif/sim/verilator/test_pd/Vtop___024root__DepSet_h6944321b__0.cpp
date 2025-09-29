@@ -12,22 +12,14 @@ void Vtop___024root___eval_act(Vtop___024root* vlSelf) {
 }
 
 void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf);
-void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf);
-void Vtop___024root___nba_comb__TOP__0(Vtop___024root* vlSelf);
 
 void Vtop___024root___eval_nba(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_nba\n"); );
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    if ((4ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtop___024root___nba_sequent__TOP__0(vlSelf);
-    }
     if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtop___024root___nba_sequent__TOP__1(vlSelf);
-    }
-    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtop___024root___nba_comb__TOP__0(vlSelf);
+        Vtop___024root___nba_sequent__TOP__0(vlSelf);
     }
 }
 
@@ -38,107 +30,14 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     // Init
     IData/*31:0*/ __Vdly__top__DOT__clkg__DOT__counter;
     __Vdly__top__DOT__clkg__DOT__counter = 0;
-    CData/*7:0*/ __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0;
-    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 = 0;
-    IData/*19:0*/ __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0;
-    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 = 0;
-    CData/*0:0*/ __VdlySet__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0;
-    __VdlySet__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 = 0;
-    CData/*7:0*/ __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1;
-    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1 = 0;
-    IData/*19:0*/ __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1;
-    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1 = 0;
-    CData/*7:0*/ __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2;
-    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2 = 0;
-    IData/*19:0*/ __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2;
-    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2 = 0;
-    CData/*7:0*/ __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3;
-    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3 = 0;
-    IData/*19:0*/ __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3;
-    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3 = 0;
     // Body
     __Vdly__top__DOT__clkg__DOT__counter = vlSelfRef.top__DOT__clkg__DOT__counter;
-    __VdlySet__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 = 0U;
-    if ((1U & (~ (IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_read_en_i)))) {
-        if (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_write_en_i) {
-            if ((1U & (~ (IData)(vlSelfRef.top__DOT__reset)))) {
-                if ((0xffffcU >= (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i 
-                                  - (IData)(0x1000000U)))) {
-                    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 
-                        = (0xffU & vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_i);
-                    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 
-                        = (0xfffffU & vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i);
-                    __VdlySet__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0 = 1U;
-                    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1 
-                        = (0xffU & (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_i 
-                                    >> 8U));
-                    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1 
-                        = (0xfffffU & ((IData)(1U) 
-                                       + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i));
-                    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2 
-                        = (0xffU & (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_i 
-                                    >> 0x10U));
-                    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2 
-                        = (0xfffffU & ((IData)(2U) 
-                                       + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i));
-                    __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3 
-                        = (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_data_i 
-                           >> 0x18U);
-                    __VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3 
-                        = (0xfffffU & ((IData)(3U) 
-                                       + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i));
-                }
-            }
-        }
-    }
-    if (__VdlySet__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0) {
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory[__VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0] 
-            = __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v0;
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory[__VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1] 
-            = __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v1;
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory[__VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2] 
-            = __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v2;
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory[__VdlyDim0__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3] 
-            = __VdlyVal__top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory__v3;
-    }
     __Vdly__top__DOT__clkg__DOT__counter = ((IData)(1U) 
                                             + vlSelfRef.top__DOT__clkg__DOT__counter);
-    vlSelfRef.top__DOT__reset = VL_GTS_III(32, 5U, vlSelfRef.top__DOT__clkg__DOT__counter);
     if (VL_UNLIKELY(((0xc350U == vlSelfRef.top__DOT__clkg__DOT__counter)))) {
         VL_FINISH_MT("/Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd1/verif/tests/clockgen.sv", 31, "");
     }
     vlSelfRef.top__DOT__clkg__DOT__counter = __Vdly__top__DOT__clkg__DOT__counter;
-}
-
-VL_INLINE_OPT void Vtop___024root___nba_comb__TOP__0(Vtop___024root* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_comb__TOP__0\n"); );
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Body
-    vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o = 0U;
-    if ((1U & (~ (IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_write_en_i)))) {
-        if ((1U & (~ (IData)(vlSelfRef.top__DOT__reset)))) {
-            if (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_read_en_i) {
-                if ((0xffffcU >= (vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i 
-                                  - (IData)(0x1000000U)))) {
-                    vlSelfRef.top__DOT__dut__DOT__core__DOT__insn_o 
-                        = (((vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
-                             [(0xfffffU & ((IData)(3U) 
-                                           + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i))] 
-                             << 0x18U) | (vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
-                                          [(0xfffffU 
-                                            & ((IData)(2U) 
-                                               + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i))] 
-                                          << 0x10U)) 
-                           | ((vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
-                               [(0xfffffU & ((IData)(1U) 
-                                             + vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i))] 
-                               << 8U) | vlSelfRef.top__DOT__dut__DOT__core__DOT__pd1_memory__DOT__main_memory
-                              [(0xfffffU & vlSelfRef.top__DOT__dut__DOT__core__DOT__memory_addr_i)]));
-                }
-            }
-        }
-    }
 }
 
 void Vtop___024root___eval_triggers__act(Vtop___024root* vlSelf);
@@ -148,7 +47,7 @@ bool Vtop___024root___eval_phase__act(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Init
-    VlTriggerVec<3> __VpreTriggered;
+    VlTriggerVec<2> __VpreTriggered;
     CData/*0:0*/ __VactExecute;
     // Body
     Vtop___024root___eval_triggers__act(vlSelf);

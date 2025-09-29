@@ -31,9 +31,7 @@ class alignas(VL_CACHE_LINE_BYTES)Vtop__Syms final : public VerilatedSyms {
     Vtop___024root                 TOP;
 
     // SCOPE NAMES
-    VerilatedScope __Vscope_top;
     VerilatedScope __Vscope_top__clkg;
-    VerilatedScope __Vscope_top__genblk3__tick_check;
 
     // CONSTRUCTORS
     Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* modelp);

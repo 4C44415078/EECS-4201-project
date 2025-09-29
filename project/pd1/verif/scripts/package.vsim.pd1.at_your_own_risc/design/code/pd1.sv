@@ -39,7 +39,7 @@ module pd1 #(
     );
 
     // Probes for memory.
-    //logic [AWIDTH - 1:0] memory_addr_i;
+    logic [AWIDTH - 1:0] memory_addr_i;
     logic [DWIDTH - 1:0] memory_data_i;
     logic memory_read_en_i;
     logic memory_write_en_i;
@@ -53,7 +53,7 @@ module pd1 #(
     ) pd1_memory (
         .clk(clk),
         .rst(reset),
-        .addr_i(fetch_pc_o),
+        .addr_i(memory_addr_i),
         .data_i(memory_data_i),
         .read_en_i(memory_read_en_i),
         .write_en_i(memory_write_en_i),
