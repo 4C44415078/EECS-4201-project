@@ -11,5 +11,4 @@ Vtop__ALL.o: Vtop__ALL.cpp Vtop.cpp Vtop__pch.h \
   Vtop___024root__DepSet_h4b98a05d__0.cpp \
   Vtop___024root__DepSet_h6944321b__0.cpp Vtop__Dpi.cpp Vtop__Dpi.h \
   Vtop__ConstPool_0.cpp Vtop___024root__Slow.cpp \
-  Vtop___024root__DepSet_h4b98a05d__0__Slow.cpp \
   Vtop___024root__DepSet_h6944321b__0__Slow.cpp Vtop__Syms.cpp
