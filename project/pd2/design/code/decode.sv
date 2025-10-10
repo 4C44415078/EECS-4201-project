@@ -31,7 +31,7 @@ module decode #(
 	input logic clk,
 	input logic rst,
 	input logic [DWIDTH - 1:0] insn_i,
-	input logic [DWIDTH - 1:0] pc_i,
+	input logic [AWIDTH - 1:0] pc_i,
 
     // outputs
     output logic [AWIDTH-1:0] pc_o,
@@ -50,5 +50,18 @@ module decode #(
      * Process definitions to be filled by
      * student below...
      */
+    logic [6:0] opcode;
+    assign opcode = insn_i[6:0];
+
+    always_comb begin
+        pc_o = pc_i;
+        insn_o = insn_i;
+        opcode_o = insn_i[6:0];
+        funct3_o = insn_i[14:12];
+        rd_o = (opcode != `S_TYPE && opcode != `B_TYPE) ? insn_i[11:7] : 5'd0;
+        rs1_o = (opcode != `U_TYPE_AUIPC && opcode != `U_TYPE_LUI && opcode != `J_TYPE) ? insn_i[19:15] : 5'd0;
+        rs2_o = (opcode == `R_TYPE || opcode == `S_TYPE || opcode == `B_TYPE) ? insn_i[24:20] : 5'd0;
+        funct7_o = (opcode == `R_TYPE) ? insn_i[31:25] : 7'd0;
+    end
 
 endmodule : decode
