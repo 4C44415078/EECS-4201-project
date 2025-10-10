@@ -51,4 +51,186 @@ module control #(
      * student below...
      */
 
+    always_comb begin
+        case (opcode_i)
+
+            `R_TYPE: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b0;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b1;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_ALU;
+                case (funct3_i)
+                    `F3_ADD: begin
+                        alusel_o = (funct7_i == 7'h00) ? `ALU_ADD : `ALU_SUB;
+                    end
+                    `F3_XOR: begin
+                        alusel_o = `ALU_XOR;
+                    end
+                    `F3_OR: begin
+                        alusel_o = `ALU_OR;
+                    end
+                    `F3_AND: begin
+                        alusel_o = `ALU_AND;
+                    end
+                    `F3_SLEFT: begin
+                        alusel_o = `ALU_SLL;
+                    end
+                    `F3_SRIGHT: begin
+                        alusel_o = (funct7_i == 7'h00) ? `ALU_SRL : `ALU_SRA;
+                    end
+                    `F3_SLT: begin
+                        alusel_o = `ALU_SLT;
+                    end
+                    `F3_SLTU: begin
+                        alusel_o = `ALU_SLTU;
+                    end
+                    default: begin
+                        alusel_o = `ALU_NOP; 
+                    end
+                endcase
+            end
+
+            `I_TYPE: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_ALU;
+                case (funct3_i)
+                    `F3_ADD: begin
+                        alusel_o = (funct7_i == 7'h00) ? `ALU_ADD : `ALU_SUB;
+                    end
+                    `F3_XOR: begin
+                        alusel_o = `ALU_XOR;
+                    end
+                    `F3_OR: begin
+                        alusel_o = `ALU_OR;
+                    end
+                    `F3_AND: begin
+                        alusel_o = `ALU_AND;
+                    end
+                    `F3_SLEFT: begin
+                        alusel_o = `ALU_SLL;
+                    end
+                    `F3_SRIGHT: begin
+                        alusel_o = (funct7_i == 7'h00) ? `ALU_SRL : `ALU_SRA;
+                    end
+                    `F3_SLT: begin
+                        alusel_o = `ALU_SLT;
+                    end
+                    `F3_SLTU: begin
+                        alusel_o = `ALU_SLTU;
+                    end
+                    default: begin
+                        alusel_o = `ALU_NOP;
+                    end
+                endcase
+            end
+
+            `I_TYPE_L: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b1;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_MEM;
+                alusel_o = `ALU_ADD;
+            end
+                    
+            `I_TYPE_JALR: begin
+                pcsel_o = 1'b1;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_PC4;
+                alusel_o = `ALU_ADD;
+            end
+
+            `S_TYPE: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b1;
+                regwren_o = 1'b0;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b1;
+                memren_o = 1'b0;
+                memwren_o = 1'b1;
+                wbsel_o = `WB_ALU; // This doesn't matter since regwren_o = 0
+                alusel_o = `ALU_ADD; // ALU used to compute offset
+            end
+
+            `B_TYPE: begin
+                pcsel_o = 1'b1;
+                immsel_o = 1'b1;
+                regwren_o = 1'b0;
+                rs1sel_o = 1'b1;
+                rs2sel_o = 1'b1;
+                memren_o = 1'b0;
+                memwren_o = 1'b1;
+                wbsel_o = `WB_ALU; // This doesn't matter since regwren_o = 0
+                alusel_o = `ALU_ADD; // ALU used to compute new PC
+            end
+
+
+            `U_TYPE_AUIPC: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b0;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_ALU;
+                alusel_o = `ALU_ADD;
+            end
+
+            `U_TYPE_LUI: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b0;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_IMM;
+                alusel_o = `ALU_NOP; 
+            end
+
+            `J_TYPE: begin
+                pcsel_o = 1'b1;
+                immsel_o = 1'b1;
+                regwren_o = 1'b1;
+                rs1sel_o = 1'b0;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_PC4;
+                alusel_o = `ALU_ADD;
+            end
+            
+            default: begin
+                pcsel_o = 1'b0;
+                immsel_o = 1'b0;
+                regwren_o = 1'b0;
+                rs1sel_o = 1'b0;
+                rs2sel_o = 1'b0;
+                memren_o = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o = `WB_ALU;
+                alusel_o = `ALU_NOP;
+            end
+        endcase
+    end
+
 endmodule : control
