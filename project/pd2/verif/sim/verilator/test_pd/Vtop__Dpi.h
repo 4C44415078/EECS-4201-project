@@ -16,7 +16,7 @@ extern "C" {
 
 
     // DPI EXPORTS
-    // DPI export at /Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd2/verif/tests/clockgen.sv:37:19
+    // DPI export at /Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd2/verif/tests/clockgen.sv:37:19
     extern void toggleClock();
 
 #ifdef __cplusplus
