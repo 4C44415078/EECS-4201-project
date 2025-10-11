@@ -31,7 +31,7 @@ endtask
 task stype_insn (
   input [6:0] opcode,
   input [2:0] funct3,
-  input [4:0] rs1
+  input [4:0] rs1,
   input [4:0] rs2,
   input [11:0] imm,
   output [31:0] insn
@@ -45,7 +45,7 @@ task btype_insn (
   input [6:0] opcode,
   input [2:0] funct3,
   input [4:0] rs1,
-  input [4:0] rs2
+  input [4:0] rs2,
   input [12:0] imm,
   output [31:0] insn
 );
