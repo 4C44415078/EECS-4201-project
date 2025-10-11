@@ -35,10 +35,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
     CData/*0:0*/ top__DOT__dut__DOT__core__DOT__c_rs1sel;
     CData/*1:0*/ top__DOT__dut__DOT__core__DOT__c_wbsel;
     CData/*3:0*/ top__DOT__dut__DOT__core__DOT__c_alusel;
-    CData/*7:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT____Vlvbound_h68f8bd3e__0;
-    CData/*7:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT____Vlvbound_h98eaf4c5__0;
-    CData/*7:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT____Vlvbound_h98eb2256__0;
-    CData/*7:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT____Vlvbound_h98edb91e__0;
     CData/*0:0*/ __Vdpi_export_trigger;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__top__DOT__clock__0;
@@ -63,9 +59,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
     IData/*31:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT__i;
     IData/*31:0*/ top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc;
     IData/*31:0*/ __VactIterCount;
-    VlUnpacked<VlWide<8>/*255:0*/, 122> top__DOT__genblk3__DOT__pattern;
-    VlUnpacked<IData/*31:0*/, 127> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
-    VlUnpacked<CData/*7:0*/, 508> top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory;
+    VlUnpacked<VlWide<8>/*255:0*/, 39> top__DOT__genblk3__DOT__pattern;
+    VlUnpacked<IData/*31:0*/, 39> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
+    VlUnpacked<CData/*7:0*/, 156> top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<3> __VactTriggered;

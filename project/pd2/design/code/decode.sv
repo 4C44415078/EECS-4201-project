@@ -50,18 +50,20 @@ module decode #(
      * Process definitions to be filled by
      * student below...
      */
-    logic [6:0] opcode;
-    assign opcode = insn_i[6:0];
-
+     
     always_comb begin
         pc_o = pc_i;
         insn_o = insn_i;
-        opcode_o = insn_i[6:0];
-        funct3_o = insn_i[14:12];
-        rd_o = (opcode != `S_TYPE && opcode != `B_TYPE) ? insn_i[11:7] : 5'd0;
-        rs1_o = (opcode != `U_TYPE_AUIPC && opcode != `U_TYPE_LUI && opcode != `J_TYPE) ? insn_i[19:15] : 5'd0;
-        rs2_o = (opcode == `R_TYPE || opcode == `S_TYPE || opcode == `B_TYPE) ? insn_i[24:20] : 5'd0;
-        funct7_o = (opcode == `R_TYPE) ? insn_i[31:25] : 7'd0;
+        opcode_o = `OPCODE;
+        funct3_o = `FUNCT3;
+        // Destination register rd for R-type, I-type, U-type, and J-type instructions.
+        rd_o = (`OPCODE != `S_TYPE && `OPCODE != `B_TYPE) ? insn_i[11:7] : 5'd0;
+        // Source register rs1 for R-type, I-type, S-type, B-type instructions.
+        rs1_o = (`OPCODE != `U_TYPE_AUIPC && `OPCODE != `U_TYPE_LUI && `OPCODE != `J_TYPE) ? insn_i[19:15] : 5'd0;
+        // Source registter rs2 for R-type, S-type, B-type instructions.
+        rs2_o = (`OPCODE == `R_TYPE || `OPCODE == `S_TYPE || `OPCODE == `B_TYPE) ? insn_i[24:20] : 5'd0;
+        // FUNCT7 for R-type and I-type shift (slli, srli, srai) instructions.
+        funct7_o = (`OPCODE == `R_TYPE) ? `FUNCT7 : (`OPCODE == `I_TYPE && (`FUNCT3 == `F3_SLEFT && `FUNCT3 == `F3_SRIGHT)) ? `FUNCT7 : 7'd0;
     end
 
 endmodule : decode
