@@ -16,7 +16,7 @@ module igen #(
     )(
     input logic [6:0] opcode_i,
     input logic [DWIDTH-1:0] insn_i,
-    output logic [31:0] imm_o
+    output logic [DWIDTH-1:0] imm_o
 );
     /*
      * Process definitions to be filled by
@@ -69,7 +69,7 @@ module igen #(
 
             /* 
              * B-type instructions
-             * Check `FUNCT3 for bltu, bgeu, zero extend imm_o.
+             * Check FUNCT3 for bltu, bgeu, zero extend imm_o.
              * All other branch instructions are sign extended.
              */
             `B_TYPE: begin
