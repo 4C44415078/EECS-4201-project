@@ -22,9 +22,6 @@ module igen #(
      * Process definitions to be filled by
      * student below...
      */
-
-     logic [2:0] funct3;
-     assign funct3 = insn_i[14:12];
      
     // Bit extraction for immediate value formats //
     // I-type
@@ -51,13 +48,13 @@ module igen #(
         case (opcode_i)
             /* 
              * I-type instructions including jalr.
-             * Check funct3 for slli, srli, srai, sign extend imm_o, use shamt for shifts.
+             * Check FUNCT3 for slli, srli, srai, sign extend imm_o, use shamt for shifts.
              * All other I-type non load instructions are sign extended.
              */
             `I_TYPE, `I_TYPE_JALR, `I_TYPE_L: begin
-                case (funct3)
+                case (`FUNCT3)
                     `F3_SLEFT, `F3_SRIGHT: begin
-                        imm_o = {{27{1'b0}}, itype_imm[4:0]};
+                        imm_o = {{20{1'b0}}, itype_imm};
                     end
                     default: begin
                         imm_o = {{20{insn_i[31]}}, itype_imm};
@@ -72,11 +69,11 @@ module igen #(
 
             /* 
              * B-type instructions
-             * Check funct3 for bltu, bgeu, zero extend imm_o.
+             * Check `FUNCT3 for bltu, bgeu, zero extend imm_o.
              * All other branch instructions are sign extended.
              */
             `B_TYPE: begin
-                case (funct3)
+                case (`FUNCT3)
                     3'h6, 3'h7: begin
                         imm_o = {{19{1'b0}}, btype_imm};
                     end

@@ -37,7 +37,7 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-  -DMEM_DEPTH=1048576 -DMEM_PATH="/Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd2/verif/data/test1.x" -DVCD -DVCD_FILE=test1.vcd \
+  -DMEM_DEPTH=1048576 -DMEM_PATH="/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd2/verif/data/test2.x" -DVCD -DVCD_FILE=test2.vcd \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
@@ -60,7 +60,7 @@ include $(VERILATOR_ROOT)/include/verilated.mk
 ### Executable rules... (from --exe)
 VPATH += $(VM_USER_DIR)
 
-test_pd.o: /Users/padl/Library/CloudStorage/OneDrive-Personal/School/York/7_EECS_4201/_project/EECS-4201-project/project/pd2/verif/tests/test_pd.cpp 
+test_pd.o: /Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd2/verif/tests/test_pd.cpp 
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)

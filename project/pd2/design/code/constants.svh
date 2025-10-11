@@ -24,6 +24,11 @@ parameter logic [31:0] ZERO = 32'd0;
  `define U_TYPE_LUI   7'b0110111
  `define U_TYPE_AUIPC 7'b0010111
 
+// Reuseable signal constants
+`define OPCODE insn_i[6:0]
+`define FUNCT7 insn_i[31:25]
+`define FUNCT3 insn_i[14:12]
+
 // funct3 constants for R-type and I-type instructions
  `define F3_ADD 3'h0
  `define F3_XOR 3'h4
