@@ -80,6 +80,7 @@ $timescale 1ps $end
       $var wire 5 / shamt_o [4:0] $end
       $var wire 32 0 imm_o [31:0] $end
       $var wire 7 ) opcode [6:0] $end
+      $var wire 3 . funct3 [2:0] $end
      $upscope $end
      $scope module fetch1 $end
       $var wire 32 x! DWIDTH [31:0] $end
