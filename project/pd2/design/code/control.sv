@@ -53,7 +53,11 @@ module control #(
 
     always_comb begin
         case (opcode_i)
-
+            /* 
+             * R-type instruction controls.
+             * Check funct7 and funct3 to determine ALU op.
+             * Write back is from ALU.
+             */
             `R_TYPE: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b0;
@@ -94,6 +98,11 @@ module control #(
                 endcase
             end
 
+            /* 
+             * I-type instruction controls including immediate arithmetic and jalr
+             * Check funct3 for slli, srli, srai.
+             * Write back is from ALU.
+             */
             `I_TYPE: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b1;
@@ -134,6 +143,11 @@ module control #(
                 endcase
             end
 
+            /* 
+             * I-type load instruction controls.
+             * ALU used to compute address.
+             * Write back is from memory.
+             */
             `I_TYPE_L: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b1;
@@ -145,7 +159,12 @@ module control #(
                 wbsel_o = `WB_MEM;
                 alusel_o = `ALU_ADD;
             end
-                    
+
+            /* 
+             * I-type jalr instruction controls.
+             * ALU used to compute new PC.
+             * Write back is PC + 4.
+             */ 
             `I_TYPE_JALR: begin
                 pcsel_o = 1'b1;
                 immsel_o = 1'b1;
@@ -158,6 +177,11 @@ module control #(
                 alusel_o = `ALU_ADD;
             end
 
+            /* 
+             * S-type instruction controls.
+             * ALU used to compute offset.
+             * wbsel_o doesn't matter since regwren_o = 0
+             */
             `S_TYPE: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b1;
@@ -166,10 +190,15 @@ module control #(
                 rs2sel_o = 1'b1;
                 memren_o = 1'b0;
                 memwren_o = 1'b1;
-                wbsel_o = `WB_ALU; // This doesn't matter since regwren_o = 0
-                alusel_o = `ALU_ADD; // ALU used to compute offset
+                wbsel_o = `WB_ALU;
+                alusel_o = `ALU_ADD;
             end
 
+            /* 
+             * B-type instruction controls.
+             * ALU used to compute new PC.
+             * wbsel_o doesn't matter since regwren_o = 0
+             */
             `B_TYPE: begin
                 pcsel_o = 1'b1;
                 immsel_o = 1'b1;
@@ -178,11 +207,15 @@ module control #(
                 rs2sel_o = 1'b1;
                 memren_o = 1'b0;
                 memwren_o = 1'b1;
-                wbsel_o = `WB_ALU; // This doesn't matter since regwren_o = 0
-                alusel_o = `ALU_ADD; // ALU used to compute new PC
+                wbsel_o = `WB_ALU;
+                alusel_o = `ALU_ADD;
             end
 
-
+            /* 
+             * U-type AUIPC instruction controls.
+             * ALU used to compute PC + immediate. rd = PC + (imm << 12)
+             * Write Back is from ALU.
+             */
             `U_TYPE_AUIPC: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b1;
@@ -195,6 +228,11 @@ module control #(
                 alusel_o = `ALU_ADD;
             end
 
+            /* 
+             * U-type LUI instruction controls.
+             * Using an ALU_NOP for now this might need to change. rd = imm << 12
+             * Write Back is from igen.
+             */
             `U_TYPE_LUI: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b1;
@@ -207,6 +245,11 @@ module control #(
                 alusel_o = `ALU_NOP; 
             end
 
+            /* 
+             * J-type instruction controls.
+             * ALU used to compute new PC.
+             * Write back is PC + 4.
+             */
             `J_TYPE: begin
                 pcsel_o = 1'b1;
                 immsel_o = 1'b1;
@@ -218,7 +261,10 @@ module control #(
                 wbsel_o = `WB_PC4;
                 alusel_o = `ALU_ADD;
             end
-            
+
+            /*
+             * Default case. Set all control signals to zero.
+             */
             default: begin
                 pcsel_o = 1'b0;
                 immsel_o = 1'b0;
