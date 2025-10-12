@@ -66,7 +66,12 @@ parameter logic [31:0] ZERO = 32'd0;
  `define F7_SRL 7'h00
  `define F7_SRA 7'h20
 
- // constants for immediate field bit extraction
+// constants for immediate field bit extraction
+`define ITYPE_IMM insn_i[31:20]
+`define STYPE_IMM {insn_i[31:25], insn_i[11:7]}
+`define BTYPE_IMM {insn_i[31], insn_i[7], insn_i[30:25], insn_i[11:8], 1'b0}
+`define UTYPE_IMM insn_i[31:12]
+`define JTYPE_IMM {insn_i[31], insn_i[19:12], insn_i[20], insn_i[30:21]}
 
 // ALU ops constants
 `define ALU_ADD 4'b0000

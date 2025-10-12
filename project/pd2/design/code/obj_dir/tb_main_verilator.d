@@ -6,4 +6,4 @@ tb_main_verilator.o: ../tb_main_verilator.cpp \
   /usr/local/Cellar/verilator/5.038/share/verilator/include/verilated_funcs.h \
   /usr/local/Cellar/verilator/5.038/share/verilator/include/verilated_vcd_c.h \
   /usr/local/Cellar/verilator/5.038/share/verilator/include/verilated_trace.h \
-  Vigen_tb.h
+  Vtop_tb.h

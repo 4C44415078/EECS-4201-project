@@ -1,11 +1,11 @@
-`timescale 2ns/1ns
+`timescale 10ns/1ns
 `include "constants.svh"
 `include "insn_tasks.sv"
 `include "pd2_test_tasks.sv"
 
 /*
  *make -f tb_main.make top_tb
- *make run-top_tb
+ *make -f tb_main.make run-top_tb
 */
 
 
@@ -29,6 +29,8 @@ module top_tb;
    logic [DWIDTH-1:0] imm;
    logic [6:0] funct7;
    logic [2:0] funct3;
+
+   logic [4:0] rd,rs1,rs2;
 
    logic pcsel, immsel, regwren, rs1sel, rs2sel, memren, memwren;
    logic [1:0] wbsel;
@@ -54,6 +56,7 @@ module top_tb;
       .funct3_i(funct3),
       .pcsel_o(pcsel),
       .immsel_o(immsel),
+      .regwren_o(regwren),
       .rs1sel_o(rs1sel),
       .rs2sel_o(rs2sel),
       .memren_o(memren),
@@ -71,55 +74,99 @@ module top_tb;
       .insn_i(insn),
       .pc_i(pc),
       .pc_o(pc),
+      .insn_o(insn),
       .opcode_o(opcode),
       .rd_o(rd),
       .rs1_o(rs1),
       .rs2_o(rs2),
       .funct7_o(funct7),
       .funct3_o(funct3),
-      .shamt_o(imm[4:0])
+      .shamt_o(),
       .imm_o(imm)
    );
 
    logic [6:0] actual_signal;
-   actual_signal = {pcsel, immsel, regwren, rs1sel, rs2sel, memren, memwren};
+   //assign actual_signal = {pcsel, immsel, regwren, rs1sel, rs2sel, memren, memwren};
+   assign actual_signal = {memwren, memren, rs2sel, rs1sel, regwren, immsel, pcsel};
 
    initial begin
       $dumpfile("top_tb.vcd");
       $dumpvars(0, top_tb);
 
-      opcode = 7'd0;
-      insn = {DWIDTH{1'b0}};
-      imm = {DWIDTH{1'b0}};
+      //opcode = 7'd0;
+      //insn = {DWIDTH{1'b0}};
+      //imm = {DWIDTH{1'b0}};
       pc = {AWIDTH{1'b0}};
 
+      // ---- R-type Instruction Test ----
+      opcode = `R_TYPE;
+      rtype_insn(opcode, 5'd5, `F3_ADD, 5'd6, 5'd7, `F7_ADD, insn);
+      @(posedge clk);
+      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
-      // Test sequence
+      // ---- I-type Instruction Test ----
       opcode = `I_TYPE;
+
       // Check max positive value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h7ff, insn);
       @(posedge clk);
-      check_imm_value(32'h000007ff)
+      check_imm_value(32'h000007ff, imm);
+      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+
       // Check max negative value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h800, insn);
       @(posedge clk);
-      check_imm_value(imm == 32'hfffff800)
+      check_imm_value(32'hfffff800, imm);
+      
       // Check zero value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h000, insn);
-      // Check proper value for shift instruction, max shift amount 31 (0-31)
-      itype_insn(opcode, 5'd28, `F3_SLEFT, 5'd29, 12'h01f, insn);
+      check_imm_value(32'h00000000, imm);
+      
+      // Check shift right logical instruction, max shift amount 31 (0-31)
+      itype_insn(opcode, 5'd28, `F3_SRIGHT, 5'd29, 12'h01f, insn);
       @(posedge clk);
-      check_imm_value(imm == 32'h0000001f);
+      check_imm_value(32'h0000001f, imm);
+      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_SRL, alusel);
 
-      // TEST 2: S-type testing sequence
+      // Check shift right arithmetic
+      itype_insn(opcode, 5'd28, `F3_SRIGHT, 5'd29, 12'h21f, insn);
+      @(posedge clk);
+      check_imm_value(32'h0000001f, imm);
+      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_SRA, alusel);
+
+      // ---- S-type Instruction Test ----
       opcode = `S_TYPE;
+      stype_insn(opcode, `F3_SW, 5'd5, 5'd6, 12'h7ff, insn);
+      @(posedge clk);
+      check_imm_value(32'h000007ff, imm);
+      check_control_signal(7'b0001100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
-      // TEST 3: B-type testing sequence
+      // ---- B-type Instruction Test ----
+      opcode = `B_TYPE;
+      btype_insn(opcode, `F3_BEQ, 5'd5, 5'd6, 13'hfff, insn);
+      @(posedge clk);
+      check_imm_value(32'h00001ffe, imm);
+      check_control_signal(7'b1000100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
-      // TEST 4: U-type testing sequence
+      // ---- U-type Instruction Test ----
+      opcode = `U_TYPE_LUI;
+      utype_insn(opcode, 5'd7, 20'hfffff, insn);
+      @(posedge clk);
+      check_imm_value(32'hfffff00, imm);
+      check_control_signal(7'b0000010, actual_signal, `WB_IMM, wbsel, `ALU_NOP, alusel);
 
-      // TEST 5: J-type testing sequence
-   
+      opcode = `U_TYPE_AUIPC;
+      utype_insn(opcode, 5'd7, 20'hfffff, insn);
+      @(posedge clk);
+      check_imm_value(32'hfffff00, imm);
+      check_control_signal(7'b0000010, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+
+      // ---- J-type Instruction Test ----
+      opcode = `J_TYPE;
+      jtype_insn(opcode, 5'd7, 20'h7ffff, insn);
+      @(posedge clk);
+      check_imm_value(32'h000ffffe, imm);
+      check_control_signal(7'b1000010, actual_signal, `WB_PC4, wbsel, `ALU_ADD, alusel);
    
    end
 

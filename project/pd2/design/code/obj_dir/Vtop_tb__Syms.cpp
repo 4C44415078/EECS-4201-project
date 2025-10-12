@@ -1,25 +1,25 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Vigen_tb__pch.h"
-#include "Vigen_tb.h"
-#include "Vigen_tb___024root.h"
-#include "Vigen_tb___024unit.h"
+#include "Vtop_tb__pch.h"
+#include "Vtop_tb.h"
+#include "Vtop_tb___024root.h"
+#include "Vtop_tb___024unit.h"
 
 // FUNCTIONS
-Vigen_tb__Syms::~Vigen_tb__Syms()
+Vtop_tb__Syms::~Vtop_tb__Syms()
 {
 #ifdef VM_TRACE
     if (__Vm_dumping) _traceDumpClose();
 #endif  // VM_TRACE
 }
 
-void Vigen_tb__Syms::_traceDump() {
+void Vtop_tb__Syms::_traceDump() {
     const VerilatedLockGuard lock(__Vm_dumperMutex);
     __Vm_dumperp->dump(VL_TIME_Q());
 }
 
-void Vigen_tb__Syms::_traceDumpOpen() {
+void Vtop_tb__Syms::_traceDumpOpen() {
     const VerilatedLockGuard lock(__Vm_dumperMutex);
     if (VL_UNLIKELY(!__Vm_dumperp)) {
         __Vm_dumperp = new VerilatedVcdC();
@@ -30,13 +30,13 @@ void Vigen_tb__Syms::_traceDumpOpen() {
     }
 }
 
-void Vigen_tb__Syms::_traceDumpClose() {
+void Vtop_tb__Syms::_traceDumpClose() {
     const VerilatedLockGuard lock(__Vm_dumperMutex);
     __Vm_dumping = false;
     VL_DO_CLEAR(delete __Vm_dumperp, __Vm_dumperp = nullptr);
 }
 
-Vigen_tb__Syms::Vigen_tb__Syms(VerilatedContext* contextp, const char* namep, Vigen_tb* modelp)
+Vtop_tb__Syms::Vtop_tb__Syms(VerilatedContext* contextp, const char* namep, Vtop_tb* modelp)
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
@@ -45,7 +45,7 @@ Vigen_tb__Syms::Vigen_tb__Syms(VerilatedContext* contextp, const char* namep, Vi
     , TOP____024unit{this, Verilated::catName(namep, "$unit")}
 {
         // Check resources
-        Verilated::stackCheck(88);
+        Verilated::stackCheck(864);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-8);
     _vm_contextp__->timeprecision(-9);

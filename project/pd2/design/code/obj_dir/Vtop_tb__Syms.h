@@ -4,25 +4,25 @@
 // Internal details; most calling programs do not need this header,
 // unless using verilator public meta comments.
 
-#ifndef VERILATED_VIGEN_TB__SYMS_H_
-#define VERILATED_VIGEN_TB__SYMS_H_  // guard
+#ifndef VERILATED_VTOP_TB__SYMS_H_
+#define VERILATED_VTOP_TB__SYMS_H_  // guard
 
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 
 // INCLUDE MODEL CLASS
 
-#include "Vigen_tb.h"
+#include "Vtop_tb.h"
 
 // INCLUDE MODULE CLASSES
-#include "Vigen_tb___024root.h"
-#include "Vigen_tb___024unit.h"
+#include "Vtop_tb___024root.h"
+#include "Vtop_tb___024unit.h"
 
 // SYMS CLASS (contains all model state)
-class alignas(VL_CACHE_LINE_BYTES)Vigen_tb__Syms final : public VerilatedSyms {
+class alignas(VL_CACHE_LINE_BYTES)Vtop_tb__Syms final : public VerilatedSyms {
   public:
     // INTERNAL STATE
-    Vigen_tb* const __Vm_modelp;
+    Vtop_tb* const __Vm_modelp;
     bool __Vm_dumping = false;  // Dumping is active
     VerilatedMutex __Vm_dumperMutex;  // Protect __Vm_dumperp
     VerilatedVcdC* __Vm_dumperp VL_GUARDED_BY(__Vm_dumperMutex) = nullptr;  /// Trace class for $dump*
@@ -32,12 +32,12 @@ class alignas(VL_CACHE_LINE_BYTES)Vigen_tb__Syms final : public VerilatedSyms {
     bool __Vm_didInit = false;
 
     // MODULE INSTANCE STATE
-    Vigen_tb___024root             TOP;
-    Vigen_tb___024unit             TOP____024unit;
+    Vtop_tb___024root              TOP;
+    Vtop_tb___024unit              TOP____024unit;
 
     // CONSTRUCTORS
-    Vigen_tb__Syms(VerilatedContext* contextp, const char* namep, Vigen_tb* modelp);
-    ~Vigen_tb__Syms();
+    Vtop_tb__Syms(VerilatedContext* contextp, const char* namep, Vtop_tb* modelp);
+    ~Vtop_tb__Syms();
 
     // METHODS
     const char* name() { return TOP.name(); }
