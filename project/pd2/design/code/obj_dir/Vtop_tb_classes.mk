@@ -2,7 +2,7 @@
 # DESCRIPTION: Verilator output: Make include file with class lists
 #
 # This file lists generated Verilated files, for including in higher level makefiles.
-# See Vigen_tb.mk for the caller.
+# See Vtop_tb.mk for the caller.
 
 ### Switches...
 # C11 constructs required?  0/1 (always on now)
@@ -25,27 +25,27 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-  Vigen_tb \
-  Vigen_tb___024root__DepSet_h6b75e288__0 \
-  Vigen_tb___024root__DepSet_h3ae0ae7d__0 \
+  Vtop_tb \
+  Vtop_tb___024root__DepSet_h28d3b6fd__0 \
+  Vtop_tb___024root__DepSet_h57bb8297__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-  Vigen_tb___024root__Slow \
-  Vigen_tb___024root__DepSet_h6b75e288__0__Slow \
-  Vigen_tb___024root__DepSet_h3ae0ae7d__0__Slow \
-  Vigen_tb___024unit__Slow \
-  Vigen_tb___024unit__DepSet_hfed3c0ca__0__Slow \
+  Vtop_tb___024root__Slow \
+  Vtop_tb___024root__DepSet_h28d3b6fd__0__Slow \
+  Vtop_tb___024root__DepSet_h57bb8297__0__Slow \
+  Vtop_tb___024unit__Slow \
+  Vtop_tb___024unit__DepSet_h72d54fe8__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-  Vigen_tb__Trace__0 \
+  Vtop_tb__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vigen_tb__Syms \
-  Vigen_tb__Trace__0__Slow \
-  Vigen_tb__TraceDecls__0__Slow \
+  Vtop_tb__Syms \
+  Vtop_tb__Trace__0__Slow \
+  Vtop_tb__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
