@@ -2,9 +2,9 @@
 # DESCRIPTION: Verilator output: Makefile for building Verilated archive or executable
 #
 # Execute this makefile from the object directory:
-#    make -f Vtop.mk
+#    make -f Vigen_tb.mk
 
-default: Vtop
+default: Vigen_tb
 
 ### Constants...
 # Perl executable (from $PERL, defaults to 'perl' if not set)
@@ -32,39 +32,38 @@ VM_SC_TARGET_ARCH = linux
 
 ### Vars...
 # Design prefix (from --prefix)
-VM_PREFIX = Vtop
+VM_PREFIX = Vigen_tb
 # Module prefix (from --prefix)
-VM_MODPREFIX = Vtop
+VM_MODPREFIX = Vigen_tb
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-  -DMEM_DEPTH=1048576 -DMEM_PATH="/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd2/verif/data/test1.x" -DVCD -DVCD_FILE=test1.vcd \
+  -DVL_TOP=Vigen_tb \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
-  test_pd \
+  tb_main_verilator \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
-  . \
-  ../../../tests \
+  .. \
 
 ### Default rules...
 # Include list of all generated classes
-include Vtop_classes.mk
+include Vigen_tb_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
 
 ### Executable rules... (from --exe)
 VPATH += $(VM_USER_DIR)
 
-test_pd.o: /Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd2/verif/tests/test_pd.cpp 
+tb_main_verilator.o: tb_main_verilator.cpp 
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)
-Vtop: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
+Vigen_tb: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
 	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
 
 # Verilated -*- Makefile -*-

@@ -39,19 +39,19 @@ parameter logic [31:0] ZERO = 32'd0;
 `define F3_SLT 3'h2
 `define F3_SLTU 3'h3
  
- // funct3 constants for I-type Load instructions.
+ // funct3 constants for I-type Load instructions
  `define F3_LB 3'h0
  `define F3_LH 3'h1
  `define F3_LW 3'h2
  `define F3_LBU 3'h4
  `define F3_LHU 3'h5
 
- // funct3 constants for S-type instructions.
+ // funct3 constants for S-type instructions
  `define F3_SB 3'h0
  `define F3_SH 3'h1
  `define F3_SW 3'h2
 
- // funct3 constants for B-type instructions.
+ // funct3 constants for B-type instructions
  `define F3_BEQ 3'h0
  `define F3_BNE 3'h1
  `define F3_BLT 3'h4
@@ -59,12 +59,14 @@ parameter logic [31:0] ZERO = 32'd0;
  `define F3_BLTU 3'h6
  `define F3_BGEU 3'h7
 
- // funct7 constants for J-type and I-type instructions.
+ // funct7 constants for J-type and I-type instructions
  `define F7_ADD 7'h00
  `define F7_SUB 7'h20
  `define F7_SLL 7'h00
  `define F7_SRL 7'h00
  `define F7_SRA 7'h20
+
+ // constants for immediate field bit extraction
 
 // ALU ops constants
 `define ALU_ADD 4'b0000
