@@ -5,22 +5,22 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VIGEN_TB_H_
-#define VERILATED_VIGEN_TB_H_  // guard
+#ifndef VERILATED_VTOP_TB_H_
+#define VERILATED_VTOP_TB_H_  // guard
 
 #include "verilated.h"
 
-class Vigen_tb__Syms;
-class Vigen_tb___024root;
+class Vtop_tb__Syms;
+class Vtop_tb___024root;
 class VerilatedVcdC;
-class Vigen_tb___024unit;
+class Vtop_tb___024unit;
 
 
 // This class is the main interface to the Verilated model
-class alignas(VL_CACHE_LINE_BYTES) Vigen_tb VL_NOT_FINAL : public VerilatedModel {
+class alignas(VL_CACHE_LINE_BYTES) Vtop_tb VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Vigen_tb__Syms* const vlSymsp;
+    Vtop_tb__Syms* const vlSymsp;
 
   public:
 
@@ -35,23 +35,23 @@ class alignas(VL_CACHE_LINE_BYTES) Vigen_tb VL_NOT_FINAL : public VerilatedModel
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
-    Vigen_tb___024unit* const __PVT____024unit;
+    Vtop_tb___024unit* const __PVT____024unit;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Vigen_tb___024root* const rootp;
+    Vtop_tb___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Vigen_tb(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Vigen_tb(const char* name = "TOP");
+    explicit Vtop_tb(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vtop_tb(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Vigen_tb();
+    virtual ~Vtop_tb();
   private:
-    VL_UNCOPYABLE(Vigen_tb);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vtop_tb);  ///< Copying not allowed
 
   public:
     // API METHODS

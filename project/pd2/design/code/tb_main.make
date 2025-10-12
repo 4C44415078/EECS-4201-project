@@ -1,6 +1,6 @@
-// Made with generative AI.
-
 # Top-level Makefile
+
+# Made with generative AI.
 
 VERILATOR = verilator
 CPP_FILE = tb_main_verilator.cpp
