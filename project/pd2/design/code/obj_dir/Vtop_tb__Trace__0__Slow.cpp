@@ -93,7 +93,7 @@ VL_ATTR_COLD void Vtop_tb___024root__trace_init_sub__TOP____024unit__0(Vtop_tb__
     tracep->declBus(c+26,0,"ZERO",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::PARAMETER, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
     tracep->declBus(c+4,0,"jtype_insn__Vstatic__imm_jtype",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 20,0);
     tracep->pushPrefix("check_control_signal__Vstatic__unnamedblk1", VerilatedTracePrefixType::SCOPE_MODULE);
-    tracep->declBus(c+5,0,"test_fail",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::INT, false,-1, 31,0);
+    tracep->declBus(c+5,0,"control_fail",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::INT, false,-1, 31,0);
     tracep->popPrefix();
 }
 
@@ -168,7 +168,7 @@ VL_ATTR_COLD void Vtop_tb___024root__trace_full_0_sub_0(Vtop_tb___024root* vlSel
                                    >> 0xcU))),3);
     bufp->fullIData(oldp+3,(vlSelfRef.top_tb__DOT__pc),32);
     bufp->fullIData(oldp+4,(vlSymsp->TOP____024unit.jtype_insn__Vstatic__imm_jtype),21);
-    bufp->fullIData(oldp+5,(vlSymsp->TOP____024unit.check_control_signal__Vstatic__unnamedblk1__DOT__test_fail),32);
+    bufp->fullIData(oldp+5,(vlSymsp->TOP____024unit.check_control_signal__Vstatic__unnamedblk1__DOT__control_fail),32);
     bufp->fullIData(oldp+6,(vlSelfRef.top_tb__DOT__imm),32);
     bufp->fullCData(oldp+7,(vlSelfRef.top_tb__DOT__funct7),7);
     bufp->fullBit(oldp+8,(vlSelfRef.top_tb__DOT__pcsel));
@@ -180,16 +180,16 @@ VL_ATTR_COLD void Vtop_tb___024root__trace_full_0_sub_0(Vtop_tb___024root* vlSel
     bufp->fullBit(oldp+14,(vlSelfRef.top_tb__DOT__memwren));
     bufp->fullCData(oldp+15,(vlSelfRef.top_tb__DOT__wbsel),2);
     bufp->fullCData(oldp+16,(vlSelfRef.top_tb__DOT__alusel),4);
-    bufp->fullCData(oldp+17,((((((IData)(vlSelfRef.top_tb__DOT__memwren) 
-                                 << 6U) | ((IData)(vlSelfRef.top_tb__DOT__memren) 
+    bufp->fullCData(oldp+17,((((((IData)(vlSelfRef.top_tb__DOT__pcsel) 
+                                 << 6U) | ((IData)(vlSelfRef.top_tb__DOT__immsel) 
                                            << 5U)) 
-                               | (((IData)(vlSelfRef.top_tb__DOT__rs2sel) 
+                               | (((IData)(vlSelfRef.top_tb__DOT__regwren) 
                                    << 4U) | ((IData)(vlSelfRef.top_tb__DOT__rs1sel) 
                                              << 3U))) 
-                              | (((IData)(vlSelfRef.top_tb__DOT__regwren) 
-                                  << 2U) | (((IData)(vlSelfRef.top_tb__DOT__immsel) 
+                              | (((IData)(vlSelfRef.top_tb__DOT__rs2sel) 
+                                  << 2U) | (((IData)(vlSelfRef.top_tb__DOT__memren) 
                                              << 1U) 
-                                            | (IData)(vlSelfRef.top_tb__DOT__pcsel))))),7);
+                                            | (IData)(vlSelfRef.top_tb__DOT__memwren))))),7);
     bufp->fullBit(oldp+18,(vlSelfRef.top_tb__DOT__clk));
     bufp->fullCData(oldp+19,(vlSelfRef.top_tb__DOT__opcode),7);
     bufp->fullCData(oldp+20,((((0x23U != (IData)(vlSelfRef.top_tb__DOT__opcode)) 

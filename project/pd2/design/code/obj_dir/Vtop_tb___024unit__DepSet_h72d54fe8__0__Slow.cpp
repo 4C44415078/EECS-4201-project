@@ -17,7 +17,7 @@ VL_ATTR_COLD void Vtop_tb___024unit___eval_static__TOP____024unit(Vtop_tb___024u
     vlSelfRef.signal_name[2U] = std::string{"rs2sel"};
     vlSelfRef.signal_name[1U] = std::string{"memren"};
     vlSelfRef.signal_name[0U] = std::string{"memwren"};
-    vlSelfRef.check_control_signal__Vstatic__unnamedblk1__DOT__test_fail = 0U;
+    vlSelfRef.check_control_signal__Vstatic__unnamedblk1__DOT__control_fail = 0U;
 }
 
 VL_ATTR_COLD void Vtop_tb___024unit___ctor_var_reset(Vtop_tb___024unit* vlSelf) {
@@ -27,5 +27,5 @@ VL_ATTR_COLD void Vtop_tb___024unit___ctor_var_reset(Vtop_tb___024unit* vlSelf) 
     // Body
     const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
     vlSelf->jtype_insn__Vstatic__imm_jtype = VL_SCOPED_RAND_RESET_I(21, __VscopeHash, 2235738810215965023ull);
-    vlSelf->check_control_signal__Vstatic__unnamedblk1__DOT__test_fail = 0;
+    vlSelf->check_control_signal__Vstatic__unnamedblk1__DOT__control_fail = 0;
 }

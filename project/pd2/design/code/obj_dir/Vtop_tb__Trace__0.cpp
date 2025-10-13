@@ -31,7 +31,7 @@ void Vtop_tb___024root__trace_chg_0_sub_0(Vtop_tb___024root* vlSelf, VerilatedVc
                                       >> 0xcU))),3);
         bufp->chgIData(oldp+2,(vlSelfRef.top_tb__DOT__pc),32);
         bufp->chgIData(oldp+3,(vlSymsp->TOP____024unit.jtype_insn__Vstatic__imm_jtype),21);
-        bufp->chgIData(oldp+4,(vlSymsp->TOP____024unit.check_control_signal__Vstatic__unnamedblk1__DOT__test_fail),32);
+        bufp->chgIData(oldp+4,(vlSymsp->TOP____024unit.check_control_signal__Vstatic__unnamedblk1__DOT__control_fail),32);
     }
     if (VL_UNLIKELY(((vlSelfRef.__Vm_traceActivity[3U] 
                       | vlSelfRef.__Vm_traceActivity
@@ -47,16 +47,16 @@ void Vtop_tb___024root__trace_chg_0_sub_0(Vtop_tb___024root* vlSelf, VerilatedVc
         bufp->chgBit(oldp+13,(vlSelfRef.top_tb__DOT__memwren));
         bufp->chgCData(oldp+14,(vlSelfRef.top_tb__DOT__wbsel),2);
         bufp->chgCData(oldp+15,(vlSelfRef.top_tb__DOT__alusel),4);
-        bufp->chgCData(oldp+16,((((((IData)(vlSelfRef.top_tb__DOT__memwren) 
-                                    << 6U) | ((IData)(vlSelfRef.top_tb__DOT__memren) 
+        bufp->chgCData(oldp+16,((((((IData)(vlSelfRef.top_tb__DOT__pcsel) 
+                                    << 6U) | ((IData)(vlSelfRef.top_tb__DOT__immsel) 
                                               << 5U)) 
-                                  | (((IData)(vlSelfRef.top_tb__DOT__rs2sel) 
+                                  | (((IData)(vlSelfRef.top_tb__DOT__regwren) 
                                       << 4U) | ((IData)(vlSelfRef.top_tb__DOT__rs1sel) 
                                                 << 3U))) 
-                                 | (((IData)(vlSelfRef.top_tb__DOT__regwren) 
-                                     << 2U) | (((IData)(vlSelfRef.top_tb__DOT__immsel) 
+                                 | (((IData)(vlSelfRef.top_tb__DOT__rs2sel) 
+                                     << 2U) | (((IData)(vlSelfRef.top_tb__DOT__memren) 
                                                 << 1U) 
-                                               | (IData)(vlSelfRef.top_tb__DOT__pcsel))))),7);
+                                               | (IData)(vlSelfRef.top_tb__DOT__memwren))))),7);
     }
     bufp->chgBit(oldp+17,(vlSelfRef.top_tb__DOT__clk));
     bufp->chgCData(oldp+18,(vlSelfRef.top_tb__DOT__opcode),7);
