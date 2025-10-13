@@ -26,6 +26,7 @@ VL_ATTR_COLD void Vtop_tb___024unit___ctor_var_reset(Vtop_tb___024unit* vlSelf) 
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    vlSelf->btype_insn__Vstatic__imm_btype = VL_SCOPED_RAND_RESET_I(13, __VscopeHash, 7339130442665311964ull);
     vlSelf->jtype_insn__Vstatic__imm_jtype = VL_SCOPED_RAND_RESET_I(21, __VscopeHash, 2235738810215965023ull);
     vlSelf->check_control_signal__Vstatic__unnamedblk1__DOT__control_fail = 0;
 }

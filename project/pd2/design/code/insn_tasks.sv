@@ -49,11 +49,13 @@ task btype_insn (
   input [2:0] funct3,
   input [4:0] rs1,
   input [4:0] rs2,
-  input [12:0] imm,
+  input [11:0] imm,
   output [31:0] insn
 );
+  logic [12:0] imm_btype;
   begin
-    insn = {imm[12], imm[10:5], rs2[4:0], rs1[4:0], funct3[2:0], imm[4:1], imm[11], opcode[6:0]};
+    imm_btype = {imm, 1'b0};
+    insn = {imm_btype[12], imm_btype[10:5], rs2[4:0], rs1[4:0], funct3[2:0], imm_btype[4:1], imm_btype[11], opcode[6:0]};
   end
 endtask
 

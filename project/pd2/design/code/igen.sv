@@ -54,14 +54,7 @@ module igen #(
              * All other branch instructions are sign extended.
              */
             `B_TYPE: begin
-                case (`FUNCT3)
-                    3'h6, 3'h7: begin
-                        imm_o = {{19{1'b0}}, `BTYPE_IMM};
-                    end
-                    default: begin
-                        imm_o = {{19{`BTYPE_IMM[12]}}, `BTYPE_IMM};
-                    end
-                endcase
+                imm_o = {{19{`BTYPE_IMM[11]}}, `BTYPE_IMM, 1'b0};
             end
 
             /* 

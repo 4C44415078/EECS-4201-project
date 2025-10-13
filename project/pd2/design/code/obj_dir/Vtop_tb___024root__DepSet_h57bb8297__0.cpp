@@ -40,25 +40,12 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
     // Init
     IData/*31:0*/ __VdfgRegularize_h0dff6736_0_3;
     __VdfgRegularize_h0dff6736_0_3 = 0;
-    SData/*12:0*/ __VdfgRegularize_h0dff6736_0_4;
+    IData/*31:0*/ __VdfgRegularize_h0dff6736_0_4;
     __VdfgRegularize_h0dff6736_0_4 = 0;
-    IData/*31:0*/ __VdfgRegularize_h0dff6736_0_5;
-    __VdfgRegularize_h0dff6736_0_5 = 0;
-    CData/*0:0*/ __VdfgRegularize_h0dff6736_0_9;
-    __VdfgRegularize_h0dff6736_0_9 = 0;
+    CData/*0:0*/ __VdfgRegularize_h0dff6736_0_8;
+    __VdfgRegularize_h0dff6736_0_8 = 0;
     // Body
-    __VdfgRegularize_h0dff6736_0_4 = (((0x1000U & (vlSelfRef.top_tb__DOT__insn 
-                                                   >> 0x13U)) 
-                                       | (0x800U & 
-                                          (vlSelfRef.top_tb__DOT__insn 
-                                           << 4U))) 
-                                      | ((0x7e0U & 
-                                          (vlSelfRef.top_tb__DOT__insn 
-                                           >> 0x14U)) 
-                                         | (0x1eU & 
-                                            (vlSelfRef.top_tb__DOT__insn 
-                                             >> 7U))));
-    __VdfgRegularize_h0dff6736_0_9 = ((1U == (7U & 
+    __VdfgRegularize_h0dff6736_0_8 = ((1U == (7U & 
                                               (vlSelfRef.top_tb__DOT__insn 
                                                >> 0xcU))) 
                                       | (5U == (7U 
@@ -66,9 +53,9 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                    >> 0xcU))));
     if ((2U & vlSelfRef.top_tb__DOT__insn)) {
         if ((1U & vlSelfRef.top_tb__DOT__insn)) {
-            __VdfgRegularize_h0dff6736_0_5 = (0xfffff000U 
+            __VdfgRegularize_h0dff6736_0_4 = (0xfffff000U 
                                               & vlSelfRef.top_tb__DOT__insn);
-            __VdfgRegularize_h0dff6736_0_3 = ((IData)(__VdfgRegularize_h0dff6736_0_9)
+            __VdfgRegularize_h0dff6736_0_3 = ((IData)(__VdfgRegularize_h0dff6736_0_8)
                                                ? (0x1fU 
                                                   & (vlSelfRef.top_tb__DOT__insn 
                                                      >> 0x14U))
@@ -80,11 +67,11 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                   | (vlSelfRef.top_tb__DOT__insn 
                                                      >> 0x14U)));
         } else {
-            __VdfgRegularize_h0dff6736_0_5 = 0U;
+            __VdfgRegularize_h0dff6736_0_4 = 0U;
             __VdfgRegularize_h0dff6736_0_3 = 0U;
         }
     } else {
-        __VdfgRegularize_h0dff6736_0_5 = 0U;
+        __VdfgRegularize_h0dff6736_0_4 = 0U;
         __VdfgRegularize_h0dff6736_0_3 = 0U;
     }
     vlSelfRef.top_tb__DOT__opcode = (0x7fU & vlSelfRef.top_tb__DOT__insn);
@@ -168,7 +155,7 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                : ((
                                                    (0x13U 
                                                     == (IData)(vlSelfRef.top_tb__DOT__opcode)) 
-                                                   & (IData)(__VdfgRegularize_h0dff6736_0_9))
+                                                   & (IData)(__VdfgRegularize_h0dff6736_0_8))
                                                    ? 
                                                   (vlSelfRef.top_tb__DOT__insn 
                                                    >> 0x19U)
@@ -683,23 +670,22 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                      ((1U 
                                                        & vlSelfRef.top_tb__DOT__insn)
                                                        ? 
-                                                      (((6U 
-                                                         == 
-                                                         (7U 
-                                                          & (vlSelfRef.top_tb__DOT__insn 
-                                                             >> 0xcU))) 
-                                                        | (7U 
-                                                           == 
-                                                           (7U 
+                                                      (((- (IData)(
+                                                                   (vlSelfRef.top_tb__DOT__insn 
+                                                                    >> 0x1fU))) 
+                                                        << 0xdU) 
+                                                       | (((0x1000U 
                                                             & (vlSelfRef.top_tb__DOT__insn 
-                                                               >> 0xcU))))
-                                                        ? (IData)(__VdfgRegularize_h0dff6736_0_4)
-                                                        : 
-                                                       (((- (IData)(
-                                                                    (vlSelfRef.top_tb__DOT__insn 
-                                                                     >> 0x1fU))) 
-                                                         << 0xdU) 
-                                                        | (IData)(__VdfgRegularize_h0dff6736_0_4)))
+                                                               >> 0x13U)) 
+                                                           | (0x800U 
+                                                              & (vlSelfRef.top_tb__DOT__insn 
+                                                                 << 4U))) 
+                                                          | ((0x7e0U 
+                                                              & (vlSelfRef.top_tb__DOT__insn 
+                                                                 >> 0x14U)) 
+                                                             | (0x1eU 
+                                                                & (vlSelfRef.top_tb__DOT__insn 
+                                                                   >> 7U)))))
                                                        : 0U)
                                                       : 0U))))
                                        : 0U) : ((0x20U 
@@ -714,7 +700,7 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                    : 
                                                   ((4U 
                                                     & vlSelfRef.top_tb__DOT__insn)
-                                                    ? __VdfgRegularize_h0dff6736_0_5
+                                                    ? __VdfgRegularize_h0dff6736_0_4
                                                     : 0U))
                                                   : 
                                                  ((8U 
@@ -753,7 +739,7 @@ VL_INLINE_OPT void Vtop_tb___024root___act_sequent__TOP__0(Vtop_tb___024root* vl
                                                    : 
                                                   ((4U 
                                                     & vlSelfRef.top_tb__DOT__insn)
-                                                    ? __VdfgRegularize_h0dff6736_0_5
+                                                    ? __VdfgRegularize_h0dff6736_0_4
                                                     : __VdfgRegularize_h0dff6736_0_3))
                                                   : 
                                                  ((8U 

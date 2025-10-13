@@ -159,10 +159,10 @@ module top_tb;
 
       // ---- B-type Instruction Test ----
       opcode = `B_TYPE;
-      btype_insn(opcode, `F3_BEQ, 5'd5, 5'd6, 13'h1fff, insn);
+      btype_insn(opcode, `F3_BEQ, 5'd5, 5'd6, 12'hffe, insn);
       @(posedge clk);
       $display("\nB-type Test Max Positive");
-      check_imm_value(32'hfffffffe, imm);
+      check_imm_value(32'hfffffffc, imm);
       check_control_signal(7'b1101100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // ---- U-type Instruction Test ----

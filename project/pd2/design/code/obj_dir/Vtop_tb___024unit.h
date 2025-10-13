@@ -15,6 +15,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_tb___024unit final : public VerilatedMod
   public:
 
     // DESIGN SPECIFIC STATE
+    SData/*12:0*/ btype_insn__Vstatic__imm_btype;
     IData/*20:0*/ jtype_insn__Vstatic__imm_jtype;
     IData/*31:0*/ check_control_signal__Vstatic__unnamedblk1__DOT__control_fail;
     VlUnpacked<std::string, 7> signal_name;
