@@ -86,8 +86,8 @@ module top_tb;
    );
 
    logic [6:0] actual_signal;
-   //assign actual_signal = {pcsel, immsel, regwren, rs1sel, rs2sel, memren, memwren};
-   assign actual_signal = {memwren, memren, rs2sel, rs1sel, regwren, immsel, pcsel};
+   assign actual_signal = {pcsel, immsel, regwren, rs1sel, rs2sel, memren, memwren};
+   //assign actual_signal = {memwren, memren, rs2sel, rs1sel, regwren, immsel, pcsel};
 
    initial begin
       $dumpfile("top_tb.vcd");
@@ -102,7 +102,8 @@ module top_tb;
       opcode = `R_TYPE;
       rtype_insn(opcode, 5'd5, `F3_ADD, 5'd6, 5'd7, `F7_ADD, insn);
       @(posedge clk);
-      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+      $display("\nR-type Test");
+      check_control_signal(7'b0011100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // ---- I-type Instruction Test ----
       opcode = `I_TYPE;
@@ -110,64 +111,86 @@ module top_tb;
       // Check max positive value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h7ff, insn);
       @(posedge clk);
+      $display("\nI-type Test Max Positive");
       check_imm_value(32'h000007ff, imm);
-      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+      check_control_signal(7'b0111000, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // Check max negative value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h800, insn);
       @(posedge clk);
+      $display("\nI-type Test Max Negative");
       check_imm_value(32'hfffff800, imm);
       
       // Check zero value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h000, insn);
+      @(posedge clk);
+      $display("\nI-type Test Zero");
       check_imm_value(32'h00000000, imm);
       
       // Check shift right logical instruction, max shift amount 31 (0-31)
       itype_insn(opcode, 5'd28, `F3_SRIGHT, 5'd29, 12'h01f, insn);
       @(posedge clk);
+      $display("\nI-type Test Logical Shift");
       check_imm_value(32'h0000001f, imm);
-      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_SRL, alusel);
+      check_control_signal(7'b0111000, actual_signal, `WB_ALU, wbsel, `ALU_SRL, alusel);
 
       // Check shift right arithmetic
       itype_insn(opcode, 5'd28, `F3_SRIGHT, 5'd29, 12'h21f, insn);
       @(posedge clk);
+      $display("\nI-type Test Arithmetic Shift");
       check_imm_value(32'h0000001f, imm);
-      check_control_signal(7'b0000011, actual_signal, `WB_ALU, wbsel, `ALU_SRA, alusel);
+      check_control_signal(7'b0111000, actual_signal, `WB_ALU, wbsel, `ALU_SRA, alusel);
+
+      // Check immediate load type instruction
+      opcode = `I_TYPE_L;
+      itype_insn(opcode, 5'd28, `F3_LW, 5'd29, 12'h7ff, insn);
+      @(posedge clk);
+      $display("\nI-type Test LOAD...");
+      check_imm_value(32'h000007ff, imm);
+      check_control_signal(7'b0111010, actual_signal, `WB_MEM, wbsel, `ALU_ADD, alusel);
 
       // ---- S-type Instruction Test ----
       opcode = `S_TYPE;
       stype_insn(opcode, `F3_SW, 5'd5, 5'd6, 12'h7ff, insn);
       @(posedge clk);
+      $display("\nS-type Test Max Positive");
       check_imm_value(32'h000007ff, imm);
-      check_control_signal(7'b0001100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+      check_control_signal(7'b0101101, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // ---- B-type Instruction Test ----
       opcode = `B_TYPE;
-      btype_insn(opcode, `F3_BEQ, 5'd5, 5'd6, 13'hfff, insn);
+      btype_insn(opcode, `F3_BEQ, 5'd5, 5'd6, 13'h1fff, insn);
       @(posedge clk);
-      check_imm_value(32'h00001ffe, imm);
-      check_control_signal(7'b1000100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+      $display("\nB-type Test Max Positive");
+      check_imm_value(32'hfffffffe, imm);
+      check_control_signal(7'b1101100, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // ---- U-type Instruction Test ----
       opcode = `U_TYPE_LUI;
       utype_insn(opcode, 5'd7, 20'hfffff, insn);
       @(posedge clk);
-      check_imm_value(32'hfffff00, imm);
-      check_control_signal(7'b0000010, actual_signal, `WB_IMM, wbsel, `ALU_NOP, alusel);
+      $display("\nU-type Test LUI");
+      check_imm_value(32'hfffff000, imm);
+      check_control_signal(7'b0110000, actual_signal, `WB_IMM, wbsel, `ALU_NOP, alusel);
 
       opcode = `U_TYPE_AUIPC;
       utype_insn(opcode, 5'd7, 20'hfffff, insn);
       @(posedge clk);
-      check_imm_value(32'hfffff00, imm);
-      check_control_signal(7'b0000010, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
+      $display("\nU-type Test AUIPC");
+      check_imm_value(32'hfffff000, imm);
+      check_control_signal(7'b0110000, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // ---- J-type Instruction Test ----
       opcode = `J_TYPE;
       jtype_insn(opcode, 5'd7, 20'h7ffff, insn);
       @(posedge clk);
+      $display("\nJ-type Test");
       check_imm_value(32'h000ffffe, imm);
-      check_control_signal(7'b1000010, actual_signal, `WB_PC4, wbsel, `ALU_ADD, alusel);
+      check_control_signal(7'b1110000, actual_signal, `WB_PC4, wbsel, `ALU_ADD, alusel);
    
+   //repeat (20) @(posedge clk);
+   $display("--- ALL TESTS PASSED ---\n");
+   $finish;
    end
 
 endmodule: top_tb
