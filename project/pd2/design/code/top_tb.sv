@@ -109,17 +109,17 @@ module top_tb;
       opcode = `I_TYPE;
 
       // Check max positive value
-      itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h7ff, insn);
+      itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'd2047, insn);
       @(posedge clk);
       $display("\nI-type Test Max Positive");
       check_imm_value(32'h000007ff, imm);
       check_control_signal(7'b0111000, actual_signal, `WB_ALU, wbsel, `ALU_ADD, alusel);
 
       // Check max negative value
-      itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h800, insn);
+      itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, -12'sd2048, insn);
       @(posedge clk);
       $display("\nI-type Test Max Negative");
-      check_imm_value(32'hfffff800, imm);
+      check_imm_value(-32'sd2048, imm);
       
       // Check zero value
       itype_insn(opcode, 5'd28, `F3_ADD, 5'd29, 12'h000, insn);
