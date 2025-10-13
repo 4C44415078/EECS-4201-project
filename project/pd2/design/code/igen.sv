@@ -35,7 +35,7 @@ module igen #(
             `I_TYPE, `I_TYPE_JALR, `I_TYPE_L: begin
                 case (`FUNCT3)
                     `F3_SLEFT, `F3_SRIGHT: begin
-                        imm_o = {{20{1'b0}}, `ITYPE_IMM};
+                        imm_o = {{27{1'b0}}, `SHAMT_IMM};
                     end
                     default: begin
                         imm_o = {{20{insn_i[31]}}, `ITYPE_IMM};
@@ -59,7 +59,7 @@ module igen #(
                         imm_o = {{19{1'b0}}, `BTYPE_IMM};
                     end
                     default: begin
-                        imm_o = {{19{insn_i[31]}}, `BTYPE_IMM};
+                        imm_o = {{19{`BTYPE_IMM[12]}}, `BTYPE_IMM};
                     end
                 endcase
             end

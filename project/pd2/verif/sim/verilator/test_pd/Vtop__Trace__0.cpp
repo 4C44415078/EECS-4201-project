@@ -132,35 +132,27 @@ void Vtop___024root__trace_chg_0_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buf
                                                     >> 1U)) 
                                                 && (1U 
                                                     & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
-        bufp->chgBit(oldp+20,(((0x40U & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)
-                                ? ((1U & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                          >> 5U)) && 
-                                   ((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                              >> 4U))) 
-                                    && ((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                  >> 3U))) 
-                                        && ((1U & (~ 
-                                                   (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                    >> 2U))) 
-                                            && ((1U 
-                                                 & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                    >> 1U)) 
-                                                && (1U 
-                                                    & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn))))))
-                                : ((1U & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                          >> 5U)) && 
-                                   ((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                              >> 4U))) 
-                                    && ((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                  >> 3U))) 
-                                        && ((1U & (~ 
-                                                   (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                    >> 2U))) 
-                                            && ((1U 
-                                                 & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                    >> 1U)) 
-                                                && (1U 
-                                                    & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
+        bufp->chgBit(oldp+20,(((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                         >> 6U))) && 
+                               ((1U & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                       >> 5U)) && (
+                                                   (1U 
+                                                    & (~ 
+                                                       (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                        >> 4U))) 
+                                                   && ((1U 
+                                                        & (~ 
+                                                           (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                            >> 3U))) 
+                                                       && ((1U 
+                                                            & (~ 
+                                                               (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                                >> 2U))) 
+                                                           && ((1U 
+                                                                & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                                   >> 1U)) 
+                                                               && (1U 
+                                                                   & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
         bufp->chgCData(oldp+21,(vlSelfRef.top__DOT__dut__DOT__core__DOT__c_wbsel),2);
         bufp->chgCData(oldp+22,(vlSelfRef.top__DOT__dut__DOT__core__DOT__c_alusel),4);
         bufp->chgIData(oldp+23,((vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc 
