@@ -219,7 +219,7 @@ VL_ATTR_COLD void Vtop___024root__trace_const_0_sub_0(Vtop___024root* vlSelf, Ve
     bufp->fullBit(oldp+179,(1U));
     bufp->fullIData(oldp+180,(0x1000000U),32);
     bufp->fullIData(oldp+181,(0x1000000U),32);
-    bufp->fullIData(oldp+182,(0x1fcU),32);
+    bufp->fullIData(oldp+182,(0xccU),32);
     bufp->fullCData(oldp+183,(vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__shamt),5);
     bufp->fullWData(oldp+184,(vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__t),224);
     bufp->fullIData(oldp+191,(vlSelfRef.top__DOT__genblk3__DOT__pre_check__DOT__res),32);
@@ -372,45 +372,28 @@ VL_ATTR_COLD void Vtop___024root__trace_full_0_sub_0(Vtop___024root* vlSelf, Ver
                                                                        >> 1U)) 
                                                                    && (1U 
                                                                        & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
-    bufp->fullBit(oldp+21,(((0x40U & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)
-                             ? ((1U & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                       >> 5U)) && (
+    bufp->fullBit(oldp+21,(((1U & (~ (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                      >> 6U))) && (
                                                    (1U 
-                                                    & (~ 
-                                                       (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                        >> 4U))) 
+                                                    & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                       >> 5U)) 
                                                    && ((1U 
                                                         & (~ 
                                                            (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                            >> 3U))) 
+                                                            >> 4U))) 
                                                        && ((1U 
                                                             & (~ 
                                                                (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                                >> 2U))) 
+                                                                >> 3U))) 
                                                            && ((1U 
-                                                                & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                                   >> 1U)) 
-                                                               && (1U 
-                                                                   & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn))))))
-                             : ((1U & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                       >> 5U)) && (
-                                                   (1U 
-                                                    & (~ 
-                                                       (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                        >> 4U))) 
-                                                   && ((1U 
-                                                        & (~ 
-                                                           (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                            >> 3U))) 
-                                                       && ((1U 
-                                                            & (~ 
-                                                               (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                                >> 2U))) 
-                                                           && ((1U 
-                                                                & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
-                                                                   >> 1U)) 
-                                                               && (1U 
-                                                                   & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
+                                                                & (~ 
+                                                                   (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                                    >> 2U))) 
+                                                               && ((1U 
+                                                                    & (vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn 
+                                                                       >> 1U)) 
+                                                                   && (1U 
+                                                                       & vlSelfRef.top__DOT__dut__DOT__core__DOT__f_insn)))))))));
     bufp->fullCData(oldp+22,(vlSelfRef.top__DOT__dut__DOT__core__DOT__c_wbsel),2);
     bufp->fullCData(oldp+23,(vlSelfRef.top__DOT__dut__DOT__core__DOT__c_alusel),4);
     bufp->fullIData(oldp+24,((vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc 
