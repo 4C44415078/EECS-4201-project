@@ -206,7 +206,7 @@ module control #(
                 rs1sel_o = 1'b1;
                 rs2sel_o = 1'b1;
                 memren_o = 1'b0;
-                memwren_o = 1'b1;
+                memwren_o = 1'b0;
                 wbsel_o = `WB_ALU;
                 alusel_o = `ALU_ADD;
             end

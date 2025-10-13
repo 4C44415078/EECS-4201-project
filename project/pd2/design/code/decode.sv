@@ -63,7 +63,10 @@ module decode #(
         // Source registter rs2 for R-type, S-type, B-type instructions.
         rs2_o = (`OPCODE == `R_TYPE || `OPCODE == `S_TYPE || `OPCODE == `B_TYPE) ? insn_i[24:20] : 5'd0;
         // FUNCT7 for R-type and I-type shift (slli, srli, srai) instructions.
-        funct7_o = (`OPCODE == `R_TYPE) ? `FUNCT7 : (`OPCODE == `I_TYPE && (`FUNCT3 == `F3_SLEFT && `FUNCT3 == `F3_SRIGHT)) ? `FUNCT7 : 7'd0;
+        funct7_o = (`OPCODE == `R_TYPE) ? `FUNCT7 :
+           ((`OPCODE == `I_TYPE) && 
+           (`FUNCT3 == `F3_SLEFT || `FUNCT3 == `F3_SRIGHT)) ? `FUNCT7 : 7'd0;
+
     end
 
 endmodule : decode
