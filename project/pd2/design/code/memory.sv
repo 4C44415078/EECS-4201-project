@@ -1,5 +1,4 @@
 /*
- * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD1 -----------
  * Module: memory
  *
  * Description: Byte-addressable memory implementation. Supports both read and write.

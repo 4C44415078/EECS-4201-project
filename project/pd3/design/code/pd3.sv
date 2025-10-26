@@ -20,5 +20,12 @@ module pd3 #(
   * probes. To be filled by student...
   *
   */
+  memory
+  fetch
+  decode
+  control
+  igen
+  register_file
+  execute
 
 endmodule : pd3
