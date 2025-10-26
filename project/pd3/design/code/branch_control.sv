@@ -33,5 +33,30 @@
      * student below...
      */
 
+    always_comb begin
+        // Check for branch type instruction
+        if (opcode_i == `B_TYPE) begin
+            // BrEq = 1 if rs1 and rs2 are equal, otherwise its zero, BrUn is irrelavant
+            breq_o = (rs1_i == rs2_i) ? 1'b1 : 1'b0;
+            // Check for Brach Unsigned instructions (funct3), this is the BrUn signal
+            if (funct3_i == `F3_BLTU || funct3_i == `F3_BGEU) begin
+                // BrLt = 1 if rs1 < rs2, otherwise its zero (greater than or equal, doesn't matter)
+                brlt_o = (rs1_i < rs2_i) ? 1'b1 : 1'b0;
+            end
+            else begin
+                // For signed comparison, compare signed bit first, if equal check next bits
+                brlt_o = (rs1_i[31] > rs2_i[31]) ? 1'b1 : 
+                    (rs1_i[31] < rs2_i[31]) ? 1'b0 :
+                    (rs1_i[30:0] < rs2_i[30:0]) ? 1'b1 : 1'b0;
+            end
+        end
+        // Default control signal outputs for non-branch instructions
+        else
+            breq_o = 1'b0;
+            blt_o = 1'b0;
+    end
+    
+
+
 endmodule : branch_control
 
