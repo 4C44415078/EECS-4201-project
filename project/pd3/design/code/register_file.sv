@@ -1,8 +1,7 @@
 /*
  * Module: register_file
  *
- * Description: Branch control logic. Only sets the branch control bits based on the
- * branch instruction
+ * Description: Register file module
  *
  * Inputs:
  * 1) clk
@@ -37,5 +36,30 @@
      * Process definitions to be filled by
      * student below...
      */
+
+     /*
+      * logic [DWIDTH - 1:0] x0 = {DWIDTH{1'b0}};
+      * Create a DWITDH array of logic register of width DWIDTH
+      */
+    logic [DWIDTH - 1:0] x [DWIDTH];
+    // Hold x[0], the zero register, as constant, should never change
+    assign x[0] = {DWIDTH{1'b0}};
+
+    // Sequential procedural block for writing to register file, regwren_i must be high
+    always_ff @(posedge clk) begin
+        if (regwren_i) begin
+            x[rd_i] <= datawb_i;
+        end
+    end
+
+    // Combinational procedural block for reading from the register file, regwren_i must be low
+    always_comb begin
+        if (!regwren_i) begin
+            rs1data_o = x[rs1_i];
+            rs2data_o = x[rs2_i];
+        end
+    end
+
+
 
 endmodule : register_file
