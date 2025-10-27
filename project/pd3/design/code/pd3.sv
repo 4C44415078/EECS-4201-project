@@ -171,6 +171,7 @@ module pd3 #(
     assign e_pc = d_pc;
 
     // Execute instantiation, brtaken_o is empty because that signal is coming from bc module
+    // ^ This is no longer relevant. We moved the branch control instantiation to execute and add necessary signals.
     alu #(
       .DWIDTH(DWIDTH),
       .AWIDTH(AWIDTH)

@@ -94,7 +94,7 @@ module alu #(
                     res_o = pc_i + imm_i;
                 end
                 else begin
-                res_o = rs1_i + rs2_i;
+                    res_o = rs1_i + rs2_i;
                 end
             end
 
