@@ -46,7 +46,7 @@ module fetch #(
      * student below...
      */
     
-    logic [AWIDTH - 1:0] pc;
+    logic [AWIDTH - 1:0] pc = BASEADDR;
       
     always_ff @(posedge clk) begin 
         if (rst) begin
