@@ -56,6 +56,7 @@
             // intialized sp to the highest memory address, base address + 1MB
             x[2] <= 32'h01100000;
         end
+        // Writing back to the register file, the rd_i != 0 prevents writing over the x0 register
         else if (regwren_i && rd_i != 0) begin
             x[rd_i] <= datawb_i;
         end
