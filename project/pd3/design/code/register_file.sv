@@ -15,6 +15,8 @@
  * 1) 32-bit rs1 data rs1data_o
  * 2) 32-bit rs2 data rs2data_o
  */
+// For test bench
+//`timescale 10ns/1ns
 
  module register_file #(
      parameter int DWIDTH=32
@@ -41,23 +43,28 @@
       * logic [DWIDTH - 1:0] x0 = {DWIDTH{1'b0}};
       * Create a DWITDH array of logic register of width DWIDTH
       */
-    logic [DWIDTH - 1:0] x [DWIDTH];
-    // Hold x[0], the zero register, as constant, should never change
-    assign x[0] = {DWIDTH{1'b0}};
+    logic [DWIDTH - 1:0] x [DWIDTH-1:0];
 
     // Sequential procedural block for writing to register file, regwren_i must be high
     always_ff @(posedge clk) begin
-        if (regwren_i) begin
+        // Reset contents of register file on reset signal
+        if (rst) begin
+            // initialize all register to 32'd0 on reset high
+            for (int i = 0; i < 32; i++) begin
+                x[i] <= {DWIDTH{1'b0}};
+            end
+            // intialized sp to the highest memory address, base address + 1MB
+            x[2] <= 32'h01100000;
+        end
+        else if (regwren_i && rd_i != 0) begin
             x[rd_i] <= datawb_i;
         end
     end
 
-    // Combinational procedural block for reading from the register file, regwren_i must be low
+    // Combinational procedural block for reading from the register file
     always_comb begin
-        if (!regwren_i) begin
-            rs1data_o = x[rs1_i];
-            rs2data_o = x[rs2_i];
-        end
+        rs1data_o = x[rs1_i];
+        rs2data_o = x[rs2_i];
     end
 
 

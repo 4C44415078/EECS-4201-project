@@ -114,7 +114,7 @@ module control #(
                 wbsel_o = `WB_ALU;
                 case (funct3_i)
                     `F3_ADD: begin
-                        alusel_o = (funct7_i == 7'h00) ? `ALU_ADD : `ALU_SUB;
+                        alusel_o = `ALU_ADD;
                     end
                     `F3_XOR: begin
                         alusel_o = `ALU_XOR;
@@ -187,7 +187,7 @@ module control #(
                 immsel_o = 1'b1;
                 regwren_o = 1'b0;
                 rs1sel_o = 1'b1;
-                rs2sel_o = 1'b1;
+                rs2sel_o = 1'b0;
                 memren_o = 1'b0;
                 memwren_o = 1'b1;
                 wbsel_o = `WB_ALU;
