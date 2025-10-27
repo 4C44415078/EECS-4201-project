@@ -30,7 +30,7 @@ module top_tb;
       .reset(rst)
    );
 
-      // Register to hold instructions to be tested and pc.
+      // Register to hold instructions to be tested.
       logic [31:0] insn;
 
    initial begin
