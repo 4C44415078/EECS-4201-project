@@ -51,12 +51,11 @@
             end
         end
         // Default control signal outputs for non-branch instructions
-        else
+        else begin
             breq_o = 1'b0;
-            blt_o = 1'b0;
+            brlt_o = 1'b0;
+        end
     end
-    
-
 
 endmodule : branch_control
 

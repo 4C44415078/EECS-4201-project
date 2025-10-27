@@ -26,7 +26,7 @@ module igen #(
      
 
      always_comb begin
-        case (opcode_i)
+         case (opcode_i)
             /* 
              * I-type instructions including jalr.
              * Check FUNCT3 for slli, srli, srai, sign extend imm_o, use shamt for shifts.
@@ -73,7 +73,7 @@ module igen #(
                 // Default case. Set imm_o to zero
                 imm_o = 32'b0;
             end
-        endcase
-     end
+         endcase
+      end
 
 endmodule : igen
