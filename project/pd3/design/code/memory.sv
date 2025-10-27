@@ -51,6 +51,7 @@ module memory #(
   output logic [DWIDTH-1:0] data_o
 );
 
+    
     localparam int MEM_BYTES = `LINE_COUNT * (DWIDTH/8);
 
 	logic [DWIDTH-1:0] temp_memory [0:`LINE_COUNT - 1];
@@ -69,9 +70,10 @@ module memory #(
        		main_memory[4*i + 2] = temp_memory[i][23:16];
        		main_memory[4*i + 3] = temp_memory[i][31:24];
      	end
-		$display("IMEMORY: Loaded %0d 32-bit words from %s", `LINE_COUNT, `MEM_PATH);
+		//$display("IMEMORY: Loaded %0d 32-bit words from %s", `LINE_COUNT, `MEM_PATH);
 	end
 
+    
 	always_comb begin
 	    data_o = '0; // default to zero
         if (read_en_i) begin
@@ -87,7 +89,7 @@ module memory #(
                 };
             end else begin
                 data_o = 32'hDEAD_BEEF;
-                $display("IMEMORY: OOB read @0x%08h (mapped 0x%08h)", addr_i, address);
+                //$display("IMEMORY: OOB read @0x%08h (mapped 0x%08h)", addr_i, address);
             end
         end
   	end
