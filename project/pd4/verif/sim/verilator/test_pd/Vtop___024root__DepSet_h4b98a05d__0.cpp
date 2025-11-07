@@ -25,7 +25,9 @@ void Vtop___024root___eval_triggers__act(Vtop___024root* vlSelf) {
     // Body
     vlSelfRef.__VactTriggered.setBit(0U, (IData)(vlSelfRef.__Vdpi_export_trigger));
     vlSelfRef.__Vdpi_export_trigger = 0U;
-    vlSelfRef.__VactTriggered.setBit(1U, ((IData)(vlSelfRef.top__DOT__clock) 
+    vlSelfRef.__VactTriggered.setBit(1U, ((~ (IData)(vlSelfRef.top__DOT__clock)) 
+                                          & (IData)(vlSelfRef.__Vtrigprevexpr___TOP__top__DOT__clock__0)));
+    vlSelfRef.__VactTriggered.setBit(2U, ((IData)(vlSelfRef.top__DOT__clock) 
                                           & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__top__DOT__clock__0))));
     vlSelfRef.__Vtrigprevexpr___TOP__top__DOT__clock__0 
         = vlSelfRef.top__DOT__clock;
