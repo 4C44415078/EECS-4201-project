@@ -37,7 +37,7 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-  -DMEM_DEPTH=1048576 -DMEM_PATH="/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd4/verif/data/test1.x" \
+  -DMEM_DEPTH=1048576 -DMEM_PATH="/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd4/verif/data/test1.x" -DVCD -DVCD_FILE=test1.vcd \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
