@@ -84,7 +84,7 @@ module memory #(
 
 	logic [DWIDTH-1:0] temp_memory [0:`LINE_COUNT - 1];
    	// Byte-addressable memory
-  	logic [7:0] main_memory [0:MEM_BYTES - 1];  // Byte-addressable memory
+  	logic [7:0] main_memory [0:MEM_BYTES-1];  // Byte-addressable memory
    	logic [AWIDTH-1:0] program_counter;
    	assign program_counter = pc_i - BASE_ADDR;
   	int i;
@@ -92,7 +92,7 @@ module memory #(
    	initial begin
         $readmemh(`MEM_PATH, temp_memory);
         // Load data from temp_memory into main_memory
-		for (i = 0; i < MEM_BYTES; i++) begin
+		for (i = 0; i < MEM_BYTES / 4; i++) begin
        	   if (i < `LINE_COUNT) begin
            main_memory[4*i]     = temp_memory[i][7:0];
        		main_memory[4*i + 1] = temp_memory[i][15:8];

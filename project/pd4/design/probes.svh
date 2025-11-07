@@ -26,12 +26,12 @@
 
 `define PROBE_M_PC                m_pc
 `define PROBE_M_ADDRESS           m_addr
-`define PROBE_M_SIZE_ENCODED      d_funct3
+`define PROBE_M_SIZE_ENCODED      wb_wbsel
 `define PROBE_M_DATA              m_data_o
 
 `define PROBE_W_PC                wb_pc
-`define PROBE_W_ENABLE            wb_wbsel
-`define PROBE_W_DESTINATION       r_rddata
+`define PROBE_W_ENABLE            c_regwren
+`define PROBE_W_DESTINATION       r_rd
 `define PROBE_W_DATA              wb_data
 
 // ----  Probes  ----

@@ -66,6 +66,7 @@ module pd4 #(
     // ---------------------------------- //
     // fetch signals
     logic [DWIDTH-1:0] f_pc, f_insn;
+    assign f_insn = m_insn;
     // fetch instantiation
     fetch #(
         .AWIDTH(32),
