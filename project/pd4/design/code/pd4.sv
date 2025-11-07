@@ -216,7 +216,11 @@ module pd4 #(
     logic [DWIDTH-1:0] m_addr, m_data_o, m_data_i;
     logic m_memren, read_en, m_memwren;
     logic [2:0] m_funct3;
+    logic [1:0] m_size_encoded;
 
+
+    assign m_funct3 = d_funct3;
+    assign m_size_encoded = (m_funct3 == 3'd0 || m_funct3 == 3'd4) ? 2'd0 : (m_funct3 == 3'd1 || m_funct3 == 3'd5) ? 2'd1 : 2'd2;
     assign read_en = 1'b1;
     assign m_memren = c_memren;
     assign m_memwren = c_memwren;
@@ -250,8 +254,9 @@ module pd4 #(
 
     // write back signals
     logic [DWIDTH-1:0] wb_pc, wb_data, wb_mdata, wb_nextPC, wb_imm, wb_res;
-    logic wb_brtaken, wb_pcsel;
+    logic wb_brtaken, wb_pcsel, wb_regwren;
     logic [1:0] wb_wbsel;
+    logic [4:0] wb_rd;
     
     assign wb_pc = e_pc;
     assign wb_brtaken = e_brtaken;
@@ -259,6 +264,8 @@ module pd4 #(
     assign wb_imm = d_imm;
     assign wb_res = e_res;
     assign wb_mdata = m_data_o;
+    assign wb_regwren = c_regwren;
+    assign wb_rd = r_rd;
 
     // write back instantiation
     writeback #(
