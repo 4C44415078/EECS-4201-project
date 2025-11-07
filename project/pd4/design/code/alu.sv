@@ -155,15 +155,14 @@ module alu #(
             end
 
             default: begin
-                /* LUI instruction computation (igen handles shift)
+                // LUI instruction computation (igen handles shift)
                 if (opcode_i == `U_TYPE_LUI) begin
                     res_o = rs2_i;
                 end
-                */
                 // NOP for future pipeline stalling
-                //else begin
+                else begin
                 res_o = {DWIDTH{1'b0}};
-                //end
+                end
             end
         endcase
     end
