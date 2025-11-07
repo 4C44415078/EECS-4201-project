@@ -43,6 +43,8 @@
  * 1) AWIDTH wide program counter pc_o
  * 2) DWIDTH wide instruction output insn_o
  */
+`include "constants.svh"
+
 
 module fetch #(
     parameter int DWIDTH=32,
@@ -54,7 +56,7 @@ module fetch #(
 	input logic rst,
 	// outputs	
 	output logic [AWIDTH - 1:0] pc_o,
-   output logic [DWIDTH - 1:0] insn_o
+    output logic [DWIDTH - 1:0] insn_o
 );
     /*
      * Process definitions to be filled by

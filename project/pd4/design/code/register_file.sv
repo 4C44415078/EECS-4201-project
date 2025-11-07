@@ -23,6 +23,8 @@
  * 1) 32-bit rs1 data rs1data_o
  * 2) 32-bit rs2 data rs2data_o
  */
+`include "constants.svh"
+
 // For test bench
 //`timescale 10ns/1ns
 
@@ -57,7 +59,7 @@
     always_ff @(posedge clk) begin
         // Reset contents of register file on reset signal
         if (rst) begin
-            // initialize all register to 32'd0 on reset high
+            // initialize all register to zero on reset high
             for (int i = 0; i < 32; i++) begin
                 x[i] <= {DWIDTH{1'b0}};
             end

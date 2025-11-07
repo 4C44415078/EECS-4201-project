@@ -23,6 +23,7 @@
  * 1) 1-bit operands are equal signal breq_o
  * 2) 1-bit rs1 < rs2 signal brlt_o
  */
+`include "constants.svh"
 
  module branch_control #(
     parameter int DWIDTH=32

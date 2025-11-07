@@ -23,6 +23,8 @@
  * 2) 1-bit branch taken signal brtaken_o
  */
 
+`include "constants.svh"
+
 module alu #(
     parameter int DWIDTH=32,
     parameter int AWIDTH=32
@@ -49,7 +51,10 @@ module alu #(
     // Signals for branch control signals
     logic breq, brlt;
 
-    // Instantiation of branch control module
+    /*
+     * Instantiation of branch control module
+     * This made more sense to me, so we instantiated it here.
+     */
     branch_control #(
         .DWIDTH(DWIDTH)
     ) bc (
@@ -61,6 +66,7 @@ module alu #(
         .brlt_o(brlt)
     );
 
+    // Combinational procedural block for branch control
     always_comb begin
         if (opcode_i == `B_TYPE) begin
             case (funct3_i)
