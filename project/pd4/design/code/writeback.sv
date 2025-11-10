@@ -15,6 +15,8 @@
  * 2) AWIDTH wide next computed PC next_pc_o
  */
 `include "constants.svh"
+// For test bench
+//`timescale 1ns/1ps
 
  module writeback #(
      parameter int DWIDTH=32,
@@ -41,10 +43,16 @@
     always_comb begin
         writeback_data_o = (wbsel_i == `WB_ALU) ? alu_res_i :
             (wbsel_i == `WB_MEM) ? memory_data_i :
-            (wbsel_i == `WB_PC4) ? pc_i :
+            (wbsel_i == `WB_PC4) ? pc_i + 32'd4 :
             (wbsel_i == `WB_IMM) ? imm_i : {DWIDTH{1'b0}};
         
-        next_pc_o = alu_res_i;
+        // Check for branch taken or jump 
+        if (pcsel_i || brtaken_i) begin
+            next_pc_o = alu_res_i;
+        end
+        else begin
+            next_pc_o = pc_i + 32'd4;
+        end
     end
 
 endmodule : writeback

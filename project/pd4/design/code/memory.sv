@@ -52,7 +52,8 @@
  * 1) DWIDTH data output data_o
  */
 `include "constants.svh"
-
+// for testbench
+//`timescale 1ns/1ps
 
 module memory #(
   // parameters
@@ -78,40 +79,47 @@ module memory #(
   output logic [DWIDTH-1:0] data_o
   // ------------------- //
 );
-
+    // // For test bench
+    // localparam int MEM_BYTES = 32'h01100000;
     
-    localparam int MEM_BYTES = `MEM_DEPTH / 8;
-
-	logic [DWIDTH-1:0] temp_memory [0:`LINE_COUNT - 1];
-   	// Byte-addressable memory
+    // Byte-addressable memory
   	logic [7:0] main_memory [0:MEM_BYTES-1];  // Byte-addressable memory
    	logic [AWIDTH-1:0] program_counter;
    	assign program_counter = pc_i - BASE_ADDR;
+    
+    
+
+    // Set the number of bytes in memory.
+    localparam int MEM_BYTES = `MEM_DEPTH;
+
+	logic [DWIDTH-1:0] temp_memory [0:`LINE_COUNT - 1];
   	int i;
  
    	initial begin
         $readmemh(`MEM_PATH, temp_memory);
         // Load data from temp_memory into main_memory
-		for (i = 0; i < MEM_BYTES / 4; i++) begin
+		for (i = 0; i < MEM_BYTES / 4; i++) begin // 4 bytes at a time, took me too long to figure this out
        	   if (i < `LINE_COUNT) begin
-           main_memory[4*i]     = temp_memory[i][7:0];
-       		main_memory[4*i + 1] = temp_memory[i][15:8];
-       		main_memory[4*i + 2] = temp_memory[i][23:16];
-       		main_memory[4*i + 3] = temp_memory[i][31:24];
+                main_memory[4*i]     = temp_memory[i][7:0];
+                main_memory[4*i + 1] = temp_memory[i][15:8];
+                main_memory[4*i + 2] = temp_memory[i][23:16];
+                main_memory[4*i + 3] = temp_memory[i][31:24];
            end
            else begin
-            // initialize the rest of memory to zero
-            main_memory[4*i] = 8'd0;
-            main_memory[4*i + 1] = 8'd0;
-            main_memory[4*i + 2] = 8'd0;
-            main_memory[4*i + 3] = 8'd0;
+                // initialize the rest of memory to zero
+                main_memory[4*i] = 8'd0;
+                main_memory[4*i + 1] = 8'd0;
+                main_memory[4*i + 2] = 8'd0;
+                main_memory[4*i + 3] = 8'd0;
            end
      	end
 		//$display("IMEMORY: Loaded %0d 32-bit words from %s", `LINE_COUNT, `MEM_PATH);
 	end
 
     logic [AWIDTH-1:0] address;
-    assign address = addr_i - BASE_ADDR;
+    // this masking logic handles addresses above BASE_ADDR + MEM_DEPTH (wrap around)
+    // I had tried just masking with MEM_BYTES but this created 0x0010_0000, which did not solve my problem
+    assign address = (addr_i - BASE_ADDR) & (MEM_BYTES - 1);
 
     // Loading data from memory (non-instructions), little endian
     always_comb begin
@@ -121,7 +129,7 @@ module memory #(
                 data_o = '0;
             end
             // Check if address is in physical memory.
-            else if ((addr_i >= BASE_ADDR) && (addr_i + 32'd3 < BASE_ADDR + MEM_BYTES)) begin
+            else if (address + 32'd3 < MEM_BYTES) begin
                 // Checking for function 3, select the correct load
                 case (funct3_i)
                     // Load byte and load byte unsigned, sign extend for signed, zero extend for unsigned
@@ -165,16 +173,21 @@ module memory #(
                             main_memory[address + 2],
                             main_memory[address + 1],
                             main_memory[address]
-                        };
+                        };                     
                     end
-                    // If function 3 is not one of load instructions, output zero
+                    // If function 3 is not one of load instructions, output a word from the address
                     default: begin
-                        data_o = {DWIDTH{1'b0}};
+                        data_o = {
+                            main_memory[address + 3],
+                            main_memory[address + 2],
+                            main_memory[address + 1],
+                            main_memory[address]
+                        };
                     end
                 endcase
             end
         end
-        // If not a load instruction (i.e., not reading from memory, output zero)
+        // If not a load instruction (i.e., not reading from memory, output zero) (based on the TBs this will never get exercised)
         else begin
             data_o = {DWIDTH{1'b0}};
         end
