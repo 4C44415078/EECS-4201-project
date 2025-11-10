@@ -54,6 +54,8 @@ module fetch #(
 	// inputs
 	input logic clk,
 	input logic rst,
+    // Added port for next pc input
+    input logic [AWIDTH - 1:0] next_pc_i,
 	// outputs	
 	output logic [AWIDTH - 1:0] pc_o,
     output logic [DWIDTH - 1:0] insn_o
@@ -69,7 +71,7 @@ module fetch #(
         if (rst) begin
             pc <= BASEADDR;
         end else begin
-            pc <= pc + 32'd4;
+            pc <= next_pc_i;
         end
     end
        

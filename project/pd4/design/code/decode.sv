@@ -67,7 +67,7 @@ module decode #(
         // rd_o = (`OPCODE != `S_TYPE && `OPCODE != `B_TYPE) ? insn_i[11:7] : 5'd0;
         rd_o = insn_i[11:7];
         // Source register rs1 for R-type, I-type, S-type, B-type instructions.
-        rs1_o = (`OPCODE != `U_TYPE_AUIPC && `OPCODE != `U_TYPE_LUI && `OPCODE != `J_TYPE) ? insn_i[19:15] : 5'd0;
+        rs1_o = (`OPCODE != `U_TYPE_AUIPC && `OPCODE != `U_TYPE_LUI) ? insn_i[19:15] : 5'd0; // had to edit this and remove J_TYPE instruction check since the tests still wanted to produce a value for this
         // Source registter rs2 for R-type, S-type, B-type instructions.
         //rs2_o = (`OPCODE == `R_TYPE || `OPCODE == `S_TYPE || `OPCODE == `B_TYPE) ? insn_i[24:20] : 5'd0;
         rs2_o = insn_i[24:20];

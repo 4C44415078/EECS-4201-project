@@ -209,7 +209,7 @@ module control #(
              * wbsel_o doesn't matter since regwren_o = 0
              */
             `B_TYPE: begin
-                pcsel_o = 1'b1;
+                pcsel_o = 1'b0; // Handling this in writeback, therefore pcsel should be zero, and we decide next pc from brtaken
                 immsel_o = 1'b1;
                 regwren_o = 1'b0;
                 rs1sel_o = 1'b1;
@@ -250,7 +250,7 @@ module control #(
                 rs2sel_o = 1'b0;
                 memren_o = 1'b0;
                 memwren_o = 1'b0;
-                wbsel_o = `WB_IMM;
+                wbsel_o = `WB_ALU;
                 alusel_o = `ALU_NOP; 
             end
 
