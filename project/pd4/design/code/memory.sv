@@ -117,9 +117,7 @@ module memory #(
 	end
 
     logic [AWIDTH-1:0] address;
-    // this masking logic handles addresses above BASE_ADDR + MEM_DEPTH (wrap around)
-    // I had tried just masking with MEM_BYTES but this created 0x0010_0000, which did not solve my problem
-    assign address = (addr_i - BASE_ADDR) & (MEM_BYTES - 1);
+    assign address = (addr_i - BASE_ADDR);
 
     // Loading data from memory (non-instructions), little endian
     always_comb begin
@@ -129,7 +127,7 @@ module memory #(
                 data_o = '0;
             end
             // Check if address is in physical memory.
-            else if (address + 32'd3 < MEM_BYTES) begin
+            else begin
                 // Checking for function 3, select the correct load
                 case (funct3_i)
                     // Load byte and load byte unsigned, sign extend for signed, zero extend for unsigned
@@ -173,16 +171,9 @@ module memory #(
                             main_memory[address + 2],
                             main_memory[address + 1],
                             main_memory[address]
-                        };                     
+                        };                   
                     end
-                    // If function 3 is not one of load instructions, output a word from the address
                     default: begin
-                        data_o = {
-                            main_memory[address + 3],
-                            main_memory[address + 2],
-                            main_memory[address + 1],
-                            main_memory[address]
-                        };
                     end
                 endcase
             end
@@ -247,7 +238,8 @@ module memory #(
                     end
                 endcase
                 //$display("IMEMORY: Wrote 0x%08h to 0x%08h", data_i, addr_i);
-            end else begin
+            end 
+            else begin
                 //$display("IMEMORY: OOB write @0x%08h", addr_i);
             end
         end

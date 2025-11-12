@@ -522,8 +522,8 @@ VL_ATTR_COLD void Vtop___024root__trace_full_0_sub_0(Vtop___024root* vlSelf, Ver
     bufp->fullBit(oldp+37,(vlSelfRef.top__DOT__dut__DOT__core__DOT__e_alu1__DOT__brlt));
     bufp->fullIData(oldp+38,((vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc 
                               - (IData)(0x1000000U))),32);
-    bufp->fullIData(oldp+39,((0xfffffU & (vlSelfRef.top__DOT__dut__DOT__core__DOT__e_res 
-                                          - (IData)(0x1000000U)))),32);
+    bufp->fullIData(oldp+39,((vlSelfRef.top__DOT__dut__DOT__core__DOT__e_res 
+                              - (IData)(0x1000000U))),32);
     bufp->fullIData(oldp+40,(vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__x[0]),32);
     bufp->fullIData(oldp+41,(vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__x[1]),32);
     bufp->fullIData(oldp+42,(vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__x[2]),32);
