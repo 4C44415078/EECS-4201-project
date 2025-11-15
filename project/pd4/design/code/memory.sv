@@ -52,8 +52,8 @@
  * 1) DWIDTH data output data_o
  */
 `include "constants.svh"
-// for testbench
-//`timescale 1ns/1ps
+// // for testbench
+// `timescale 1ns/1ps
 
 module memory #(
   // parameters
@@ -80,7 +80,7 @@ module memory #(
   // ------------------- //
 );
     // // For test bench
-    // localparam int MEM_BYTES = 32'h01100000;
+    // localparam int MEM_BYTES = 32'h00100000;
     
     // Byte-addressable memory
   	logic [7:0] main_memory [0:MEM_BYTES-1];  // Byte-addressable memory
@@ -126,7 +126,6 @@ module memory #(
             if ($isunknown(addr_i)) begin
                 data_o = '0;
             end
-            // Check if address is in physical memory.
             else begin
                 // Checking for function 3, select the correct load
                 case (funct3_i)

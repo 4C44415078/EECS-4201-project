@@ -1,0 +1,9 @@
+`define FETCH           fetch1
+`define DECODE          decode1
+`define REGISTERFILE    register_file1
+`define EXECUTE         execute1
+`define MEMORY          memory1
+`define WRITEBACK       writeback1
+`define CONTROL         control1
+`define IGEN            igen1
+`define BRANCHCTRL      execute_1
