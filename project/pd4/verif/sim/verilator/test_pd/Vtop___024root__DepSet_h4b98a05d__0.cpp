@@ -88,19 +88,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
     } else {
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_F__Vstatic__check_F_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][0U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][0U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_F__Vstatic__check_F_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][1U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][1U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_F__Vstatic__check_F_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][2U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][2U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_F__Vstatic__check_F_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][3U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_F__0__idx)][3U];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_F__Vstatic__check_F_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[0U];
@@ -140,19 +140,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         }
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][4U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][4U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][5U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][5U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][6U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][6U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][7U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_D__1__idx)][7U];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[4U];
@@ -238,19 +238,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         }
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][8U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][8U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][9U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][9U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][0xaU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][0xaU];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][0xbU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_R__2__idx)][0xbU];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[8U];
@@ -308,19 +308,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         }
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xcU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xcU];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xdU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xdU];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xeU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xeU];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xfU];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_E__3__idx)][0xfU];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[0xcU];
@@ -366,19 +366,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         }
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x10U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x10U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x11U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x11U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x12U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x12U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x13U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_M__4__idx)][0x13U];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[0x10U];
@@ -432,19 +432,19 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
         }
         __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx 
             = vlSelfRef.top__DOT__genblk3__DOT__tick;
-        if ((0x55aU >= (0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx))) {
+        if ((0x128U >= (0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx))) {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p[0U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x14U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x14U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p[1U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x15U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x15U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p[2U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x16U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x16U];
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p[3U] 
                 = vlSelfRef.top__DOT__genblk3__DOT__pattern
-                [(0x7ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x17U];
+                [(0x1ffU & __Vtask_top__DOT__genblk3__DOT__genblk3__DOT__check_W__5__idx)][0x17U];
         } else {
             vlSelfRef.top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p[0U] 
                 = Vtop__ConstPool__CONST_hda9269f3_0[0x14U];
@@ -498,7 +498,7 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
             VL_WRITEF_NX("%0s\n",0,4096,vlSelfRef.top__DOT__genblk3__DOT__tick_check__DOT__msg.data());
         }
         if (VL_LIKELY((vlSelfRef.top__DOT__genblk3__DOT__tick_check__DOT__correct))) {
-            if (VL_UNLIKELY(((0x55aU == vlSelfRef.top__DOT__genblk3__DOT__tick)))) {
+            if (VL_UNLIKELY(((0x128U == vlSelfRef.top__DOT__genblk3__DOT__tick)))) {
                 VL_WRITEF_NX("Check passed\n",0);
                 VL_FINISH_MT("/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd4/verif/tests/pattern_check.h", 48, "");
             }

@@ -92,10 +92,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__register_file1__DOT__unnamedblk1__DOT__i;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT__i;
         IData/*31:0*/ __VactIterCount;
-        VlUnpacked<VlWide<24>/*767:0*/, 1371> top__DOT__genblk3__DOT__pattern;
+        VlUnpacked<VlWide<24>/*767:0*/, 297> top__DOT__genblk3__DOT__pattern;
         VlUnpacked<IData/*31:0*/, 32> top__DOT__dut__DOT__core__DOT__register_file1__DOT__x;
         VlUnpacked<CData/*7:0*/, 1048576> top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory;
-        VlUnpacked<IData/*31:0*/, 154> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
+        VlUnpacked<IData/*31:0*/, 62> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
         VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     };
     VlTriggerVec<1> __VstlTriggered;
