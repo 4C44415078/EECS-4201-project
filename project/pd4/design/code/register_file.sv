@@ -25,8 +25,8 @@
  */
 `include "constants.svh"
 
-// For test bench
-//`timescale 1ns/1ps
+// // For test bench
+// `timescale 1ns/1ps
 
  module register_file #(
      parameter int DWIDTH=32

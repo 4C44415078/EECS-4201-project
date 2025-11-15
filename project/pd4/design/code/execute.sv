@@ -25,8 +25,8 @@
 
 `include "constants.svh"
 
-// For testbench
-//`timescale 1ns/1ps
+// // For testbench
+// `timescale 1ns/1ps
 
 module alu #(
     parameter int DWIDTH=32,

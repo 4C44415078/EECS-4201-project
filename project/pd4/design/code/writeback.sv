@@ -15,8 +15,8 @@
  * 2) AWIDTH wide next computed PC next_pc_o
  */
 `include "constants.svh"
-// For test bench
-//`timescale 1ns/1ps
+// // For test bench
+// `timescale 1ns/1ps
 
  module writeback #(
      parameter int DWIDTH=32,
