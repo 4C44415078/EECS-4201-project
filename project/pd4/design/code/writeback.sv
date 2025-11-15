@@ -41,6 +41,7 @@
      */
     
     always_comb begin
+        // Muxing the source of writeback data.
         writeback_data_o = (wbsel_i == `WB_ALU) ? alu_res_i :
             (wbsel_i == `WB_MEM) ? memory_data_i :
             (wbsel_i == `WB_PC4) ? pc_i + 32'd4 :
