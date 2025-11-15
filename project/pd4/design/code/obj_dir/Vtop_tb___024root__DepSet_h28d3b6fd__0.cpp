@@ -23,10 +23,10 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
     __Vtask_itype_insn__0__imm = 0;
     IData/*31:0*/ __Vtask_itype_insn__0__insn;
     __Vtask_itype_insn__0__insn = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__1__rd;
-    __Vtask_top_tb__DOT__checkWriteBack__1__rd = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__1__expectedValue;
-    __Vtask_top_tb__DOT__checkWriteBack__1__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__1__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__1__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index = 0;
     CData/*6:0*/ __Vtask_itype_insn__2__opcode;
     __Vtask_itype_insn__2__opcode = 0;
     CData/*4:0*/ __Vtask_itype_insn__2__rd;
@@ -39,10 +39,10 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
     __Vtask_itype_insn__2__imm = 0;
     IData/*31:0*/ __Vtask_itype_insn__2__insn;
     __Vtask_itype_insn__2__insn = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__3__rd;
-    __Vtask_top_tb__DOT__checkWriteBack__3__rd = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__3__expectedValue;
-    __Vtask_top_tb__DOT__checkWriteBack__3__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__3__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__3__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index = 0;
     CData/*6:0*/ __Vtask_itype_insn__4__opcode;
     __Vtask_itype_insn__4__opcode = 0;
     CData/*4:0*/ __Vtask_itype_insn__4__rd;
@@ -55,10 +55,10 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
     __Vtask_itype_insn__4__imm = 0;
     IData/*31:0*/ __Vtask_itype_insn__4__insn;
     __Vtask_itype_insn__4__insn = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__5__rd;
-    __Vtask_top_tb__DOT__checkWriteBack__5__rd = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__5__expectedValue;
-    __Vtask_top_tb__DOT__checkWriteBack__5__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__5__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__5__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index = 0;
     CData/*6:0*/ __Vtask_rtype_insn__6__opcode;
     __Vtask_rtype_insn__6__opcode = 0;
     CData/*4:0*/ __Vtask_rtype_insn__6__rd;
@@ -73,10 +73,10 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
     __Vtask_rtype_insn__6__funct7 = 0;
     IData/*31:0*/ __Vtask_rtype_insn__6__insn;
     __Vtask_rtype_insn__6__insn = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__7__rd;
-    __Vtask_top_tb__DOT__checkWriteBack__7__rd = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__7__expectedValue;
-    __Vtask_top_tb__DOT__checkWriteBack__7__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__7__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__7__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index = 0;
     CData/*6:0*/ __Vtask_rtype_insn__8__opcode;
     __Vtask_rtype_insn__8__opcode = 0;
     CData/*4:0*/ __Vtask_rtype_insn__8__rd;
@@ -91,10 +91,66 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
     __Vtask_rtype_insn__8__funct7 = 0;
     IData/*31:0*/ __Vtask_rtype_insn__8__insn;
     __Vtask_rtype_insn__8__insn = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__9__rd;
-    __Vtask_top_tb__DOT__checkWriteBack__9__rd = 0;
-    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__9__expectedValue;
-    __Vtask_top_tb__DOT__checkWriteBack__9__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__9__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__9__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index = 0;
+    CData/*6:0*/ __Vtask_stype_insn__10__opcode;
+    __Vtask_stype_insn__10__opcode = 0;
+    CData/*2:0*/ __Vtask_stype_insn__10__funct3;
+    __Vtask_stype_insn__10__funct3 = 0;
+    CData/*4:0*/ __Vtask_stype_insn__10__rs1;
+    __Vtask_stype_insn__10__rs1 = 0;
+    CData/*4:0*/ __Vtask_stype_insn__10__rs2;
+    __Vtask_stype_insn__10__rs2 = 0;
+    SData/*11:0*/ __Vtask_stype_insn__10__imm;
+    __Vtask_stype_insn__10__imm = 0;
+    IData/*31:0*/ __Vtask_stype_insn__10__insn;
+    __Vtask_stype_insn__10__insn = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__11__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__11__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index = 0;
+    CData/*6:0*/ __Vtask_itype_insn__12__opcode;
+    __Vtask_itype_insn__12__opcode = 0;
+    CData/*4:0*/ __Vtask_itype_insn__12__rd;
+    __Vtask_itype_insn__12__rd = 0;
+    CData/*2:0*/ __Vtask_itype_insn__12__funct3;
+    __Vtask_itype_insn__12__funct3 = 0;
+    CData/*4:0*/ __Vtask_itype_insn__12__rs1;
+    __Vtask_itype_insn__12__rs1 = 0;
+    SData/*11:0*/ __Vtask_itype_insn__12__imm;
+    __Vtask_itype_insn__12__imm = 0;
+    IData/*31:0*/ __Vtask_itype_insn__12__insn;
+    __Vtask_itype_insn__12__insn = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__13__insn_data;
+    __Vtask_top_tb__DOT__writeInsnToMem__13__insn_data = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index;
+    __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__14__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__14__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__14__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__14__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__15__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__15__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__15__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__15__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__16__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__16__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__16__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__16__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__17__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__17__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__17__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__17__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__18__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__18__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__18__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__18__expectedValue = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__19__rd;
+    __Vtask_top_tb__DOT__checkWriteBack__19__rd = 0;
+    IData/*31:0*/ __Vtask_top_tb__DOT__checkWriteBack__19__expectedValue;
+    __Vtask_top_tb__DOT__checkWriteBack__19__expectedValue = 0;
     VlWide<3>/*95:0*/ __Vtemp_1;
     // Body
     __Vtemp_1[0U] = 0x2e766364U;
@@ -106,7 +162,7 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                                          nullptr, 
                                                          "@(posedge top_tb.clk)", 
                                                          "top_tb.sv", 
-                                                         65);
+                                                         80);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     __Vtask_itype_insn__0__imm = 0x64U;
     __Vtask_itype_insn__0__rs1 = 0xaU;
@@ -122,31 +178,29 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                                      << 7U) 
                                                     | (IData)(__Vtask_itype_insn__0__opcode))));
     vlSelfRef.top_tb__DOT__insn = __Vtask_itype_insn__0__insn;
-    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = vlSelfRef.top_tb__DOT__insn;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         70);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    __Vtask_top_tb__DOT__checkWriteBack__1__expectedValue = 0x64U;
-    __Vtask_top_tb__DOT__checkWriteBack__1__rd = 0xaU;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         30);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__1__rd)] 
-         == __Vtask_top_tb__DOT__checkWriteBack__1__expectedValue)) {
-        VL_WRITEF_NX("Test Passed.\n",0);
-    } else {
-        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
-                     32,__Vtask_top_tb__DOT__checkWriteBack__1__expectedValue,
-                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__1__rd)]);
-    }
+    __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__1__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__1__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__1__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__1__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__1__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__1__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
     __Vtask_itype_insn__2__imm = 0x96U;
     __Vtask_itype_insn__2__rs1 = 0xbU;
     __Vtask_itype_insn__2__funct3 = 0U;
@@ -161,31 +215,29 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                                      << 7U) 
                                                     | (IData)(__Vtask_itype_insn__2__opcode))));
     vlSelfRef.top_tb__DOT__insn = __Vtask_itype_insn__2__insn;
-    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = vlSelfRef.top_tb__DOT__insn;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         76);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    __Vtask_top_tb__DOT__checkWriteBack__3__expectedValue = 0x96U;
-    __Vtask_top_tb__DOT__checkWriteBack__3__rd = 0xbU;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         30);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__3__rd)] 
-         == __Vtask_top_tb__DOT__checkWriteBack__3__expectedValue)) {
-        VL_WRITEF_NX("Test Passed.\n",0);
-    } else {
-        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
-                     32,__Vtask_top_tb__DOT__checkWriteBack__3__expectedValue,
-                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__3__rd)]);
-    }
+    __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__3__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__3__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__3__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__3__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__3__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__3__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
     __Vtask_itype_insn__4__imm = 0xfceU;
     __Vtask_itype_insn__4__rs1 = 0xdU;
     __Vtask_itype_insn__4__funct3 = 0U;
@@ -200,31 +252,29 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                                      << 7U) 
                                                     | (IData)(__Vtask_itype_insn__4__opcode))));
     vlSelfRef.top_tb__DOT__insn = __Vtask_itype_insn__4__insn;
-    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = vlSelfRef.top_tb__DOT__insn;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         82);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    __Vtask_top_tb__DOT__checkWriteBack__5__expectedValue = 0xffffffceU;
-    __Vtask_top_tb__DOT__checkWriteBack__5__rd = 0xdU;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         30);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__5__rd)] 
-         == __Vtask_top_tb__DOT__checkWriteBack__5__expectedValue)) {
-        VL_WRITEF_NX("Test Passed.\n",0);
-    } else {
-        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
-                     32,__Vtask_top_tb__DOT__checkWriteBack__5__expectedValue,
-                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__5__rd)]);
-    }
+    __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__5__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__5__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__5__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__5__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__5__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__5__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
     __Vtask_rtype_insn__6__funct7 = 0U;
     __Vtask_rtype_insn__6__rs2 = 0xbU;
     __Vtask_rtype_insn__6__rs1 = 0xaU;
@@ -241,36 +291,34 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                       (((IData)(__Vtask_rtype_insn__6__rd) 
                                         << 7U) | (IData)(__Vtask_rtype_insn__6__opcode))));
     vlSelfRef.top_tb__DOT__insn = __Vtask_rtype_insn__6__insn;
-    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = vlSelfRef.top_tb__DOT__insn;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         88);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    __Vtask_top_tb__DOT__checkWriteBack__7__expectedValue = 0xfaU;
-    __Vtask_top_tb__DOT__checkWriteBack__7__rd = 0xcU;
-    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
-                                                         nullptr, 
-                                                         "@(posedge top_tb.clk)", 
-                                                         "top_tb.sv", 
-                                                         30);
-    vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__7__rd)] 
-         == __Vtask_top_tb__DOT__checkWriteBack__7__expectedValue)) {
-        VL_WRITEF_NX("Test Passed.\n",0);
-    } else {
-        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
-                     32,__Vtask_top_tb__DOT__checkWriteBack__7__expectedValue,
-                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__7__rd)]);
-    }
+    __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__7__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__7__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__7__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__7__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__7__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__7__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
     __Vtask_rtype_insn__8__funct7 = 0x20U;
     __Vtask_rtype_insn__8__rs2 = 0xbU;
     __Vtask_rtype_insn__8__rs1 = 0xaU;
     __Vtask_rtype_insn__8__funct3 = 0U;
-    __Vtask_rtype_insn__8__rd = 0xcU;
+    __Vtask_rtype_insn__8__rd = 0xeU;
     __Vtask_rtype_insn__8__opcode = 0x33U;
     __Vtask_rtype_insn__8__insn = ((((IData)(__Vtask_rtype_insn__8__funct7) 
                                      << 0x19U) | ((IData)(__Vtask_rtype_insn__8__rs2) 
@@ -282,33 +330,262 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
                                       (((IData)(__Vtask_rtype_insn__8__rd) 
                                         << 7U) | (IData)(__Vtask_rtype_insn__8__opcode))));
     vlSelfRef.top_tb__DOT__insn = __Vtask_rtype_insn__8__insn;
-    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = vlSelfRef.top_tb__DOT__insn;
+    __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__9__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__9__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__9__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__9__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__9__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__9__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
+    __Vtask_stype_insn__10__imm = 0xfd8U;
+    __Vtask_stype_insn__10__rs2 = 0x1dU;
+    __Vtask_stype_insn__10__rs1 = 2U;
+    __Vtask_stype_insn__10__funct3 = 2U;
+    __Vtask_stype_insn__10__opcode = 0x23U;
+    __Vtask_stype_insn__10__insn = (((0xfe000000U & 
+                                      ((IData)(__Vtask_stype_insn__10__imm) 
+                                       << 0x14U)) | 
+                                     ((IData)(__Vtask_stype_insn__10__rs2) 
+                                      << 0x14U)) | 
+                                    ((((IData)(__Vtask_stype_insn__10__rs1) 
+                                       << 0xfU) | ((IData)(__Vtask_stype_insn__10__funct3) 
+                                                   << 0xcU)) 
+                                     | ((0xf80U & ((IData)(__Vtask_stype_insn__10__imm) 
+                                                   << 7U)) 
+                                        | (IData)(__Vtask_stype_insn__10__opcode))));
+    vlSelfRef.top_tb__DOT__insn = __Vtask_stype_insn__10__insn;
+    __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__11__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__11__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__11__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__11__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__11__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__11__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
+    __Vtask_itype_insn__12__imm = 0xfd8U;
+    __Vtask_itype_insn__12__rs1 = 2U;
+    __Vtask_itype_insn__12__funct3 = 2U;
+    __Vtask_itype_insn__12__rd = 0x16U;
+    __Vtask_itype_insn__12__opcode = 3U;
+    __Vtask_itype_insn__12__insn = (((IData)(__Vtask_itype_insn__12__imm) 
+                                     << 0x14U) | ((
+                                                   ((IData)(__Vtask_itype_insn__12__rs1) 
+                                                    << 0xfU) 
+                                                   | ((IData)(__Vtask_itype_insn__12__funct3) 
+                                                      << 0xcU)) 
+                                                  | (((IData)(__Vtask_itype_insn__12__rd) 
+                                                      << 7U) 
+                                                     | (IData)(__Vtask_itype_insn__12__opcode))));
+    vlSelfRef.top_tb__DOT__insn = __Vtask_itype_insn__12__insn;
+    __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index 
+        = vlSelfRef.top_tb__DOT__index;
+    __Vtask_top_tb__DOT__writeInsnToMem__13__insn_data 
+        = vlSelfRef.top_tb__DOT__insn;
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index)] 
+        = (0xffU & __Vtask_top_tb__DOT__writeInsnToMem__13__insn_data);
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(1U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__13__insn_data 
+                    >> 8U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(2U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index))] 
+        = (0xffU & (__Vtask_top_tb__DOT__writeInsnToMem__13__insn_data 
+                    >> 0x10U));
+    vlSelfRef.top_tb__DOT__hut__DOT__memory1__DOT__main_memory[(0xfffffU 
+                                                                & ((IData)(3U) 
+                                                                   + __Vtask_top_tb__DOT__writeInsnToMem__13__insn_index))] 
+        = (__Vtask_top_tb__DOT__writeInsnToMem__13__insn_data 
+           >> 0x18U);
+    vlSelfRef.top_tb__DOT__index = ((IData)(4U) + vlSelfRef.top_tb__DOT__index);
+    vlSelfRef.top_tb__DOT__rst = 1U;
     co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
                                                          nullptr, 
                                                          "@(posedge top_tb.clk)", 
                                                          "top_tb.sv", 
-                                                         94);
+                                                         125);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    __Vtask_top_tb__DOT__checkWriteBack__9__expectedValue = 0xffffffceU;
-    __Vtask_top_tb__DOT__checkWriteBack__9__rd = 0xcU;
+    vlSelfRef.top_tb__DOT__rst = 0U;
+    vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x[0x1dU] = 0xdeadbeefU;
     co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
                                                          nullptr, 
                                                          "@(posedge top_tb.clk)", 
                                                          "top_tb.sv", 
-                                                         30);
+                                                         133);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__14__expectedValue = 0x64U;
+    __Vtask_top_tb__DOT__checkWriteBack__14__rd = 0xaU;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__9__rd)] 
-         == __Vtask_top_tb__DOT__checkWriteBack__9__expectedValue)) {
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__14__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__14__expectedValue)) {
         VL_WRITEF_NX("Test Passed.\n",0);
     } else {
         VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
-                     32,__Vtask_top_tb__DOT__checkWriteBack__9__expectedValue,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__14__expectedValue,
                      32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
-                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__9__rd)]);
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__14__rd)]);
+    }
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         137);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__15__expectedValue = 0x96U;
+    __Vtask_top_tb__DOT__checkWriteBack__15__rd = 0xbU;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__15__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__15__expectedValue)) {
+        VL_WRITEF_NX("Test Passed.\n",0);
+    } else {
+        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__15__expectedValue,
+                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__15__rd)]);
+    }
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         141);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__16__expectedValue = 0xffffffceU;
+    __Vtask_top_tb__DOT__checkWriteBack__16__rd = 0xdU;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__16__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__16__expectedValue)) {
+        VL_WRITEF_NX("Test Passed.\n",0);
+    } else {
+        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__16__expectedValue,
+                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__16__rd)]);
+    }
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         145);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__17__expectedValue = 0xfaU;
+    __Vtask_top_tb__DOT__checkWriteBack__17__rd = 0xcU;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__17__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__17__expectedValue)) {
+        VL_WRITEF_NX("Test Passed.\n",0);
+    } else {
+        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__17__expectedValue,
+                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__17__rd)]);
+    }
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         149);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__18__expectedValue = 0xffffffceU;
+    __Vtask_top_tb__DOT__checkWriteBack__18__rd = 0xeU;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__18__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__18__expectedValue)) {
+        VL_WRITEF_NX("Test Passed.\n",0);
+    } else {
+        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__18__expectedValue,
+                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__18__rd)]);
+    }
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         158);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    __Vtask_top_tb__DOT__checkWriteBack__19__expectedValue = 0xdeadbeefU;
+    __Vtask_top_tb__DOT__checkWriteBack__19__rd = 0x16U;
+    co_await vlSelfRef.__VtrigSched_ha9f78880__0.trigger(0U, 
+                                                         nullptr, 
+                                                         "@(posedge top_tb.clk)", 
+                                                         "top_tb.sv", 
+                                                         31);
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    if ((vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+         [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__19__rd)] 
+         == __Vtask_top_tb__DOT__checkWriteBack__19__expectedValue)) {
+        VL_WRITEF_NX("Test Passed.\n",0);
+    } else {
+        VL_WRITEF_NX("Test Failed. Expected: res = %10# Got: res = %10#\n",0,
+                     32,__Vtask_top_tb__DOT__checkWriteBack__19__expectedValue,
+                     32,vlSelfRef.top_tb__DOT__hut__DOT__register_file1__DOT__x
+                     [(0x1fU & __Vtask_top_tb__DOT__checkWriteBack__19__rd)]);
     }
     (void)VL_SYSTEM_II(0x64617465U);
-    VL_FINISH_MT("top_tb.sv", 97, "");
+    VL_FINISH_MT("top_tb.sv", 162, "");
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
 }
 
