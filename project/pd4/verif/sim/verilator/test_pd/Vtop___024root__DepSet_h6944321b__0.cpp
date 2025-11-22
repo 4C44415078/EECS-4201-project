@@ -109,7 +109,20 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     __VdlySet__top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory__v3 = 0U;
     __VdlySet__top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory__v7 = 0U;
     if (vlSelfRef.top__DOT__reset) {
-        vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__unnamedblk1__DOT__i = 0x20U;
+        vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__unnamedblk2__DOT__i = 0x20U;
+    }
+    if (VL_UNLIKELY(((0x73U == vlSelfRef.top__DOT__dut__DOT__core__DOT__decode1__DOT__insn_o)))) {
+        VL_FINISH_MT("/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd4/design/code/pd4.sv", 244, "");
+    }
+    if ((0x8067U == vlSelfRef.top__DOT__dut__DOT__core__DOT__decode1__DOT__insn_o)) {
+        vlSelfRef.top__DOT__dut__DOT__core__DOT__is_program = 1U;
+    }
+    if (VL_UNLIKELY((((IData)(vlSelfRef.top__DOT__dut__DOT__core__DOT__is_program) 
+                      & (0x1100000U == vlSelfRef.top__DOT__dut__DOT__core__DOT__register_file1__DOT__x
+                         [2U]))))) {
+        VL_FINISH_MT("/Users/padl/Documents/Code/EECS4201/EECS-4201-project/project/pd4/design/code/pd4.sv", 247, "");
+    }
+    if (vlSelfRef.top__DOT__reset) {
         __VdlySet__top__DOT__dut__DOT__core__DOT__register_file1__DOT__x__v0 = 1U;
         vlSelfRef.top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc = 0x1000000U;
     } else {

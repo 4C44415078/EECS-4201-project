@@ -55,6 +55,13 @@
       */
     logic [DWIDTH - 1:0] x [DWIDTH-1:0];
 
+    // initialize register file to all zeros
+    initial begin
+        for (int i = 0; i < 32; i++) begin
+            x[i] = 32'd0;
+        end
+    end
+
     // Sequential procedural block for writing to register file, regwren_i must be high
     always_ff @(posedge clk) begin
         // Reset contents of register file on reset signal
