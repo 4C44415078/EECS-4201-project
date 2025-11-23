@@ -3,21 +3,6 @@
  *
  * Description: Fetch stage
  *
- * -------- REPLACE THIS FILE WITH THE FETCH MODULE DEVELOPED IN PD1 -----------
- *
- * Inputs:
- * 1) clk
- * 2) rst signal
- *
- * Outputs:
- * 1) AWIDTH wide program counter pc_o
- * 2) DWIDTH wide instruction output insn_o
- */
-/*
- * Module: fetch
- *
- * Description: Fetch stage
- *
  * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD1 -----------
  *
  * Inputs:
@@ -28,23 +13,7 @@
  * 1) AWIDTH wide program counter pc_o
  * 2) DWIDTH wide instruction output insn_o
  */
-
-
-/*
- * Module: fetch
- *
- * Description: Fetch stage
- *
- * Inputs:
- * 1) clk
- * 2) rst signal
- *
- * Outputs:
- * 1) AWIDTH wide program counter pc_o
- * 2) DWIDTH wide instruction output insn_o
- */
 `include "constants.svh"
-
 
 module fetch #(
     parameter int DWIDTH=32,
@@ -60,22 +29,18 @@ module fetch #(
 	output logic [AWIDTH - 1:0] pc_o,
     output logic [DWIDTH - 1:0] insn_o
 );
-    /*
-     * Process definitions to be filled by
-     * student below...
-     */
     
     logic [AWIDTH - 1:0] pc = BASEADDR;
+    assign pc_o = pc;
       
     always_ff @(posedge clk) begin 
         if (rst) begin
-            pc <= BASEADDR;
-        end else begin
+            pc <= 32'd0;
+        end 
+        else begin 
             pc <= next_pc_i;
         end
     end
-       
-	assign pc_o = pc;
 
 endmodule : fetch
 				

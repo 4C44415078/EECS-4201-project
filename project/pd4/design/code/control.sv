@@ -250,7 +250,7 @@ module control #(
                 rs2sel_o = 1'b0;
                 memren_o = 1'b0;
                 memwren_o = 1'b0;
-                wbsel_o = `WB_ALU;
+                wbsel_o = `WB_IMM;
                 alusel_o = `ALU_NOP; 
             end
 

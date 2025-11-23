@@ -66,6 +66,7 @@ module fetch #(
      */
     
     logic [AWIDTH - 1:0] pc = BASEADDR;
+    assign pc_o = pc;
       
     always_ff @(posedge clk) begin 
         if (rst) begin
@@ -74,8 +75,6 @@ module fetch #(
             pc <= next_pc_i;
         end
     end
-       
-	assign pc_o = pc;
 
 endmodule : fetch
 				
