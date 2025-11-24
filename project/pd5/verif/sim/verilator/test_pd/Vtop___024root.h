@@ -40,7 +40,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__c_rs1sel;
         CData/*1:0*/ top__DOT__dut__DOT__core__DOT__c_wbsel;
         CData/*3:0*/ top__DOT__dut__DOT__core__DOT__c_alusel;
+        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rd;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rs1;
+        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rs2;
         CData/*6:0*/ top__DOT__dut__DOT__core__DOT__d_reg_opcode;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_reg_rd;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_reg_rs1;
@@ -48,10 +50,13 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*6:0*/ top__DOT__dut__DOT__core__DOT__d_reg_funct7;
         CData/*2:0*/ top__DOT__dut__DOT__core__DOT__d_reg_funct3;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__e_brtaken;
+        CData/*6:0*/ top__DOT__dut__DOT__core__DOT__e_reg_opcode;
         CData/*2:0*/ top__DOT__dut__DOT__core__DOT__e_reg_funct3;
+        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__e_reg_rd;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__e_reg_brtaken;
         CData/*1:0*/ top__DOT__dut__DOT__core__DOT__m_size_encoded;
         CData/*2:0*/ top__DOT__dut__DOT__core__DOT__m_funct3;
+        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__wb_reg_rd;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__is_program;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__e_alu1__DOT__breq;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__e_alu1__DOT__brlt;
@@ -75,13 +80,13 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__pc;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__alu_res;
         VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p;
+    };
+    struct {
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__pc;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__address;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__data;
         VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_M__Vstatic__check_M_func__DOT__p;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__pc;
-    };
-    struct {
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__data;
         VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_W__Vstatic__check_W_func__DOT__p;
         IData/*31:0*/ top__DOT__clkg__DOT__counter;
@@ -104,15 +109,19 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__e_reg_res;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__e_reg_rs2data;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__m_data_o;
+        IData/*31:0*/ top__DOT__dut__DOT__core__DOT__m_reg_pc;
+        IData/*31:0*/ top__DOT__dut__DOT__core__DOT__m_reg_res;
+        IData/*31:0*/ top__DOT__dut__DOT__core__DOT__m_reg_data;
+        IData/*31:0*/ top__DOT__dut__DOT__core__DOT__m_reg_imm;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__wb_data;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__wb_reg_data;
-        IData/*31:0*/ top__DOT__dut__DOT__core__DOT__wb_reg_nextPC;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__fetch1__DOT__insn_o;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__fetch1__DOT__pc;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__register_file1__DOT__unnamedblk1__DOT__i;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT__i;
         IData/*31:0*/ __VactIterCount;
-        VlUnpacked<VlWide<24>/*767:0*/, 2389> top__DOT__genblk3__DOT__pattern;
+        VlUnpacked<VlWide<24>/*767:0*/, 1371> top__DOT__genblk3__DOT__pattern;
+        VlUnpacked<SData/*12:0*/, 3> top__DOT__dut__DOT__core__DOT__ctrl_reg;
         VlUnpacked<IData/*31:0*/, 32> top__DOT__dut__DOT__core__DOT__register_file1__DOT__x;
         VlUnpacked<CData/*7:0*/, 1048576> top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory;
         VlUnpacked<IData/*31:0*/, 154> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;

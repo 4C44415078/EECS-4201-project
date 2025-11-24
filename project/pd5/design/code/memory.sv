@@ -73,8 +73,8 @@ module memory #(
   input logic [2:0] funct3_i,
   input logic memren_i,
   // ------------------- //
-  input logic read_en_i,
-  input logic write_en_i,
+  input logic memwren_i,
+  input logic insn_en_i,
   // outputs
   output logic [DWIDTH-1:0] insn_o,
   // --- Added output port --- //
@@ -188,7 +188,7 @@ module memory #(
     // Memory port and read for instruction fetching (READ-ONLY)
 	always_comb begin
 	    insn_o = '0; // default to zero
-        if (read_en_i) begin
+        if (insn_en_i) begin
             if ($isunknown(pc_i)) begin
                 insn_o = '0;
             end else if ((pc_i >= BASE_ADDR) && (pc_i + 32'd3 < BASE_ADDR + MEM_BYTES)) begin
@@ -209,7 +209,7 @@ module memory #(
     // Write to memory, since instrucitons are read only we only need to worry about writing data.
 	always_ff @(posedge clk) begin
         // Check if write enable signal is high
-        if (write_en_i) begin
+        if (memwren_i) begin
             // Check if data address is in physical memory space
             if ((addr_i >= BASE_ADDR) && (addr_i + 32'd3 < BASE_ADDR + MEM_BYTES)) begin
                 // Check function 3 for type of store instruction

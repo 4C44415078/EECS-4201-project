@@ -37,7 +37,7 @@ module pd5 #(
     control #(
         .DWIDTH(32)
     ) control1 (
-        .insn_i(f_insn),
+        .insn_i(f_reg_insn),
         .opcode_i(d_opcode),
         .funct7_i(d_funct7),
         .funct3_i(d_funct3),
@@ -51,6 +51,25 @@ module pd5 #(
         .wbsel_o(c_wbsel),
         .alusel_o(c_alusel)
     );
+
+    // control pipeline registers
+    logic [12:0] ctrl_reg [2:0];
+    always_ff @(negedge clk) begin
+      `D_X <= {
+        c_alusel,
+        c_wbsel,
+        c_memwren,
+        c_memren,
+        c_rs2sel,
+        c_rs1sel,
+        c_regwren,
+        c_immsel,
+        c_pcsel
+      };
+      `X_M <= `D_X;
+      `M_W <= `X_M;
+    end
+
     // ---------------------------------- //
     // ---------- CONTROL END ----------- //
 
@@ -58,7 +77,8 @@ module pd5 #(
     // ---------- FETCH STAGE ----------- //
     // ---------------------------------- //
     // fetch signals
-    logic [AWIDTH-1:0] f_pc, f_insn;
+    logic [AWIDTH-1:0] f_pc, pc; 
+    logic [DWIDTH-1:0] f_insn;
     // fetch instantiation
     fetch #(
         .AWIDTH(32),
@@ -67,10 +87,11 @@ module pd5 #(
     ) fetch1 (
         .clk(clk),
         .rst(reset),
-        .next_pc_i(wb_reg_nextPC),
-        .pc_o(f_pc),            
+        .pc_o(pc),            
         .insn_o()         
     );
+
+    assign f_pc = (`X_M[`PCSEL] || e_brtaken) ? e_res : pc;
 
     // fetch pipeline registers
     logic [AWIDTH-1:0] f_reg_pc;
@@ -105,9 +126,9 @@ module pd5 #(
     ) decode1 (
         .clk(clk),
         .rst(reset),
-        .insn_i(f_reg_insn),
-        .pc_i(f_reg_pc),
-        .pc_o(d_pc),            
+        .insn_i(d_reg_insn),
+        .pc_i(d_reg_pc),
+        .pc_o(),            
         .insn_o(),         
         .opcode_o(d_opcode),         
         .rd_o(d_rd),         
@@ -129,7 +150,7 @@ module pd5 #(
         .DWIDTH(32)
     ) igen1 (
         .opcode_i(d_opcode),
-        .insn_i(f_reg_insn),
+        .insn_i(d_reg_insn),
         .imm_o(igen_imm)
     );
 
@@ -144,14 +165,15 @@ module pd5 #(
       .rst(reset),
       .rs1_i(d_rs1),
       .rs2_i(d_rs2),
-      .rd_i(d_rd),
+      .rd_i(wb_reg_rd),
       .datawb_i(wb_reg_data),
-      .regwren_i(c_regwren),
+      .regwren_i(`M_W[`REGWREN]),
       .rs1data_o(r_rs1data),
       .rs2data_o(r_rs2data)
     );
 
     // decode pipeline registers
+    logic [DWIDTH-1:0] d_reg_insn;
     logic [6:0] d_reg_opcode;
     logic [4:0] d_reg_rd;
     logic [4:0] d_reg_rs1;
@@ -164,16 +186,32 @@ module pd5 #(
     logic [DWIDTH-1:0] d_reg_rs2data;
 
     always_ff @(negedge clk) begin
-      d_reg_opcode <= d_opcode;
-      d_reg_rd <= d_rd;
-      d_reg_rs1 <= d_rs1;
-      d_reg_rs2 <= d_rs2;
-      d_reg_funct7 <= d_funct7;
-      d_reg_funct3 <= d_funct3;
-      d_reg_imm <= d_imm;
-      d_reg_pc <= d_pc;
-      d_reg_rs1data <= r_rs1data;
-      d_reg_rs2data <= r_rs2data;
+      if (reset) begin
+        d_reg_insn <= '0;
+        d_reg_opcode <= '0;
+        d_reg_rd <= '0;
+        d_reg_rs1 <= '0;
+        d_reg_rs2 <= '0;
+        d_reg_funct7 <= '0;
+        d_reg_funct3 <= '0;
+        d_reg_imm <= '0;
+        d_reg_pc <= '0;
+        d_reg_rs1data <= '0;
+        d_reg_rs2data <= '0;
+      end
+      else begin
+        d_reg_insn <= f_reg_insn;
+        d_reg_opcode <= d_opcode;
+        d_reg_rd <= d_rd;
+        d_reg_rs1 <= d_rs1;
+        d_reg_rs2 <= d_rs2;
+        d_reg_funct7 <= d_funct7;
+        d_reg_funct3 <= d_funct3;
+        d_reg_imm <= d_imm;
+        d_reg_pc <= f_reg_pc;
+        d_reg_rs1data <= r_rs1data;
+        d_reg_rs2data <= r_rs2data;
+      end
     end
 
     // ---------------------------------- //
@@ -187,8 +225,8 @@ module pd5 #(
     logic e_brtaken;
 
     // mux for execute input data
-    assign e_rs1 = (c_rs1sel == 1'b1) ? d_reg_rs1data : d_reg_pc;
-    assign e_rs2 = (c_rs2sel == 1'b1) ? d_reg_rs2data : d_reg_imm;
+    assign e_rs1 = (`D_X[`RS1SEL] == 1'b1) ? d_reg_rs1data : d_reg_pc;
+    assign e_rs2 = (`D_X[`RS2SEL] == 1'b1) ? d_reg_rs2data : d_reg_imm;
 
 
     // Execute instantiation
@@ -203,26 +241,42 @@ module pd5 #(
       .funct7_i(d_reg_funct7),
       .opcode_i(d_reg_opcode),
       .imm_i(d_reg_imm),
-      .alusel_i(c_alusel),
+      .alusel_i(`D_X[`ALUSEL]),
       .res_o(e_res),
       .brtaken_o(e_brtaken)
     );
 
     // execute pipeline registers
     logic [AWIDTH-1:0] e_reg_pc;
+    logic [6:0] e_reg_opcode;
     logic [2:0] e_reg_funct3;
     logic [DWIDTH-1:0] e_reg_imm;
     logic [DWIDTH-1:0] e_reg_res;
     logic [DWIDTH-1:0] e_reg_rs2data;
+    logic [4:0]e_reg_rd;
     logic e_reg_brtaken;
     
     always_ff @(negedge clk) begin
-      e_reg_pc <= d_reg_pc;
-      e_reg_funct3 <= d_reg_funct3;
-      e_reg_imm <= d_reg_imm;
-      e_reg_res <= e_res;
-      e_reg_rs2data <= d_reg_rs2data;
-      e_reg_brtaken <= e_brtaken;
+      if (reset) begin
+        e_reg_pc <= '0;
+        e_reg_opcode <= '0;
+        e_reg_funct3 <= '0;
+        e_reg_imm <= '0;
+        e_reg_res <= '0;
+        e_reg_rs2data <= '0;
+        e_reg_rd <= '0;
+        e_reg_brtaken <= '0;
+      end
+      else begin
+        e_reg_pc <= d_reg_pc;
+        e_reg_opcode <= d_reg_opcode;
+        e_reg_funct3 <= d_reg_funct3;
+        e_reg_imm <= d_reg_imm;
+        e_reg_res <= e_res;
+        e_reg_rs2data <= d_reg_rs2data;
+        e_reg_rd <= d_reg_rd;
+        e_reg_brtaken <= e_brtaken;
+      end
     end
     // ---------------------------------- //
     // ---------- EXECUTE END ----------- //
@@ -232,18 +286,18 @@ module pd5 #(
     // ---------- MEMORY STAGE ---------- //
     // ---------------------------------- //
     logic [DWIDTH-1:0] m_data_o;
-    logic m_memren, read_en;
+    logic insn_en;
     logic [1:0] m_size_encoded;
 
     logic [2:0] m_funct3;
     // For all NON-memory access instructions, change funct3 so that it loads a word
-    assign m_funct3 = (d_reg_opcode !== `S_TYPE || d_reg_opcode !== `I_TYPE_L) ? 3'd2 : d_reg_funct3;
+    assign m_funct3 = (e_reg_opcode !== `S_TYPE || e_reg_opcode !== `I_TYPE_L) ? 3'd2 : e_reg_funct3;
     // Use the right most 2-bits for size_encode otherwise use the 2-bit of funct3 of the actual instruction   
-    assign m_size_encoded = (d_reg_opcode == `S_TYPE || d_reg_opcode == `I_TYPE_L) ? m_funct3[1:0] : d_reg_funct3[1:0];
+    assign m_size_encoded = (e_reg_opcode == `S_TYPE || e_reg_opcode == `I_TYPE_L) ? m_funct3[1:0] : e_reg_funct3[1:0];
 
-    // Always read memory
-    assign read_en = 1'b1;
-    assign m_memren = 1'b1;
+    // Read instruction from memory only if no reset.
+    assign insn_en = (reset) ? 0 : 1;
+
 
     // Memory instantiation
     memory #(
@@ -257,12 +311,32 @@ module pd5 #(
         .data_i(e_reg_rs2data),
         .addr_i(e_reg_res),
         .funct3_i(m_funct3),
-        .memren_i(m_memren),
-        .read_en_i(read_en),
-        .write_en_i(c_memwren),
+        .memren_i(`X_M[`MEMREN]),
+        .memwren_i(`X_M[`MEMWREN]),
+        .insn_en_i(insn_en),
         .insn_o(f_insn),
         .data_o(m_data_o)
     );
+
+    // memory pipeline registers
+    logic [AWIDTH-1:0] m_reg_pc;
+    logic [DWIDTH-1:0] m_reg_res, m_reg_data, m_reg_imm;
+
+    always_ff @(posedge clk) begin
+      if (reset) begin
+        m_reg_pc <= '0;
+        m_reg_res <= '0;
+        m_reg_data <= '0;
+        m_reg_imm <= '0;
+      end
+      else begin
+        m_reg_pc <= e_reg_pc;
+        m_reg_res <= e_reg_res;
+        m_reg_data <= m_data_o;
+        m_reg_imm <= e_reg_imm;
+      end
+    end
+
     // ---------------------------------- //
     // ---------- MEMORY END ------------ //
     
@@ -270,36 +344,33 @@ module pd5 #(
     // ---------- WRITEBACK STAGE ------- //
 
     // write back signals
-    logic [DWIDTH-1:0] wb_data, wb_nextPC;
+    logic [DWIDTH-1:0] wb_data;
 
     // write back instantiation
     writeback #(
       .DWIDTH(DWIDTH),
       .AWIDTH(AWIDTH)
     ) wb_wb1 (
-      .pc_i(e_reg_pc),
-      .alu_res_i(e_reg_res),
-      .memory_data_i(m_data_o),
-      .brtaken_i(e_reg_brtaken),
-      .wbsel_i(c_wbsel),
-      .imm_i(e_reg_imm),
-      .pcsel_i(c_pcsel),
-      .writeback_data_o(wb_data),
-      .next_pc_o(wb_nextPC)
+      .pc_i(m_reg_pc),
+      .alu_res_i(m_reg_res),
+      .memory_data_i(m_reg_data),
+      .wbsel_i(`M_W[`WBSEL]),
+      .imm_i(m_reg_imm),
+      .writeback_data_o(wb_data)
     );
 
     // writeback pipeline registers
     logic [DWIDTH-1:0] wb_reg_data;
-    logic [AWIDTH-1:0] wb_reg_nextPC;
+    logic [4:0] wb_reg_rd;
 
     always_ff @(negedge clk) begin
       if (reset) begin
-        wb_reg_nextPC <= 32'h01000000;
         wb_reg_data <= 32'd0;
+        wb_reg_rd <= 5'd0;
       end
       else begin
         wb_reg_data <= wb_data;
-        wb_reg_nextPC <= wb_nextPC;
+        wb_reg_rd <= e_reg_rd;
       end
     end
     // ---------------------------------- //

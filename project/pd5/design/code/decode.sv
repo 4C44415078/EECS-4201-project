@@ -64,13 +64,13 @@ module decode #(
         opcode_o = `OPCODE;
         funct3_o = `FUNCT3;
         // Destination register rd for R-type, I-type, U-type, and J-type instructions.
-        // rd_o = (`OPCODE != `S_TYPE && `OPCODE != `B_TYPE) ? insn_i[11:7] : 5'd0;
-        rd_o = insn_i[11:7];
+        rd_o = (`OPCODE != `S_TYPE && `OPCODE != `B_TYPE) ? insn_i[11:7] : 5'd0;
+        // rd_o = insn_i[11:7];
         // Source register rs1 for R-type, I-type, S-type, B-type instructions.
         rs1_o = (`OPCODE != `U_TYPE_AUIPC && `OPCODE != `U_TYPE_LUI) ? insn_i[19:15] : 5'd0; // had to edit this and remove J_TYPE instruction check since the tests still wanted to produce a value for this
         // Source registter rs2 for R-type, S-type, B-type instructions.
-        //rs2_o = (`OPCODE == `R_TYPE || `OPCODE == `S_TYPE || `OPCODE == `B_TYPE) ? insn_i[24:20] : 5'd0;
-        rs2_o = insn_i[24:20];
+        rs2_o = (`OPCODE == `R_TYPE || `OPCODE == `S_TYPE || `OPCODE == `B_TYPE) ? insn_i[24:20] : 5'd0;
+        // rs2_o = insn_i[24:20];
         // FUNCT7 for R-type and I-type shift (slli, srli, srai) instructions.
         funct7_o = `FUNCT7;
         //funct7_o = (`OPCODE == `R_TYPE) ? `FUNCT7 :

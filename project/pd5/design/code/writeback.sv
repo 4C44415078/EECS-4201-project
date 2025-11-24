@@ -25,13 +25,13 @@
      input logic [DWIDTH-1:0] alu_res_i,
      input logic [DWIDTH-1:0] memory_data_i,
      input logic [1:0] wbsel_i,
-     input logic brtaken_i,
+    //  input logic brtaken_i,
      // ADDED SIGNALS --------------------------
      input logic [DWIDTH-1:0] imm_i,
-     input logic pcsel_i,
+    //  input logic pcsel_i,
      // ----------------------------------------
-     output logic [DWIDTH-1:0] writeback_data_o,
-     output logic [AWIDTH-1:0] next_pc_o
+     output logic [DWIDTH-1:0] writeback_data_o
+    // output logic [AWIDTH-1:0] next_pc_o
  );
 
     /*
@@ -45,14 +45,6 @@
             (wbsel_i == `WB_MEM) ? memory_data_i :
             (wbsel_i == `WB_PC4) ? pc_i + 32'd4 :
             (wbsel_i == `WB_IMM) ? imm_i : {DWIDTH{1'b0}};
-        
-        // Check for branch taken or jump 
-        if (pcsel_i || brtaken_i) begin
-            next_pc_o = alu_res_i;
-        end
-        else begin
-            next_pc_o = pc_i + 32'd4;
-        end
     end
 
 endmodule : writeback

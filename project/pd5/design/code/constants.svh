@@ -12,6 +12,21 @@ parameter logic [31:0] ZERO = 32'd0;
 /*
  * Define constants as required...
  */
+// Control pipeline bus
+`define PCSEL 0
+`define IMMSEL 1
+`define REGWREN 2
+`define RS1SEL 3
+`define RS2SEL 4
+`define MEMREN 5
+`define MEMWREN 6
+`define WBSEL 8:7
+`define ALUSEL 12:9
+
+`define D_X ctrl_reg[0]
+`define X_M ctrl_reg[1]
+`define M_W ctrl_reg[2]
+
  // Opcode constants
 `define R_TYPE       7'b0110011
 `define I_TYPE       7'b0010011

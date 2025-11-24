@@ -53,7 +53,7 @@
       * logic [DWIDTH - 1:0] x0 = {DWIDTH{1'b0}};
       * Create a DWITDH array of logic register of width DWIDTH
       */
-    logic [DWIDTH - 1:0] x [DWIDTH-1:0];
+    logic [DWIDTH - 1:0] x [31:0];
 
     // Sequential procedural block for writing to register file, regwren_i must be high
     always_ff @(posedge clk) begin
