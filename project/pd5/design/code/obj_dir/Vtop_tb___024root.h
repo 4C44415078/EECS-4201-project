@@ -36,6 +36,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_tb___024root final : public VerilatedMod
     CData/*4:0*/ top_tb__DOT__hut__DOT__e_reg_rd;
     CData/*0:0*/ top_tb__DOT__hut__DOT__e_reg_brtaken;
     CData/*2:0*/ top_tb__DOT__hut__DOT__m_funct3;
+    CData/*4:0*/ top_tb__DOT__hut__DOT__m_reg_rd;
     CData/*4:0*/ top_tb__DOT__hut__DOT__wb_reg_rd;
     CData/*0:0*/ top_tb__DOT__hut__DOT__is_program;
     CData/*0:0*/ top_tb__DOT__hut__DOT__e_alu1__DOT__breq;
@@ -75,7 +76,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_tb___024root final : public VerilatedMod
     VlUnpacked<SData/*12:0*/, 3> top_tb__DOT__hut__DOT__ctrl_reg;
     VlUnpacked<IData/*31:0*/, 32> top_tb__DOT__hut__DOT__register_file1__DOT__x;
     VlUnpacked<CData/*7:0*/, 1048576> top_tb__DOT__hut__DOT__memory1__DOT__main_memory;
-    VlUnpacked<IData/*31:0*/, 9> top_tb__DOT__hut__DOT__memory1__DOT__temp_memory;
+    VlUnpacked<IData/*31:0*/, 14> top_tb__DOT__hut__DOT__memory1__DOT__temp_memory;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
     VlTriggerVec<1> __VstlTriggered;

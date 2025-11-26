@@ -29,7 +29,7 @@ module fetch #(
 );
     
     logic [AWIDTH - 1:0] pc = 32'd0;
-    assign pc_o = (rst) ? 32'd0 : pc;
+    assign pc_o = pc;
       
     always_ff @(posedge clk) begin 
         if (rst) begin

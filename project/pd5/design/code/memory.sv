@@ -191,7 +191,10 @@ module memory #(
     // Memory port and read for instruction fetching (READ-ONLY)
 	always_comb begin
 	    insn_o = '0; // default to zero
-        if (insn_en_i) begin
+        if (rst) begin
+            insn_o = '0;
+        end
+        else if (insn_en_i) begin
             if ($isunknown(pc_i)) begin
                 insn_o = '0;
             end else if ((pc_i >= BASE_ADDR) && (pc_i + 32'd3 < BASE_ADDR + MEM_BYTES)) begin

@@ -28,7 +28,7 @@
 
 `define MEM_DEPTH 1048576
 `define MEM_PATH "tb_stall.x"
-`define LINE_COUNT 9
+`define LINE_COUNT 14
 
 module top_tb;
 
@@ -64,6 +64,7 @@ module top_tb;
       $dumpfile("top_tb.vcd");
       $dumpvars(0, top_tb);
       clk = 1;
+      rst = 1;
       $system("date");
    end
 endmodule: top_tb

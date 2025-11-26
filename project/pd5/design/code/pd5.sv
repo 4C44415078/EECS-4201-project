@@ -23,15 +23,15 @@ module pd5 #(
     // ---------- CONTROL --------------- //
     // ---------------------------------- //
     // control signals
-    logic c_pcsel;
-    logic c_immsel;
-    logic c_regwren;
-    logic c_rs1sel;
-    logic c_rs2sel;
-    logic c_memren;
-    logic c_memwren;
-    logic [1:0] c_wbsel;
-    logic [3:0] c_alusel;
+    wire c_pcsel;
+    wire c_immsel;
+    wire c_regwren;
+    wire c_rs1sel;
+    wire c_rs2sel;
+    wire c_memren;
+    wire c_memwren;
+    wire [1:0] c_wbsel;
+    wire [3:0] c_alusel;
 
     // control instantiation
     control #(
@@ -55,19 +55,26 @@ module pd5 #(
     // control pipeline registers
     logic [12:0] ctrl_reg [2:0];
     always_ff @(posedge clk) begin
-      `D_X <= {
-        c_alusel,
-        c_wbsel,
-        c_memwren,
-        c_memren,
-        c_rs2sel,
-        c_rs1sel,
-        c_regwren,
-        c_immsel,
-        c_pcsel
-      };
-      `X_M <= `D_X;
-      `M_W <= `X_M;
+      if (reset) begin
+        `D_X <= '0;
+        `X_M <= '0;
+        `M_W <= '0;
+      end
+      else begin
+        `D_X <= {
+          c_alusel,
+          c_wbsel,
+          c_memwren,
+          c_memren,
+          c_rs2sel,
+          c_rs1sel,
+          c_regwren,
+          c_immsel,
+          c_pcsel
+        };
+        `X_M <= `D_X;
+        `M_W <= `X_M;
+      end
     end
 
     // ---------------------------------- //
@@ -287,7 +294,6 @@ module pd5 #(
     assign m_size_encoded = (e_reg_opcode == `S_TYPE || e_reg_opcode == `I_TYPE_L) ? m_funct3[1:0] : e_reg_funct3[1:0];
 
     // Read instruction from memory only if no reset.
-
     assign insn_en = 1'b1;
 
     // Memory instantiation
