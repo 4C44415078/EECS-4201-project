@@ -124,7 +124,10 @@ module memory #(
     // Loading data from memory (non-instructions), little endian
     always_comb begin
         data_o = '0; // default data out to zero
-        if (memren_i) begin
+        if (rst) begin
+            data_o = '0;
+        end
+        else if (memren_i) begin
             if ($isunknown(addr_i)) begin
                 data_o = '0;
             end

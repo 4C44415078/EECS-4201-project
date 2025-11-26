@@ -13,6 +13,19 @@
  *make -f tb_main.make run-top_tb
 */
 
+/* tb_stall.x sequence
+ *
+ * addi x10, x10, 50
+ * addi x11, x11, 100
+ * addi x2,  x2,  -48
+ * sw   x10, 44(x2)
+ * sw   x11, 40(x2)
+ * lw   x10, 40(x2)
+ * add  x12, x11, x10
+ * lw   x11, 44(x2)
+ * add  x13, x10, x11
+ */
+
 `define MEM_DEPTH 1048576
 `define MEM_PATH "tb_stall.x"
 `define LINE_COUNT 9

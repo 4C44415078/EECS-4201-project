@@ -1,8 +1,8 @@
 // ----  Probes  ----
-`define PROBE_F_PC          f_reg_pc
-`define PROBE_F_INSN        f_reg_insn 
+`define PROBE_F_PC          f_pc
+`define PROBE_F_INSN        f_insn 
 
-`define PROBE_D_PC          d_reg_pc
+`define PROBE_D_PC          f_reg_pc
 `define PROBE_D_OPCODE      d_opcode
 `define PROBE_D_RD          d_rd
 `define PROBE_D_FUNCT3      d_funct3
@@ -20,18 +20,18 @@
 `define PROBE_R_READ_RS1_DATA     r_rs1data
 `define PROBE_R_READ_RS2_DATA     r_rs2data
 
-`define PROBE_E_PC                e_reg_pc
+`define PROBE_E_PC                d_reg_pc
 `define PROBE_E_ALU_RES           e_res
 `define PROBE_E_BR_TAKEN          e_brtaken
 
-`define PROBE_M_PC                m_reg_pc
+`define PROBE_M_PC                e_reg_pc
 `define PROBE_M_ADDRESS           e_reg_res
 `define PROBE_M_SIZE_ENCODED      m_size_encoded
 `define PROBE_M_DATA              m_data_o
 
 `define PROBE_W_PC                m_reg_pc
 `define PROBE_W_ENABLE            `M_W[`REGWREN]
-`define PROBE_W_DESTINATION       e_reg_rd
+`define PROBE_W_DESTINATION       m_reg_rd
 `define PROBE_W_DATA              wb_data
 
 // ----  Probes  ----

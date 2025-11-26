@@ -21,6 +21,7 @@ VL_ATTR_COLD void Vtop_tb___024root___eval_initial__TOP(Vtop_tb___024root* vlSel
     vlSymsp->_traceDumpOpen();
     vlSelfRef.top_tb__DOT__clk = 1U;
     (void)VL_SYSTEM_II(0x64617465U);
+    vlSelfRef.top_tb__DOT__hut__DOT__f_insn = 0U;
     __Vtemp_2[0U] = 0x6c6c2e78U;
     __Vtemp_2[1U] = 0x5f737461U;
     __Vtemp_2[2U] = 0x7462U;

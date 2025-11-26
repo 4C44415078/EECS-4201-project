@@ -54,7 +54,7 @@ module pd5 #(
 
     // control pipeline registers
     logic [12:0] ctrl_reg [2:0];
-    always_ff @(negedge clk) begin
+    always_ff @(posedge clk) begin
       `D_X <= {
         c_alusel,
         c_wbsel,
@@ -97,9 +97,15 @@ module pd5 #(
     logic [AWIDTH-1:0] f_reg_pc;
     logic [DWIDTH-1:0] f_reg_insn;
 
-    always_ff @(negedge clk) begin
+    always_ff @(posedge clk) begin
+      if (reset) begin
+        f_reg_pc <= '0;
+        f_reg_insn <= '0;
+      end
+      else begin
         f_reg_pc <= f_pc;
         f_reg_insn <= f_insn;
+      end
     end
 
     // ---------------------------------- //
@@ -117,7 +123,7 @@ module pd5 #(
     logic [2:0] d_funct3;
     logic [4:0] d_shamt;
     logic [DWIDTH-1:0] d_imm;
-    logic [AWIDTH-1:0] d_pc;
+    // logic [AWIDTH-1:0] d_pc;
 
     // decode instantiation
     decode #(
@@ -126,8 +132,8 @@ module pd5 #(
     ) decode1 (
         .clk(clk),
         .rst(reset),
-        .insn_i(d_reg_insn),
-        .pc_i(d_reg_pc),
+        .insn_i(f_reg_insn),
+        .pc_i(f_reg_pc),
         .pc_o(),            
         .insn_o(),         
         .opcode_o(d_opcode),         
@@ -150,7 +156,7 @@ module pd5 #(
         .DWIDTH(32)
     ) igen1 (
         .opcode_i(d_opcode),
-        .insn_i(d_reg_insn),
+        .insn_i(f_reg_insn),
         .imm_o(igen_imm)
     );
 
@@ -185,21 +191,7 @@ module pd5 #(
     logic [DWIDTH-1:0] d_reg_rs1data;
     logic [DWIDTH-1:0] d_reg_rs2data;
 
-    always_ff @(negedge clk) begin
-      if (reset) begin
-        d_reg_insn <= '0;
-        d_reg_opcode <= '0;
-        d_reg_rd <= '0;
-        d_reg_rs1 <= '0;
-        d_reg_rs2 <= '0;
-        d_reg_funct7 <= '0;
-        d_reg_funct3 <= '0;
-        d_reg_imm <= '0;
-        d_reg_pc <= '0;
-        d_reg_rs1data <= '0;
-        d_reg_rs2data <= '0;
-      end
-      else begin
+    always_ff @(posedge clk) begin
         d_reg_insn <= f_reg_insn;
         d_reg_opcode <= d_opcode;
         d_reg_rd <= d_rd;
@@ -211,7 +203,6 @@ module pd5 #(
         d_reg_pc <= f_reg_pc;
         d_reg_rs1data <= r_rs1data;
         d_reg_rs2data <= r_rs2data;
-      end
     end
 
     // ---------------------------------- //
@@ -256,7 +247,7 @@ module pd5 #(
     logic [4:0]e_reg_rd;
     logic e_reg_brtaken;
     
-    always_ff @(negedge clk) begin
+    always_ff @(posedge clk) begin
       if (reset) begin
         e_reg_pc <= '0;
         e_reg_opcode <= '0;
@@ -296,8 +287,8 @@ module pd5 #(
     assign m_size_encoded = (e_reg_opcode == `S_TYPE || e_reg_opcode == `I_TYPE_L) ? m_funct3[1:0] : e_reg_funct3[1:0];
 
     // Read instruction from memory only if no reset.
-    assign insn_en = (reset) ? 0 : 1;
 
+    assign insn_en = 1'b1;
 
     // Memory instantiation
     memory #(
@@ -321,6 +312,7 @@ module pd5 #(
     // memory pipeline registers
     logic [AWIDTH-1:0] m_reg_pc;
     logic [DWIDTH-1:0] m_reg_res, m_reg_data, m_reg_imm;
+    logic [4:0] m_reg_rd;
 
     always_ff @(posedge clk) begin
       if (reset) begin
@@ -328,12 +320,14 @@ module pd5 #(
         m_reg_res <= '0;
         m_reg_data <= '0;
         m_reg_imm <= '0;
+        m_reg_rd <= '0;
       end
       else begin
         m_reg_pc <= e_reg_pc;
         m_reg_res <= e_reg_res;
         m_reg_data <= m_data_o;
         m_reg_imm <= e_reg_imm;
+        m_reg_rd <= e_reg_rd;
       end
     end
 
@@ -363,15 +357,19 @@ module pd5 #(
     logic [DWIDTH-1:0] wb_reg_data;
     logic [4:0] wb_reg_rd;
 
-    always_ff @(negedge clk) begin
-      if (reset) begin
-        wb_reg_data <= 32'd0;
-        wb_reg_rd <= 5'd0;
-      end
-      else begin
-        wb_reg_data <= wb_data;
-        wb_reg_rd <= e_reg_rd;
-      end
+    // always_ff @(posedge clk) begin
+    //   if (reset) begin
+    //     wb_reg_data <= 32'd0;
+    //     wb_reg_rd <= 5'd0;
+    //   end
+    //   else begin
+    //     wb_reg_data <= wb_data;
+    //     wb_reg_rd <= e_reg_rd;
+    //   end
+    // end
+    always_ff @(posedge clk) begin
+      wb_reg_data <= wb_data;
+      wb_reg_rd <= m_reg_rd;
     end
     // ---------------------------------- //
     // ----------- WRITEBACK END -------- //

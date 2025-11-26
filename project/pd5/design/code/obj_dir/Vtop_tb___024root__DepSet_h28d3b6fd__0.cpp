@@ -15,7 +15,7 @@ VL_INLINE_OPT VlCoroutine Vtop_tb___024root___eval_initial__TOP__Vtiming__0(Vtop
         co_await vlSelfRef.__VdlySched.delay(0x1f4ULL, 
                                              nullptr, 
                                              "top_tb.sv", 
-                                             23);
+                                             36);
         vlSelfRef.top_tb__DOT__clk = (1U & (~ (IData)(vlSelfRef.top_tb__DOT__clk)));
     }
 }

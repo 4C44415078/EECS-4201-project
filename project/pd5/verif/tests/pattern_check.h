@@ -42,7 +42,7 @@ always @(negedge clock) begin : tick_check
       $display("%0s", msg);
     end
     if(correct != 1) begin
-      //$fatal;
+      $fatal;
     end else  if(tick == `PATTERN_LINE_COUNT - 1) begin
       $display("Check passed");
       $finish;

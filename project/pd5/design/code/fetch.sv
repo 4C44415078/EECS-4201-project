@@ -28,7 +28,7 @@ module fetch #(
     output logic [DWIDTH - 1:0] insn_o
 );
     
-    logic [AWIDTH - 1:0] pc = BASEADDR;
+    logic [AWIDTH - 1:0] pc = 32'd0;
     assign pc_o = (rst) ? 32'd0 : pc;
       
     always_ff @(posedge clk) begin 

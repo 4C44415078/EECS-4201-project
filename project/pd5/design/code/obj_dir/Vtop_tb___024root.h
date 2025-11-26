@@ -49,7 +49,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_tb___024root final : public VerilatedMod
     IData/*31:0*/ top_tb__DOT__hut__DOT__f_reg_pc;
     IData/*31:0*/ top_tb__DOT__hut__DOT__f_reg_insn;
     IData/*31:0*/ top_tb__DOT__hut__DOT__d_imm;
-    IData/*31:0*/ top_tb__DOT__hut__DOT__d_pc;
     IData/*31:0*/ top_tb__DOT__hut__DOT__d_reg_insn;
     IData/*31:0*/ top_tb__DOT__hut__DOT__d_reg_imm;
     IData/*31:0*/ top_tb__DOT__hut__DOT__d_reg_pc;
@@ -77,7 +76,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_tb___024root final : public VerilatedMod
     VlUnpacked<IData/*31:0*/, 32> top_tb__DOT__hut__DOT__register_file1__DOT__x;
     VlUnpacked<CData/*7:0*/, 1048576> top_tb__DOT__hut__DOT__memory1__DOT__main_memory;
     VlUnpacked<IData/*31:0*/, 9> top_tb__DOT__hut__DOT__memory1__DOT__temp_memory;
-    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<3> __VactTriggered;
