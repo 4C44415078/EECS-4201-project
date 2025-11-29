@@ -8,4 +8,5 @@ igen.sv
 register_file.sv
 writeback.sv
 execute.sv
+stall_flush_logic.sv
 pd5.sv

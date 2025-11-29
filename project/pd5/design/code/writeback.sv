@@ -28,7 +28,6 @@
     //  input logic brtaken_i,
      // ADDED SIGNALS --------------------------
      input logic [DWIDTH-1:0] imm_i,
-    //  input logic pcsel_i,
      // ----------------------------------------
      output logic [DWIDTH-1:0] writeback_data_o
     // output logic [AWIDTH-1:0] next_pc_o

@@ -12,6 +12,10 @@ parameter logic [31:0] ZERO = 32'd0;
 /*
  * Define constants as required...
  */
+
+// NOP
+`define NOP 32'h00000013
+
 // Control pipeline bus
 `define PCSEL 0
 `define IMMSEL 1
