@@ -37,6 +37,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__hazard;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__stall;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__flush;
+        CData/*0:0*/ top__DOT__dut__DOT__core__DOT__jump_branch;
         CData/*6:0*/ top__DOT__dut__DOT__core__DOT__d_x_opcode;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_x_rd;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_x_rs1;
@@ -50,9 +51,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__x_m_rs2;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__m_w_rd;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__pc_en;
-        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rd;
         CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rs1;
-        CData/*4:0*/ top__DOT__dut__DOT__core__DOT__d_rs2;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__c_immsel;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__c_regwren;
         CData/*0:0*/ top__DOT__dut__DOT__core__DOT__c_rs1sel;
@@ -80,9 +79,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         VlWide<7>/*223:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_D__Vstatic__check_D_func__DOT__t;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__read_rs1_data;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__read_rs2_data;
+        VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p;
     };
     struct {
-        VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_R__Vstatic__check_R_func__DOT__p;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__pc;
         IData/*31:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__alu_res;
         VlWide<4>/*127:0*/ top__DOT__genblk3__DOT__genblk3__DOT__check_E__Vstatic__check_E_func__DOT__p;
@@ -125,11 +124,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__register_file1__DOT__unnamedblk1__DOT__i;
         IData/*31:0*/ top__DOT__dut__DOT__core__DOT__memory1__DOT__i;
         IData/*31:0*/ __VactIterCount;
-        VlUnpacked<VlWide<24>/*767:0*/, 2389> top__DOT__genblk3__DOT__pattern;
+        VlUnpacked<VlWide<24>/*767:0*/, 4906> top__DOT__genblk3__DOT__pattern;
         VlUnpacked<SData/*12:0*/, 3> top__DOT__dut__DOT__core__DOT__ctrl_reg;
         VlUnpacked<IData/*31:0*/, 32> top__DOT__dut__DOT__core__DOT__register_file1__DOT__x;
         VlUnpacked<CData/*7:0*/, 1048576> top__DOT__dut__DOT__core__DOT__memory1__DOT__main_memory;
-        VlUnpacked<IData/*31:0*/, 154> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
+        VlUnpacked<IData/*31:0*/, 58> top__DOT__dut__DOT__core__DOT__memory1__DOT__temp_memory;
         VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     };
     VlTriggerVec<1> __VstlTriggered;

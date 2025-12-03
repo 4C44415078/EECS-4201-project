@@ -23,6 +23,7 @@ module fetch #(
 	// inputs
 	input logic clk,
 	input logic rst,
+    input logic [AWIDTH - 1:0] next_pc_i,
     input logic pc_en_i,
 	// outputs	
 	output logic [AWIDTH - 1:0] pc_o,
@@ -37,7 +38,7 @@ module fetch #(
             pc <= BASEADDR;
         end 
         else if (pc_en_i) begin 
-            pc <= pc + 32'd4;
+            pc <= next_pc_i + 32'd4;
         end
     end
 

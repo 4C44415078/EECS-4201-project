@@ -37,10 +37,12 @@ module pd5 #(
   logic hazard; 
   assign hazard = load_use | wb_d_haz;
   logic stall, flush;
+  logic jump_branch;
+  assign jump_branch = (`D_X[`PCSEL] | e_brtaken);
   
   stall_flush_logic stall_flush (
     .hazard_i(hazard),
-    .brtaken_i(e_brtaken),
+    .brtaken_i(jump_branch),
     .pc_en_o(pc_en),
     .stall_o(stall),
     .flush_o(flush)
@@ -57,7 +59,7 @@ module pd5 #(
   assign wx_bypass_rs1 = (m_w_rd != 5'd0) && (m_w_rd == d_x_rs1);
   assign wx_bypass_rs2 = (m_w_rd != 5'd0) && (m_w_rd == d_x_rs2);
 
-  assign wm_bypass = (`M_W[`MEMREN] && `X_M[`MEMWREN]) && (m_w_rd != 5'd0) && (m_w_rd == x_m_rs2);
+  assign wm_bypass = (`M_W[`REGWREN] && `X_M[`MEMWREN]) && (m_w_rd != 5'd0) && (m_w_rd == x_m_rs2);
 
   // Pipeline sequence
   // Fetch-Decode registers
@@ -85,8 +87,7 @@ module pd5 #(
       f_d_insn <= '0;
     end
     else if (flush) begin
-      f_d_pc <= '0;
-      f_d_insn <= '0;
+      f_d_insn <= `NOP;
     end
     else if (!stall) begin
       f_d_pc <= f_pc;
@@ -108,10 +109,10 @@ module pd5 #(
       d_x_rs1data <= '0;
       d_x_rs2data <= '0;
     end
-    else if (stall || flush) begin
-      d_x_pc <= '0;
-      d_x_insn <= `NOP;
-      d_x_opcode <= '0;
+    else if (flush) begin
+      d_x_pc <= d_pc;
+      d_x_insn <= d_insn;
+      d_x_opcode <= 7'h13;
       d_x_rd <= '0;
       d_x_rs1 <= '0;
       d_x_rs2 <= '0;
@@ -121,8 +122,10 @@ module pd5 #(
       d_x_rs1data <= '0;
       d_x_rs2data <= '0;
     end
+    else if (stall) begin
+      d_x_insn <= `NOP;
+    end
     else begin    
-      // this is on stall
       d_x_pc <= d_pc;
       d_x_insn <= d_insn;
       d_x_opcode <= d_opcode;
@@ -208,6 +211,7 @@ module pd5 #(
     ) fetch1 (
         .clk(clk),
         .rst(reset),
+        .next_pc_i(f_pc),
         .pc_en_i(pc_en),
         .pc_o(pc),            
         .insn_o()         

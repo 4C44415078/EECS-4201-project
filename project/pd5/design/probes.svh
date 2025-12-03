@@ -27,7 +27,7 @@
 `define PROBE_M_PC                x_m_pc
 `define PROBE_M_ADDRESS           x_m_res
 `define PROBE_M_SIZE_ENCODED      m_size_encoded
-`define PROBE_M_DATA              m_data_o
+`define PROBE_M_DATA              x_m_rs2data
 
 `define PROBE_W_PC                m_w_pc
 `define PROBE_W_ENABLE            `M_W[`REGWREN]
